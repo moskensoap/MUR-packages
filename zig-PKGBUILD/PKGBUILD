@@ -1,0 +1,30 @@
+# Maintainer:  moskensoap <141073988+moskensoap@users.noreply.github.com>
+
+pkgname="zig"
+pkgver=0.13.0
+pkgrel=1
+pkgdesc='General-purpose programming language and toolchain for maintaining robust, optimal, and reusable software.'
+arch=('any')
+url='https://ziglang.org'
+license=(MIT)
+makedepends=("gcc")
+source=("$url/download/${pkgver}/zig-windows-x86_64-${pkgver}.zip"
+        "main.c")
+sha256sums=('d859994725ef9402381e557c60bb57497215682e355204d754ee3df75ee3c158'
+            '6ccec93e10eec7abb3830239f13591ada65b651cbd673097fe866023509aec32')
+
+build() {
+  cd ${srcdir}
+  gcc main.c -o zig.exe -O3 -s
+}
+
+package() {
+  cd ${srcdir}
+  install -Dm755 zig.exe ${pkgdir}/usr/bin/zig.exe
+
+  cd ${srcdir}/zig-windows-x86_64-${pkgver}
+
+  mkdir ${pkgdir}/usr/share
+  mkdir ${pkgdir}/usr/share/zig
+  cp -a ${srcdir}/zig-windows-x86_64-${pkgver}/* ${pkgdir}/usr/share/zig/
+}

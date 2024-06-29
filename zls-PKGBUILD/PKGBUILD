@@ -1,0 +1,26 @@
+# Maintainer:  moskensoap <141073988+moskensoap@users.noreply.github.com>
+
+pkgname="zls"
+pkgver=0.13.0
+pkgrel=1
+pkgdesc='A Zig language server supporting Zig developers with features like autocomplete and goto definition'
+arch=('any')
+url='https://github.com/zigtools/zls'
+license=(MIT)
+makedepends=("zig")
+
+source=("$url/archive/refs/tags/${pkgver}.zip")
+sha256sums=('f3230b78ac2e905fe2a4c4da74b1fb15ddb1060d4041b29f3f246696a62c3f65')
+
+build() {
+  cd ${srcdir}/zls-${pkgver}
+  zig build -Doptimize=ReleaseSafe
+}
+
+package() {
+  cd ${srcdir}/zls-${pkgver}
+  install -Dm644 LICENSE ${pkgdir}/usr/share/licenses/zls/LICENSE
+
+  cd zig-out/bin
+  install -Dm755 zls.exe ${pkgdir}/usr/bin/zls.exe
+}

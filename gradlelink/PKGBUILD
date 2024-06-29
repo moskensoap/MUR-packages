@@ -1,0 +1,26 @@
+# Maintainer:  moskensoap <141073988+moskensoap@users.noreply.github.com>
+
+pkgname="gradlelink"
+pkgver=1.0
+pkgrel=1
+pkgdesc='Creat /usr/bin/gradle.exe linking to /usr/share/java/gradle/bin/gradle'
+arch=('any')
+url='https://github.com/moskensoap/gradlelink'
+license=(MIT)
+makedepends=("gcc")
+depends=("gradle")
+source=("main.c"
+        "LICENSE")
+sha256sums=('32ed07ea76b16d32ab0b64374971b3c4ab50e30e87ff92a27dee254690cc5614'
+            'ae1ac950060baad6e25e65f23e92bad0e0cb9e8de258cafcec5d25cba861af4a')
+
+build() {
+  cd ${srcdir}
+  gcc main.c -o gradle.exe -O3 -s
+}
+
+package() {
+  cd ${srcdir}
+  install -Dm755 gradle.exe ${pkgdir}/usr/bin/gradle.exe
+  install -Dm644 LICENSE ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
+}

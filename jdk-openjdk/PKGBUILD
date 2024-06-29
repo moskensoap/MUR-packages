@@ -1,0 +1,40 @@
+# Maintainer:  moskensoap <141073988+moskensoap@users.noreply.github.com>
+
+pkgname="jdk-openjdk"
+pkgver=22
+pkgrel=1
+pkgdesc='OpenJDK Java development kit'
+arch=('any')
+url='https://openjdk.org'
+license=(GPL2)
+makedepends=("gcc"
+             "make")
+magicnumber=830ec9fcccef480bb3e73fb7ecafe059
+buildnumber=36
+source=("https://download.java.net/java/GA/jdk${pkgver}/${magicnumber}/${buildnumber}/GPL/openjdk-${pkgver}_windows-x64_bin.zip"
+        "main.c"
+        "makefile")
+sha256sums=('8f5138fecb53c08c20abd4fa6812f9400051f3852582a2142ffda0dff73a5824'
+            '5c6b03bffeddd735700e9bdcb5a914a98b4b67d9e7d7c61787dac12a6b616d05'
+            '490009190e4fdb5f11e5c716966fc26c96fcb69eb23e594c123ba28f03e4b4a6')
+
+prepare() {
+  cd ${srcdir}
+  for file in $(ls jdk-$pkgver/bin | grep .exe | sed 's/\.exe$/.c/'); do
+    cp main.c $file
+  done
+  rm main.c
+}
+
+build() {
+  cd ${srcdir}
+  make
+}
+
+package() {
+  cd ${srcdir}
+  mkdir -p ${pkgdir}/usr/bin/
+  install -Dm755 ./*.exe ${pkgdir}/usr/bin/
+  mkdir -p ${pkgdir}/usr/share/java/${pkgname}/
+  cp -a jdk-$pkgver/* ${pkgdir}/usr/share/java/${pkgname}/
+}

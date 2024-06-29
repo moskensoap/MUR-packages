@@ -1,0 +1,34 @@
+# Maintainer: moskensoap <141073988+moskensoap@users.noreply.github.com>
+
+_realname=helixlink
+pkgbase=mingw-w64-${_realname}
+pkgname="${MINGW_PACKAGE_PREFIX}-${_realname}"
+pkgver=1.0
+pkgrel=1
+pkgdesc="Creat \\bin\\hx.exe linking to \\lib\\helix\\hx.exe (mingw-w64)"
+arch=('any')
+mingw_arch=('mingw32' 'mingw64' 'ucrt64' 'clang64' 'clang32' 'clangarm64')
+url="https://github.com/moskensoap/helixlink"
+license=('MIT')
+makedepends=("${MINGW_PACKAGE_PREFIX}-cc")
+depends=("${MINGW_PACKAGE_PREFIX}-helix")
+source=("main.c"
+        "LICENSE")
+sha256sums=('9ce84c918f0e1b3587a3a8e4e08b565eed152d69562f6a2db3eaf0dfd9a28089'
+            'ae1ac950060baad6e25e65f23e92bad0e0cb9e8de258cafcec5d25cba861af4a')
+
+
+build() {
+  cd "${srcdir}"
+  mkdir -p "${srcdir}/build-${MSYSTEM}" && cd "${srcdir}/build-${MSYSTEM}"
+  cp "${srcdir}/main.c" ./
+  cp "${srcdir}/LICENSE" ./
+  cc main.c -o hx.exe -O3 -s
+}
+
+package() {
+  cd "${srcdir}/build-${MSYSTEM}"
+
+  install -D -m755 "${srcdir}/build-${MSYSTEM}/hx.exe" "${pkgdir}${MINGW_PREFIX}/bin/hx.exe"
+  install -Dm644 "${srcdir}/build-${MSYSTEM}/LICENSE" "${pkgdir}${MINGW_PREFIX}/share/licenses/${_realname}/LICENSE"
+}

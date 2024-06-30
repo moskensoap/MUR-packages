@@ -34,6 +34,7 @@ For mingw_arch, run:
     makepkg-mingw --cleanbuild --syncdeps --force --noconfirm
 
 For none_mingw_arch, run:
+
     makepkg --cleanbuild --syncdeps --force --noconfirm
 
 To solve CRLF error, you may run:

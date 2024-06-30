@@ -1,14 +1,17 @@
 # Maintainer: moskensoap <141073988+moskensoap@users.noreply.github.com>
 
 pkgname="marksman"
-pkgver=2023-12-09
+pkgver=20231209
 pkgrel=1
 pkgdesc='Write Markdown with code assist and intelligence in the comfort of your favourite editor.'
 arch=('any')
 url='https://github.com/artempyanykh/marksman'
 license=(MIT)
+year=$(echo $pkgver | cut -c1-4)
+month=$(echo $pkgver | cut -c5-6)
+day=$(echo $pkgver | cut -c7-8)
 
-source=("$url/releases/download/${pkgver}/marksman.exe")
+source=("$url/releases/download/${year}-${month}-${day}/marksman.exe")
 sha256sums=('9cb9aa80350febc9a3f078f67232dbc0ac833a5d4f7d34b045aa7ad6d8ff54db')
 
 

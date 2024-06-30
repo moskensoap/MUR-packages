@@ -6,9 +6,15 @@
 
 **jdk-openjdk**: OpenJDK Java development kit
 
+**lua-language-server**: A language server that offers Lua language support - programmed in Lua
+
 **makelink**: Creat make.exe linking to mingw32-make.exe (mingw-w64)
 
 **marksman**: Write Markdown with code assist and intelligence in the comfort of your favourite editor.
+
+**omnisharp-roslyn**: OmniSharp server (HTTP, STDIO) based on Roslyn workspaces
+
+**omnisharp-roslyn-net6.0**: OmniSharp server (HTTP, STDIO) based on Roslyn workspaces (net6.0)
 
 **pandoc**: Universal markup converter.
 

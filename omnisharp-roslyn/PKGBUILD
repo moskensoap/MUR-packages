@@ -1,0 +1,37 @@
+# Maintainer: moskensoap <141073988+moskensoap@users.noreply.github.com>
+
+pkgname="omnisharp-roslyn"
+pkgver=1.39.11
+pkgrel=1
+pkgdesc='OmniSharp server (HTTP, STDIO) based on Roslyn workspaces'
+arch=('any')
+url='https://github.com/omnisharp/omnisharp-roslyn'
+license=(MIT)
+makedepends=("gcc"
+             "unzip")
+conflicts=("omnisharp-roslyn-net6.0")
+
+source=("$url/releases/download/v$pkgver/omnisharp-win-x64.zip"
+        "OmniSharp.c")
+
+sha256sums=('e1ad559974430c9aa81819f1433583b0ee9a977d2daae1de32d4d408503b2867'
+            'd9e7fe33b17f82b80f35c000ad007640597f5e60c57bb1132f862609a2f077b2')
+
+prepare() {
+  cd ${srcdir}
+  unzip omnisharp-win-x64.zip -d omnisharp-win-x64
+}
+
+build() {
+  cd ${srcdir}
+  gcc -o omnisharp.exe OmniSharp.c
+}
+
+package() {
+  cd ${srcdir}
+  install -Dm755 omnisharp.exe ${pkgdir}/opt/bin/omnisharp.exe
+  mkdir -p ${pkgdir}/opt/share/${pkgname}
+  cp -a omnisharp-win-x64/* ${pkgdir}/opt/share/${pkgname}
+}
+
+options=(!strip)

@@ -2,7 +2,7 @@
 
 **gradle**: Creat /usr/bin/gradle.exe linking to /usr/share/java/gradle/bin/gradle
 
-**helix**: Creat MINGW_PREFIX\bin\hx.exe linking to MINGW_PREFIX\lib\helix\hx.exe (mingw-w64)
+**helix**: Creat MINGW_PREFIX/bin/hx.exe linking to MINGW_PREFIX/lib/helix/hx.exe (mingw-w64)
 
 **jdk-openjdk**: OpenJDK Java development kit
 

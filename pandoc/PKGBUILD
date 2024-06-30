@@ -1,0 +1,21 @@
+# Maintainer: moskensoap <141073988+moskensoap@users.noreply.github.com>
+
+pkgname="pandoc"
+pkgver=3.2.1
+pkgrel=1
+pkgdesc='Universal markup converter.'
+arch=('any')
+url='https://github.com/jgm/pandoc'
+license=(GPL)
+
+source=("$url/releases/download/${pkgver}/pandoc-${pkgver}-windows-x86_64.zip")
+sha256sums=('c6cfc71b092a42c8d25c0936390aa21d71762aee0ceee720bff1c8e32d35203e')
+
+
+package() {
+  cd ${srcdir}/pandoc-${pkgver}
+  mkdir -p ${pkgdir}/opt/bin/
+  install -Dm755 pandoc.exe ${pkgdir}/opt/bin/pandoc.exe
+  mkdir -p ${pkgdir}/opt/share/pandoc/
+  cp -a ${srcdir}/pandoc-${pkgver}/* ${pkgdir}/opt/share/pandoc/
+}

@@ -1,0 +1,89 @@
+# Maintainer: moskensoap <141073988+moskensoap@users.noreply.github.com>
+
+pkgname=("php" "php-development" "php-production" "php-extension-composer" "php-extension-extra")
+pkgver=8.2.20
+pkgrel=1
+
+arch=('any')
+url='https://www.php.net'
+license=(PHP License)
+makedepends=("gcc"
+             "make"
+             "unzip")
+
+source=("https://windows.php.net/downloads/releases/php-${pkgver}-Win32-vs16-x64.zip"
+        "main.c"
+        "makefile"
+        "php.ini"
+        "composer.ini"
+        "extra.ini")
+
+noextract=("php-${pkgver}-Win32-vs16-x64.zip")
+sha256sums=('ad2636858768864ed4caecf1687f5a827b9c7ceafb28d06072fe2dd703372962'
+            'ae9aa14238a73bfe3035746c085a4523a88d437bc503d06074a58a654d076288'
+            '490009190e4fdb5f11e5c716966fc26c96fcb69eb23e594c123ba28f03e4b4a6'
+            'd7266e25a4be7bbcad241af04d763876556bbbdbbf69febe9b7c84bdfb3b2412'
+            'd686f99df940ee02f53d321d3224f530eeae05fb5a11300ca1987895ff5784b4'
+            '0e79011c0eec3eca19ef04a50225c4bf602c4775962a23d6c6ea3077a762341f')
+
+prepare() {
+  cd ${srcdir}
+  unzip php-${pkgver}-Win32-vs16-x64.zip -d php-$pkgver
+
+  for file in $(ls php-$pkgver | grep .exe | sed 's/\.exe$/.c/'); do
+    cp main.c $file
+  done
+  rm main.c
+}
+
+build() {
+  cd ${srcdir}
+  make
+}
+
+package_php() {
+  pkgdesc="php-${pkgver} for Windows VS16 x64 Thread Safe"
+  cd ${srcdir}
+  mkdir -p ${pkgdir}/usr/bin/
+  install -Dm755 ./*.exe ${pkgdir}/usr/bin/
+  mkdir -p ${pkgdir}/usr/share/php/
+  cp -a php-$pkgver/* ${pkgdir}/usr/share/php/
+  mkdir -p ${pkgdir}/usr/share/php/conf.d/
+  cp php.ini ${pkgdir}/usr/share/php/
+}
+
+package_php-development() {
+  pkgdesc="php config for development"
+  depends=("php")
+  conflict=("php-production")
+  cd ${srcdir}
+  mkdir -p ${pkgdir}/usr/share/php/conf.d/
+  cp php-$pkgver/php.ini-development ${pkgdir}/usr/share/php/conf.d/development.ini
+}
+
+package_php-production() {
+  pkgdesc="php config for production"
+  depends=("php")
+  conflict=("php-development")
+  cd ${srcdir}
+  mkdir -p ${pkgdir}/usr/share/php/conf.d/
+  cp php-$pkgver/php.ini-production ${pkgdir}/usr/share/php/conf.d/production.ini
+}
+
+package_php-extension-composer() {
+  pkgdesc="php config for composer"
+  depends=("php")
+  cd ${srcdir}
+  mkdir -p ${pkgdir}/usr/share/php/conf.d/
+  cp composer.ini ${pkgdir}/usr/share/php/conf.d/composer.ini
+}
+
+package_php-extension-extra() {
+  pkgdesc="php config for extra"
+  depends=("php" "php-extension-composer")
+  cd ${srcdir}
+  mkdir -p ${pkgdir}/usr/share/php/conf.d/
+  cp extra.ini ${pkgdir}/usr/share/php/conf.d/extra.ini
+}
+
+options=(!strip)

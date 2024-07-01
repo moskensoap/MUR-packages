@@ -4,6 +4,7 @@
 #include <unistd.h>
 #include <limits.h>
 #include <libgen.h>
+#include <ctype.h>
 
 int main(int argc, char *argv[]) {
     char path[PATH_MAX];
@@ -16,6 +17,10 @@ int main(int argc, char *argv[]) {
 
     path[count] = '\0'; // Null-terminate the path
 
+    //change all characters to lowercase in path
+    for (int i = 0; path[i]; i++) {
+        path[i] = tolower(path[i]);
+    }
 
     const char *filePath = __FILE__;
     char fileName[PATH_MAX];

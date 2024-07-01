@@ -15,7 +15,7 @@ source=("https://download.java.net/java/GA/jdk${pkgver}/${magicnumber}/${buildnu
         "main.c"
         "makefile")
 sha256sums=('8f5138fecb53c08c20abd4fa6812f9400051f3852582a2142ffda0dff73a5824'
-            '5c6b03bffeddd735700e9bdcb5a914a98b4b67d9e7d7c61787dac12a6b616d05'
+            'b94cbfa3c204c3ac0c81eac241d1656b2aa6b72ed0e0b6c637cad881b5fe3da5'
             '490009190e4fdb5f11e5c716966fc26c96fcb69eb23e594c123ba28f03e4b4a6')
 
 prepare() {

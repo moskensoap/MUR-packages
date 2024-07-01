@@ -1,6 +1,6 @@
 # Maintainer: moskensoap <141073988+moskensoap@users.noreply.github.com>
 
-pkgname="marksman"
+pkgname="mur-marksman"
 pkgver=20231209
 pkgrel=1
 pkgdesc='Write Markdown with code assist and intelligence in the comfort of your favourite editor.'
@@ -19,3 +19,5 @@ package() {
   cd ${srcdir}
   install -Dm755 marksman.exe ${pkgdir}/opt/bin/marksman.exe
 }
+
+options=(!strip)

@@ -21,9 +21,9 @@ int main(int argc, char *argv[]) {
         path[i] = tolower(path[i]);
     }
 
-    // Replace "/bin/zig" with "/share/zig/zig"
+    // Replace "/bin/zig" with "/share/mur-zig/zig"
     char *binPath = "/bin/zig";
-    char *realPath = "/share/zig/zig";
+    char *realPath = "/share/mur-zig/zig";
     char *replacePtr = strstr(path, binPath);
     if (replacePtr != NULL) {
         strncpy(replacePtr, realPath, strlen(realPath));

@@ -1,6 +1,6 @@
 # Maintainer: moskensoap <141073988+moskensoap@users.noreply.github.com>
 
-pkgname="pandoc"
+pkgname="mur-pandoc"
 pkgver=3.2.1
 pkgrel=1
 pkgdesc='Universal markup converter.'
@@ -16,8 +16,8 @@ package() {
   cd ${srcdir}/pandoc-${pkgver}
   mkdir -p ${pkgdir}/opt/bin/
   install -Dm755 pandoc.exe ${pkgdir}/opt/bin/pandoc.exe
-  mkdir -p ${pkgdir}/opt/share/pandoc/
-  cp COPYING.rtf ${pkgdir}/opt/share/pandoc/
-  cp COPYRIGHT.txt ${pkgdir}/opt/share/pandoc/
-  cp MANUAL.html ${pkgdir}/opt/share/pandoc/
+  mkdir -p ${pkgdir}/opt/share/$pkgname/
+  cp COPYING.rtf ${pkgdir}/opt/share/$pkgname/
+  cp COPYRIGHT.txt ${pkgdir}/opt/share/$pkgname/
+  cp MANUAL.html ${pkgdir}/opt/share/$pkgname/
 }

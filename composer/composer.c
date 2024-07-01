@@ -65,11 +65,11 @@ int main(int argc, char *argv[]) {
         return 1;
     }
 
-    //cp path to confpath and replace /bin/php with /share/php/conf.d
+    //cp path to confpath and replace /bin/php with /share/mur-php/conf.d
     char confPath[PATH_MAX];
     strcpy(confPath, path);
     sprintf(binPath, "/bin/%s","php");
-    sprintf(realPath, "/share/php/%s","conf.d");
+    sprintf(realPath, "/share/mur-php/%s","conf.d");
     replacePtr = strstr(confPath, binPath);
     if (replacePtr != NULL) {
         strncpy(replacePtr, realPath, strlen(realPath));

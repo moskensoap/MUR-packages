@@ -1,6 +1,6 @@
 # Maintainer: moskensoap <141073988+moskensoap@users.noreply.github.com>
 
-pkgname="lua-language-server"
+pkgname="mur-lua-language-server"
 pkgver=3.9.3
 pkgrel=1
 pkgdesc='A language server that offers Lua language support - programmed in Lua'
@@ -12,9 +12,9 @@ makedepends=("gcc"
 
 source=("$url/releases/download/$pkgver/lua-language-server-$pkgver-win32-x64.zip"
         "lua-language-server.c")
-noextract=("$pkgname-$pkgver-win32-x64.zip")
+noextract=("lua-language-server-$pkgver-win32-x64.zip")
 sha256sums=('d658bf5ca56066268bf9b1ade33ca1788c8cb4b60ebdca17ba636f1f423342a0'
-            'c5902b641702866d5da259c12d0c6ce2f0c4872c1d19b835e36693dbd6c0685b')
+            'feab50615291812a99aadf84f690be6d716909834bd5ddbebb3e2c514b134fef')
 
 prepare() {
   cd ${srcdir}
@@ -29,6 +29,6 @@ build() {
 package() {
   cd ${srcdir}
   install -Dm755 lua-language-server.exe ${pkgdir}/opt/bin/lua-language-server.exe
-  mkdir -p ${pkgdir}/opt/share/lua-language-server
-  cp -a lua-language-server-$pkgver-win32-x64/* ${pkgdir}/opt/share/lua-language-server
+  mkdir -p ${pkgdir}/opt/share/$pkgname
+  cp -a lua-language-server-$pkgver-win32-x64/* ${pkgdir}/opt/share/$pkgname
 }

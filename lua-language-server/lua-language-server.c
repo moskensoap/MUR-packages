@@ -31,10 +31,10 @@ int main(int argc, char *argv[]) {
         *dot = '\0';
     }
 
-    // Replace "/bin/$(filePath)" with "/share/lua-language-server/bin/$(filePath)"
+    // Replace "/bin/$(filePath)" with "/share/mur-lua-language-server/bin/$(filePath)"
     char binPath[PATH_MAX], realPath[PATH_MAX];
     sprintf(binPath, "/bin/%s", fileName);
-    sprintf(realPath, "/share/lua-language-server/bin/%s", fileName);
+    sprintf(realPath, "/share/mur-lua-language-server/bin/%s", fileName);
 
     char *replacePtr = strstr(path, binPath);
     if (replacePtr != NULL) {

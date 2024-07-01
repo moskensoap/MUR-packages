@@ -1,6 +1,6 @@
 # Maintainer: moskensoap <141073988+moskensoap@users.noreply.github.com>
 
-pkgname=("xdebug")
+pkgname=("mur-xdebug")
 pkgver=3.3.2
 phpver=8.2
 pkgrel=1
@@ -10,7 +10,7 @@ arch=('any')
 url='https://xdebug.org'
 license=(The Xdebug License)
 
-depends=("php")
+depends=("mur-php")
 
 source=("$url/files/php_xdebug-${pkgver}-${phpver}-vs16-x86_64.dll"
         "xdebug.ini")
@@ -21,8 +21,8 @@ sha256sums=('006a27837960b5e4a1351e56091efbb17bc531197e9c01684cab085364731ae5'
 
 package() {
   cd ${srcdir}
-  mkdir -p ${pkgdir}/usr/share/php/ext
-  cp php_xdebug-${pkgver}-${phpver}-vs16-x86_64.dll ${pkgdir}/usr/share/php/ext/php_xdebug.dll
-  mkdir -p ${pkgdir}/usr/share/php/conf.d
-  cp xdebug.ini ${pkgdir}/usr/share/php/conf.d/xdebug.ini
+  mkdir -p ${pkgdir}/usr/share/mur-php/ext
+  cp php_xdebug-${pkgver}-${phpver}-vs16-x86_64.dll ${pkgdir}/usr/share/mur-php/ext/php_xdebug.dll
+  mkdir -p ${pkgdir}/usr/share/mur-php/conf.d
+  cp xdebug.ini ${pkgdir}/usr/share/mur-php/conf.d/xdebug.ini
 }

@@ -1,6 +1,6 @@
 # Maintainer: moskensoap <141073988+moskensoap@users.noreply.github.com>
 
-pkgname="zig"
+pkgname="mur-zig"
 pkgver=0.13.0
 pkgrel=1
 pkgdesc='General-purpose programming language and toolchain for maintaining robust, optimal, and reusable software.'
@@ -11,7 +11,7 @@ makedepends=("gcc")
 source=("$url/download/${pkgver}/zig-windows-x86_64-${pkgver}.zip"
         "main.c")
 sha256sums=('d859994725ef9402381e557c60bb57497215682e355204d754ee3df75ee3c158'
-            '5cddbe0a75233bde6f75acc65fe4ebe0c79efc262894d19bdf03a1fcd1b3d583')
+            'c471bf58b9b76a3e9c3c91ec4680720a68c873297a1bc61f82483365b4337905')
 
 build() {
   cd ${srcdir}
@@ -25,6 +25,6 @@ package() {
   cd ${srcdir}/zig-windows-x86_64-${pkgver}
 
   mkdir ${pkgdir}/usr/share
-  mkdir ${pkgdir}/usr/share/zig
-  cp -a ${srcdir}/zig-windows-x86_64-${pkgver}/* ${pkgdir}/usr/share/zig/
+  mkdir ${pkgdir}/usr/share/mur-zig
+  cp -a ${srcdir}/zig-windows-x86_64-${pkgver}/* ${pkgdir}/usr/share/mur-zig/
 }

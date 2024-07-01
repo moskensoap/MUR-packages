@@ -13,9 +13,9 @@ conflicts=("omnisharp-roslyn")
 
 source=("$url/releases/download/v$pkgver/omnisharp-win-x64-net6.0.zip"
         "OmniSharp.c")
-
+noextract=("omnisharp-win-x64-net6.0.zip")
 sha256sums=('a71fd29e6cacdf41fd44acb9f8532be33dbd4cb313513e47a031443f648bdbab'
-            '6adad19bd3974a1f5f464677a5eebadc0e63e38ba8fd6228e8851c55787d739a')
+            'eabd8ef9fe2ea1b3161a4f87d48f3b64672e761ab5a43c904c00310a6861c6a0')
 
 prepare() {
   cd ${srcdir}
@@ -24,12 +24,12 @@ prepare() {
 
 build() {
   cd ${srcdir}
-  gcc -o omnisharp.exe OmniSharp.c
+  gcc -o omnisharp.exe omnisharp.c
 }
 
 package() {
   cd ${srcdir}
   install -Dm755 omnisharp.exe ${pkgdir}/opt/bin/omnisharp.exe
   mkdir -p ${pkgdir}/opt/share/${pkgname}
-  cp -a omnisharp-win-x64-net6.0/* ${pkgdir}/opt/share/${pkgname}
+  cp -a omnisharp-win-x64-net6.0/* ${pkgdir}/opt/share/${pkgname}/
 }

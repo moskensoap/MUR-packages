@@ -31,7 +31,7 @@ int main(int argc, char *argv[]) {
         *dot = '\0';
     }
 
-    // Replace "/bin/$(filePath)" with "/bin/php"
+    // Replace "/bin/$(fileName)" with "/bin/php"
     char binPath[PATH_MAX], realPath[PATH_MAX];
     sprintf(binPath, "/bin/%s", fileName);
     sprintf(realPath, "/bin/%s", "php");

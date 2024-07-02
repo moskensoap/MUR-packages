@@ -1,13 +1,15 @@
 # Maintainer: moskensoap <141073988+moskensoap@users.noreply.github.com>
 
-pkgname="mur-jdtls"
+pkgname="mur-jdtls17"
 pkgver=1.37.0
 pkgrel=1
-pkgdesc='Java language server'
+pkgdesc='Java language server for Java 17'
 arch=('any')
 url='https://github.com/eclipse-jdtls/eclipse.jdt.ls'
 license=(Eclipse Public License)
 makedepends=("gcc")
+depends=("mur-jdk17-openjdk")
+conflicts=("mur-jdtls")
 magicnumber=202406271335
 
 source=("https://www.eclipse.org/downloads/download.php?file=/jdtls/milestones/$pkgver/jdt-language-server-$pkgver-$magicnumber.tar.gz"

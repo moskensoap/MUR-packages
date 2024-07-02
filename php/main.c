@@ -31,7 +31,7 @@ int main(int argc, char *argv[]) {
         *dot = '\0';
     }
 
-    // Replace "/bin/$(filePath)" with "/share/mur-php/$(filePath)"
+    // Replace "/bin/$(fileName)" with "/share/mur-php/$(fileName)"
     char binPath[PATH_MAX], realPath[PATH_MAX];
     sprintf(binPath, "/bin/%s", fileName);
     sprintf(realPath, "/share/mur-php/%s", fileName);
@@ -48,7 +48,7 @@ int main(int argc, char *argv[]) {
         return 1;
     }
 
-    //cp path to confpath and replace /share/mur-php/$(filePath) with /share/mur-php/conf.d
+    //cp path to confpath and replace /share/mur-php/$(fileName) with /share/mur-php/conf.d
     char confPath[PATH_MAX];
     strcpy(confPath, path);
     sprintf(binPath, "/share/mur-php/%s", fileName);
@@ -65,7 +65,7 @@ int main(int argc, char *argv[]) {
         return 1;
     }
     
-    //cp path to userconfpath and replace /usr/share/mur-php/$(filePath) with /home/.mur/php
+    //cp path to userconfpath and replace /usr/share/mur-php/$(fileName) with /home/.mur/php
     char userConfPath[PATH_MAX];
     strcpy(userConfPath, path);
     sprintf(binPath, "/usr/share/mur-php/%s", fileName);

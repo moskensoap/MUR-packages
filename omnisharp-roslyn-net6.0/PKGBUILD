@@ -15,7 +15,7 @@ source=("$url/releases/download/v$pkgver/omnisharp-win-x64-net6.0.zip"
         "OmniSharp.c")
 noextract=("omnisharp-win-x64-net6.0.zip")
 sha256sums=('a71fd29e6cacdf41fd44acb9f8532be33dbd4cb313513e47a031443f648bdbab'
-            '6409ce3984e5f428de127c63691e77cbedbca8d4ef174cb2bb9babcc13990bca')
+            '4439d97a90a3dab9c5d95c22efaebe7b519a05561c3657269ec99173cb88826a')
 
 prepare() {
   cd ${srcdir}

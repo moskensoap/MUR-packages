@@ -31,7 +31,7 @@ int main(int argc, char *argv[]) {
         *dot = '\0';
     }
 
-    // Replace "/bin/$(filePath)" with "/share/mur-lua-language-server/bin/$(filePath)"
+    // Replace "/bin/$(fileName)" with "/share/mur-lua-language-server/bin/$(fileName)"
     char binPath[PATH_MAX], realPath[PATH_MAX];
     sprintf(binPath, "/bin/%s", fileName);
     sprintf(realPath, "/share/mur-lua-language-server/bin/%s", fileName);

@@ -31,7 +31,7 @@ int main(int argc, char *argv[]) {
         *dot = '\0';
     }
 
-    // Replace "/bin/$(filePath)" with "/share/mur-jdtls/bin/$(filePath)"
+    // Replace "/bin/$(fileName)" with "/share/mur-jdtls/bin/$(fileName)"
     char binPath[PATH_MAX], realPath[PATH_MAX];
     sprintf(binPath, "/bin/%s", fileName);
     sprintf(realPath, "/share/mur-jdtls/bin/%s", fileName);

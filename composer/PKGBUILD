@@ -16,7 +16,7 @@ source=("$url/download/$pkgver/composer.phar"
         "composer.c")
 
 sha256sums=('aab940cd53d285a54c50465820a2080fcb7182a4ba1e5f795abfb10414a4b4be'
-            'd4b30fd88388c7b2b0463a8ac0631885c8b9917425b052d3c1f03bf60be5137f')
+            'e7b5d4180f041649759e6bdccace1fff2699ada550a9d9f1cd40149d3e6426be')
 
 
 build() {

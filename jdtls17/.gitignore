@@ -2,4 +2,4 @@ pkg/
 src/
 *.zip
 *.tar.zst
-.dll
+*.tar.gz

@@ -1,0 +1,29 @@
+# Maintainer: moskensoap <141073988+moskensoap@users.noreply.github.com>
+
+pkgname=("mur-murclean")
+pkgver=1.0
+pkgrel=1
+pkgdesc="List and clean up cache, logs, and other files not owned by any package."
+
+arch=('any')
+url='https://github.com/moskensoap/MUR-packages'
+license=(MIT)
+makedepends=("gcc")
+
+source=("murclean.c"
+        "LICENSE")
+
+sha256sums=('68159123e4dc1bdf6d2280bcc753542e83a45a51c8c00248169a0d480fa19a43'
+            'ae1ac950060baad6e25e65f23e92bad0e0cb9e8de258cafcec5d25cba861af4a')
+
+
+build() {
+  cd ${srcdir}
+  gcc -o murclean.exe murclean.c -O3 -s
+}
+
+package() {
+  cd ${srcdir}
+  install -Dm755 murclean.exe ${pkgdir}/usr/bin/murclean.exe
+  install -Dm644 LICENSE ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
+}

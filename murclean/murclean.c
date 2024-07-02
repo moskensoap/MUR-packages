@@ -203,9 +203,7 @@ int main(int argc, char *argv[])
         system(optclean);
         system(tmpclean);
     }
-    else
-
-        if (argc == 3)
+    else if (argc == 3)
     {
         if (strcmp(argv[1], "list") == 0)
         {
@@ -324,6 +322,11 @@ int main(int argc, char *argv[])
             printf("Invalid argument\n");
             return 1;
         }
+    }
+    else
+    {
+        printf("Invalid argument\n");
+        return 1;
     }
 
     return 0;

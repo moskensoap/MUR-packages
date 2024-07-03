@@ -13,7 +13,7 @@ makedepends=("gcc")
 source=("murclean.c"
         "LICENSE")
 
-sha256sums=('8bddf3b45c043413020046187de31c96e36581e360665ff27b1a0b17f20e3dfa'
+sha256sums=('f16a9914b8da8a495c41542168891d5e3f0bd1ec2de46a6c37f437b8e720ff3f'
             'ae1ac950060baad6e25e65f23e92bad0e0cb9e8de258cafcec5d25cba861af4a')
 
 
@@ -24,6 +24,6 @@ build() {
 
 package() {
   cd ${srcdir}
-  install -Dm755 murclean.exe ${pkgdir}/usr/bin/murclean.exe
-  install -Dm644 LICENSE ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
+  install -Dm755 murclean.exe ${pkgdir}/usr/local/bin/murclean.exe
+  install -Dm644 LICENSE ${pkgdir}/usr/local/share/licenses/${pkgname}/LICENSE
 }

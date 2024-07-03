@@ -20,7 +20,7 @@ source=("https://windows.php.net/downloads/releases/php-${pkgver}-Win32-vs16-x64
 
 noextract=("php-${pkgver}-Win32-vs16-x64.zip")
 sha256sums=('ad2636858768864ed4caecf1687f5a827b9c7ceafb28d06072fe2dd703372962'
-            '1015255aff1d4d01edb7bdbe69c1fbd4b5d042a98d95ced720bdc0e0e2735b5d'
+            '13ed6dcffd0a87ecf46b69610cd15da86ed2add87c68dbe155eab93b7ab3f302'
             '490009190e4fdb5f11e5c716966fc26c96fcb69eb23e594c123ba28f03e4b4a6'
             'd7266e25a4be7bbcad241af04d763876556bbbdbbf69febe9b7c84bdfb3b2412'
             'd686f99df940ee02f53d321d3224f530eeae05fb5a11300ca1987895ff5784b4'
@@ -44,12 +44,12 @@ build() {
 package_mur-php() {
   pkgdesc="php-${pkgver} for Windows VS16 x64 Thread Safe"
   cd ${srcdir}
-  mkdir -p ${pkgdir}/usr/bin/
-  install -Dm755 ./*.exe ${pkgdir}/usr/bin/
-  mkdir -p ${pkgdir}/usr/share/mur-php/
-  cp -a php-$pkgver/* ${pkgdir}/usr/share/mur-php/
-  mkdir -p ${pkgdir}/usr/share/mur-php/conf.d/
-  cp php.ini ${pkgdir}/usr/share/mur-php/
+  mkdir -p ${pkgdir}/opt/bin/
+  install -Dm755 ./*.exe ${pkgdir}/opt/bin/
+  mkdir -p ${pkgdir}/opt/share/mur-php/
+  cp -a php-$pkgver/* ${pkgdir}/opt/share/mur-php/
+  mkdir -p ${pkgdir}/opt/share/mur-php/conf.d/
+  cp php.ini ${pkgdir}/opt/share/mur-php/
 }
 
 package_mur-php-development() {
@@ -57,8 +57,8 @@ package_mur-php-development() {
   depends=("mur-php")
   conflict=("mur-php-production")
   cd ${srcdir}
-  mkdir -p ${pkgdir}/usr/share/mur-php/conf.d/
-  cp php-$pkgver/php.ini-development ${pkgdir}/usr/share/mur-php/conf.d/development.ini
+  mkdir -p ${pkgdir}/opt/share/mur-php/conf.d/
+  cp php-$pkgver/php.ini-development ${pkgdir}/opt/share/mur-php/conf.d/development.ini
 }
 
 package_mur-php-production() {
@@ -66,24 +66,24 @@ package_mur-php-production() {
   depends=("mur-php")
   conflict=("mur-php-development")
   cd ${srcdir}
-  mkdir -p ${pkgdir}/usr/share/mur-php/conf.d/
-  cp php-$pkgver/php.ini-production ${pkgdir}/usr/share/mur-php/conf.d/production.ini
+  mkdir -p ${pkgdir}/opt/share/mur-php/conf.d/
+  cp php-$pkgver/php.ini-production ${pkgdir}/opt/share/mur-php/conf.d/production.ini
 }
 
 package_mur-php-extension-composer() {
   pkgdesc="php config for composer"
   depends=("mur-php")
   cd ${srcdir}
-  mkdir -p ${pkgdir}/usr/share/mur-php/conf.d/
-  cp composer.ini ${pkgdir}/usr/share/mur-php/conf.d/composer.ini
+  mkdir -p ${pkgdir}/opt/share/mur-php/conf.d/
+  cp composer.ini ${pkgdir}/opt/share/mur-php/conf.d/composer.ini
 }
 
 package_mur-php-extension-extra() {
   pkgdesc="php config for extra"
   depends=("mur-php" "mur-php-extension-composer")
   cd ${srcdir}
-  mkdir -p ${pkgdir}/usr/share/mur-php/conf.d/
-  cp extra.ini ${pkgdir}/usr/share/mur-php/conf.d/extra.ini
+  mkdir -p ${pkgdir}/opt/share/mur-php/conf.d/
+  cp extra.ini ${pkgdir}/opt/share/mur-php/conf.d/extra.ini
 }
 
 options=(!strip)

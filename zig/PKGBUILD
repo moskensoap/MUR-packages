@@ -20,11 +20,11 @@ build() {
 
 package() {
   cd ${srcdir}
-  install -Dm755 zig.exe ${pkgdir}/usr/bin/zig.exe
+  install -Dm755 zig.exe ${pkgdir}/opt/bin/zig.exe
 
   cd ${srcdir}/zig-windows-x86_64-${pkgver}
 
-  mkdir ${pkgdir}/usr/share
-  mkdir ${pkgdir}/usr/share/mur-zig
-  cp -a ${srcdir}/zig-windows-x86_64-${pkgver}/* ${pkgdir}/usr/share/mur-zig/
+  mkdir ${pkgdir}/opt/share
+  mkdir ${pkgdir}/opt/share/mur-zig
+  cp -a ${srcdir}/zig-windows-x86_64-${pkgver}/* ${pkgdir}/opt/share/mur-zig/
 }

@@ -26,6 +26,6 @@ build() {
 
 package() {
   cd ${srcdir}
-  install -Dm755 composer.exe ${pkgdir}/usr/bin/composer.exe
-  cp composer.phar ${pkgdir}/usr/bin/composer.phar
+  install -Dm755 composer.exe ${pkgdir}/opt/bin/composer.exe
+  cp composer.phar ${pkgdir}/opt/bin/composer.phar
 }

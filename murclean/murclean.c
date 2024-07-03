@@ -9,7 +9,7 @@
 void replace(char *path, char *fileName, char *realName)
 {
     char binPath[PATH_MAX], realPath[PATH_MAX];
-    sprintf(binPath, "/bin/%s", fileName);
+    sprintf(binPath, "/local/bin/%s", fileName);
     sprintf(realPath, "/bin/%s", realName);
 
     char *replacePtr = strstr(path, binPath);

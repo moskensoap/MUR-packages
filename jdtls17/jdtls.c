@@ -48,11 +48,11 @@ int main(int argc, char *argv[]) {
         return 1;
     }
 
-    // cp path to JAVA_HOME and replace /opt/share/mur-jdtls/bin/$(fileName) with /usr/share/java/mur-jdk17-openjdk
+    // cp path to JAVA_HOME and replace /share/mur-jdtls/bin/$(fileName) with /share/java/mur-jdk17-openjdk
     char javaHome[PATH_MAX];
     strcpy(javaHome, path);
-    sprintf(binPath, "/opt/share/mur-jdtls/bin/%s", fileName);
-    sprintf(realPath, "%s","/usr/share/java/mur-jdk17-openjdk");
+    sprintf(binPath, "/share/mur-jdtls/bin/%s", fileName);
+    sprintf(realPath, "%s","/share/java/mur-jdk17-openjdk");
     replacePtr = strstr(javaHome, binPath);
     if (replacePtr != NULL) {
         strncpy(replacePtr, realPath, strlen(realPath));

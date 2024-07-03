@@ -19,8 +19,8 @@ build() {
 
 package() {
   cd ${srcdir}/zls-${pkgver}
-  install -Dm644 LICENSE ${pkgdir}/usr/share/licenses/mur-zls/LICENSE
+  install -Dm644 LICENSE ${pkgdir}/opt/share/licenses/mur-zls/LICENSE
 
   cd zig-out/bin
-  install -Dm755 zls.exe ${pkgdir}/usr/bin/zls.exe
+  install -Dm755 zls.exe ${pkgdir}/opt/bin/zls.exe
 }

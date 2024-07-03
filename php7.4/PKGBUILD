@@ -1,0 +1,92 @@
+# Maintainer: moskensoap <141073988+moskensoap@users.noreply.github.com>
+
+pkgname=("mur__php7.4" "mur__php7.4-development" "mur__php7.4-production" "mur__php7.4-extension-composer" "mur__php7.4-extension-extra")
+pkgver=7.4.32
+pkgrel=1
+
+arch=('any')
+url='https://www.php.net'
+license=(PHP License)
+makedepends=("gcc"
+             "make"
+             "unzip")
+
+
+source=("https://windows.php.net/downloads/releases/archives/php-${pkgver}-Win32-vc15-x64.zip"
+        "main.c"
+        "makefile"
+        "php.ini"
+        "composer.ini"
+        "extra.ini")
+
+noextract=("php-${pkgver}-Win32-vc15-x64.zip")
+sha256sums=('2f302d3c1252cf617397f3c8b405729d2049c19870a2b83c4ff12bafa65ebf26'
+            'c554e14a9ddf959586eb5f76af8c5a075d119b6d8736de5ce60fb1ba563055bd'
+            '4a57c6283d5ae758a4b13ee70ac589b0d1947a96bfdaafd09ee633bb1886ff30'
+            'd7266e25a4be7bbcad241af04d763876556bbbdbbf69febe9b7c84bdfb3b2412'
+            'bfff7ffd69f0594c5eaf71b241057008498447dececa39c8318a791c4f2d50e5'
+            '6844154cb7908b9ad08545ceda260170fa4a0f12eab36f73ca12ffa74ff8abaf')
+
+prepare() {
+  cd ${srcdir}
+  unzip php-${pkgver}-Win32-vc15-x64.zip -d php-$pkgver
+
+  for file in $(ls php-$pkgver | grep .exe | sed 's/\.exe$/.c/'); do
+    cp main.c $file
+  done
+  rm main.c
+
+}
+
+build() {
+  cd ${srcdir}
+  make
+
+}
+
+package_mur__php7.4() {
+  pkgdesc="php-${pkgver} for Windows VS16 x64 Thread Safe"
+  cd ${srcdir}
+  mkdir -p ${pkgdir}/opt/bin/
+  install -Dm755 ./*.exe ${pkgdir}/opt/bin/
+  mkdir -p ${pkgdir}/opt/share/mur__php7.4/
+  cp -a php-$pkgver/* ${pkgdir}/opt/share/mur__php7.4/
+  mkdir -p ${pkgdir}/opt/share/mur__php7.4/conf.d/
+  cp php.ini ${pkgdir}/opt/share/mur__php7.4/
+}
+
+package_mur__php7.4-development() {
+  pkgdesc="php config for development"
+  depends=("mur__php7.4")
+  conflict=("mur__php7.4-production")
+  cd ${srcdir}
+  mkdir -p ${pkgdir}/opt/share/mur__php7.4/conf.d/
+  cp php-$pkgver/php.ini-development ${pkgdir}/opt/share/mur__php7.4/conf.d/development.ini
+}
+
+package_mur__php7.4-production() {
+  pkgdesc="php config for production"
+  depends=("mur__php7.4")
+  conflict=("mur__php7.4-development")
+  cd ${srcdir}
+  mkdir -p ${pkgdir}/opt/share/mur__php7.4/conf.d/
+  cp php-$pkgver/php.ini-production ${pkgdir}/opt/share/mur__php7.4/conf.d/production.ini
+}
+
+package_mur__php7.4-extension-composer() {
+  pkgdesc="php config for composer"
+  depends=("mur__php7.4")
+  cd ${srcdir}
+  mkdir -p ${pkgdir}/opt/share/mur__php7.4/conf.d/
+  cp composer.ini ${pkgdir}/opt/share/mur__php7.4/conf.d/composer.ini
+}
+
+package_mur__php7.4-extension-extra() {
+  pkgdesc="php config for extra"
+  depends=("mur__php7.4" "mur__php7.4-extension-composer")
+  cd ${srcdir}
+  mkdir -p ${pkgdir}/opt/share/mur__php7.4/conf.d/
+  cp extra.ini ${pkgdir}/opt/share/mur__php7.4/conf.d/extra.ini
+}
+
+options=(!strip)

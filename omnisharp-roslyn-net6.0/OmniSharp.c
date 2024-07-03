@@ -31,10 +31,10 @@ int main(int argc, char *argv[]) {
         *dot = '\0';
     }
 
-    // Replace "/bin/$(fileName)" with "/share/mur-omnisharp-roslyn-net6.0/$(fileName)"
+    // Replace "/bin/$(fileName)" with "/share/mur__omnisharp-roslyn-net6.0/$(fileName)"
     char binPath[PATH_MAX], realPath[PATH_MAX];
     sprintf(binPath, "/bin/%s", fileName);
-    sprintf(realPath, "/share/mur-omnisharp-roslyn-net6.0/%s", fileName);
+    sprintf(realPath, "/share/mur__omnisharp-roslyn-net6.0/%s", fileName);
 
     char *replacePtr = strstr(path, binPath);
     if (replacePtr != NULL) {

@@ -1,6 +1,6 @@
 # Maintainer: moskensoap <141073988+moskensoap@users.noreply.github.com>
 
-pkgname=("mur-murclean")
+pkgname=("mur__murclean")
 pkgver=1.0
 pkgrel=1
 pkgdesc="List and clean up cache, logs, and other files not owned by any package."

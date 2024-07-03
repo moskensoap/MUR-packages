@@ -1,6 +1,6 @@
 # Maintainer: moskensoap <141073988+moskensoap@users.noreply.github.com>
 
-pkgname="mur-pandoc"
+pkgname="mur__pandoc"
 pkgver=3.2.1
 pkgrel=1
 pkgdesc='Universal markup converter.'

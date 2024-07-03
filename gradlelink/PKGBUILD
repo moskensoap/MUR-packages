@@ -1,6 +1,6 @@
 # Maintainer: moskensoap <141073988+moskensoap@users.noreply.github.com>
 
-pkgname="mur-gradlelink"
+pkgname="mur__gradlelink"
 pkgver=1.0
 pkgrel=1
 pkgdesc='Creat /usr/bin/gradle.exe linking to /usr/share/java/gradle/bin/gradle'

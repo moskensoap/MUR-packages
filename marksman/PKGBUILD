@@ -1,6 +1,6 @@
 # Maintainer: moskensoap <141073988+moskensoap@users.noreply.github.com>
 
-pkgname="mur-marksman"
+pkgname="mur__marksman"
 pkgver=20231209
 pkgrel=1
 pkgdesc='Write Markdown with code assist and intelligence in the comfort of your favourite editor.'

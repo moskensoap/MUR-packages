@@ -1,6 +1,6 @@
 # Maintainer: moskensoap <141073988+moskensoap@users.noreply.github.com>
 
-pkgname=("mur-composer")
+pkgname=("mur__composer")
 pkgver=2.7.7
 pkgrel=1
 pkgdesc="Dependency Manager for PHP"
@@ -9,8 +9,8 @@ arch=('any')
 url='https://getcomposer.org'
 license=(MIT)
 makedepends=("gcc")
-depends=("mur-php"
-         "mur-php-extension-composer")
+depends=("mur__php"
+         "mur__php-extension-composer")
 
 source=("$url/download/$pkgver/composer.phar"
         "composer.c")

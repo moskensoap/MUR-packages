@@ -31,10 +31,10 @@ int main(int argc, char *argv[]) {
         *dot = '\0';
     }
 
-    // Replace "/bin/$(fileName)" with "/share/mur-jdtls/bin/$(fileName)"
+    // Replace "/bin/$(fileName)" with "/share/mur__jdtls/bin/$(fileName)"
     char binPath[PATH_MAX], realPath[PATH_MAX];
     sprintf(binPath, "/bin/%s", fileName);
-    sprintf(realPath, "/share/mur-jdtls/bin/%s", fileName);
+    sprintf(realPath, "/share/mur__jdtls/bin/%s", fileName);
 
     char *replacePtr = strstr(path, binPath);
     if (replacePtr != NULL) {
@@ -48,11 +48,11 @@ int main(int argc, char *argv[]) {
         return 1;
     }
 
-    // cp path to JAVA_HOME and replace /share/mur-jdtls/bin/$(fileName) with /share/java/mur-jdk17-openjdk
+    // cp path to JAVA_HOME and replace /share/mur__jdtls/bin/$(fileName) with /share/java/mur__jdk17-openjdk
     char javaHome[PATH_MAX];
     strcpy(javaHome, path);
-    sprintf(binPath, "/share/mur-jdtls/bin/%s", fileName);
-    sprintf(realPath, "%s","/share/java/mur-jdk17-openjdk");
+    sprintf(binPath, "/share/mur__jdtls/bin/%s", fileName);
+    sprintf(realPath, "%s","/share/java/mur__jdk17-openjdk");
     replacePtr = strstr(javaHome, binPath);
     if (replacePtr != NULL) {
         strncpy(replacePtr, realPath, strlen(realPath));

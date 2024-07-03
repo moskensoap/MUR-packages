@@ -1,6 +1,6 @@
 # Maintainer: moskensoap <141073988+moskensoap@users.noreply.github.com>
 
-pkgname="mur-jdtls17"
+pkgname="mur__jdtls17"
 pkgver=1.37.0
 pkgrel=1
 pkgdesc='Java language server for Java 17'
@@ -8,15 +8,15 @@ arch=('any')
 url='https://github.com/eclipse-jdtls/eclipse.jdt.ls'
 license=(Eclipse Public License)
 makedepends=("gcc")
-depends=("mur-jdk17-openjdk")
-conflicts=("mur-jdtls")
+depends=("mur__jdk17-openjdk")
+conflicts=("mur__jdtls")
 magicnumber=202406271335
 
 source=("https://www.eclipse.org/downloads/download.php?file=/jdtls/milestones/$pkgver/jdt-language-server-$pkgver-$magicnumber.tar.gz"
         "jdtls.c")
 noextract=("jdt-language-server-$pkgver-$magicnumber.tar.gz")
 sha256sums=('d04cd9f4df45ce85ae9cf49530c72a1a324b14eee747af26e3374500e36b5bd0'
-            '4389b20863e44f0460a04cb2e03e8226c7b2f5691cf95ead742a3805c0693d9c')
+            'a5138d57ab61c1f49f908aeb8a19c767a38564ede18925c2fcee9a59d09dfc57')
 
 prepare() {
   cd ${srcdir}
@@ -32,6 +32,6 @@ build() {
 package() {
   cd ${srcdir}
   install -Dm755 jdtls.exe ${pkgdir}/opt/bin/jdtls.exe
-  mkdir -p ${pkgdir}/opt/share/mur-jdtls
-  cp -a jdt-language-server-$pkgver-$magicnumber/* ${pkgdir}/opt/share/mur-jdtls
+  mkdir -p ${pkgdir}/opt/share/mur__jdtls
+  cp -a jdt-language-server-$pkgver-$magicnumber/* ${pkgdir}/opt/share/mur__jdtls
 }

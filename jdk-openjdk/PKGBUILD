@@ -1,6 +1,6 @@
 # Maintainer: moskensoap <141073988+moskensoap@users.noreply.github.com>
 
-pkgname="mur-jdk-openjdk"
+pkgname="mur__jdk-openjdk"
 pkgver=22
 pkgrel=1
 pkgdesc='OpenJDK Java development kit'
@@ -15,7 +15,7 @@ source=("https://download.java.net/java/GA/jdk${pkgver}/${magicnumber}/${buildnu
         "main.c"
         "makefile")
 sha256sums=('8f5138fecb53c08c20abd4fa6812f9400051f3852582a2142ffda0dff73a5824'
-            '3ac0315aba6c2721c27b0451f43ff1f59dae8c920761a93d47214de1164603bc'
+            'd7bf903e171d7b121add2eb8d54da00f90478c78c881c7b8ca6513c768ffcfd3'
             '490009190e4fdb5f11e5c716966fc26c96fcb69eb23e594c123ba28f03e4b4a6')
 
 prepare() {

@@ -1,6 +1,6 @@
 # Maintainer: moskensoap <141073988+moskensoap@users.noreply.github.com>
 
-pkgname="mur-omnisharp-roslyn"
+pkgname="mur__omnisharp-roslyn"
 pkgver=1.39.11
 pkgrel=1
 pkgdesc='OmniSharp server (HTTP, STDIO) based on Roslyn workspaces'
@@ -9,13 +9,13 @@ url='https://github.com/omnisharp/omnisharp-roslyn'
 license=(MIT)
 makedepends=("gcc"
              "unzip")
-conflicts=("mur-omnisharp-roslyn-net6.0")
+conflicts=("mur__omnisharp-roslyn-net6.0")
 
 source=("$url/releases/download/v$pkgver/omnisharp-win-x64.zip"
         "OmniSharp.c")
 noextract=("omnisharp-win-x64.zip")
 sha256sums=('e1ad559974430c9aa81819f1433583b0ee9a977d2daae1de32d4d408503b2867'
-            '97a31111a1873ef86108024ecade9cc4d358baa52de940e9395af8f50cc7e536')
+            '8b27bedf72e79b21562a858de3f875cce7befd4f4ceb04e695efce1d5d44c3b9')
 
 prepare() {
   cd ${srcdir}

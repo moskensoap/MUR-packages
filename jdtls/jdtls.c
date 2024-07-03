@@ -31,10 +31,10 @@ int main(int argc, char *argv[]) {
         *dot = '\0';
     }
 
-    // Replace "/bin/$(fileName)" with "/share/mur-jdtls/bin/$(fileName)"
+    // Replace "/bin/$(fileName)" with "/share/mur__jdtls/bin/$(fileName)"
     char binPath[PATH_MAX], realPath[PATH_MAX];
     sprintf(binPath, "/bin/%s", fileName);
-    sprintf(realPath, "/share/mur-jdtls/bin/%s", fileName);
+    sprintf(realPath, "/share/mur__jdtls/bin/%s", fileName);
 
     char *replacePtr = strstr(path, binPath);
     if (replacePtr != NULL) {

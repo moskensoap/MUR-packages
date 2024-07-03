@@ -31,10 +31,10 @@ int main(int argc, char *argv[]) {
         *dot = '\0';
     }
 
-    // Replace "/bin/$(fileName)" with "/share/java/mur-jdk-openjdk/bin/$(fileName)"
+    // Replace "/bin/$(fileName)" with "/share/java/mur__jdk-openjdk/bin/$(fileName)"
     char binPath[PATH_MAX], realPath[PATH_MAX];
     sprintf(binPath, "/bin/%s", fileName);
-    sprintf(realPath, "/share/java/mur-jdk-openjdk/bin/%s", fileName);
+    sprintf(realPath, "/share/java/mur__jdk-openjdk/bin/%s", fileName);
 
     char *replacePtr = strstr(path, binPath);
     if (replacePtr != NULL) {

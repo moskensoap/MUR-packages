@@ -13,10 +13,16 @@ magicnumber=830ec9fcccef480bb3e73fb7ecafe059
 buildnumber=36
 source=("https://download.java.net/java/GA/jdk${pkgver}/${magicnumber}/${buildnumber}/GPL/openjdk-${pkgver}_windows-x64_bin.zip"
         "main.c"
-        "makefile")
+        "makefile"
+        "link.c"
+        "linkmakefile"
+        "setversion-jdk.c")
 sha256sums=('8f5138fecb53c08c20abd4fa6812f9400051f3852582a2142ffda0dff73a5824'
-            'd7bf903e171d7b121add2eb8d54da00f90478c78c881c7b8ca6513c768ffcfd3'
-            '490009190e4fdb5f11e5c716966fc26c96fcb69eb23e594c123ba28f03e4b4a6')
+            '15aaee4a2b88c81b3041405583b48f2eb57e8dc9c967e5c8e6f07c2fff6cb1d5'
+            'e45cdbda7a078597075fb0a9e1dbe3762a3313c73cbc81d34024a61320a81a50'
+            '8b0ad2a6ce50e540f61b242a26074961e1db6d3e8629bc9186dda90f9bf6911a'
+            '490009190e4fdb5f11e5c716966fc26c96fcb69eb23e594c123ba28f03e4b4a6'
+            '1d30ecabcecb9641cbd3fdfb7ca98e0abbd4b48019ac385600924fc1c40d10f9')
 
 prepare() {
   cd ${srcdir}
@@ -24,17 +30,39 @@ prepare() {
     cp main.c $file
   done
   rm main.c
+
+  mkdir linker
+  cp link.c linker/link.c
+  cp linkmakefile linker/makefile
+  rm link.c linkmakefile
+
+  cd linker
+  for file in $(ls ../jdk-$pkgver/bin | grep .exe | sed 's/\.exe$/.c/'); do
+    cp link.c $file
+  done
+  rm link.c
+
+  cd ..
+  mkdir setversion
+  cp setversion-jdk.c setversion/setversion-jdk.c
+  rm setversion-jdk.c
 }
 
 build() {
   cd ${srcdir}
   make
+  cd linker
+  make
+  cd ../setversion
+  gcc -o setversion-jdk setversion-jdk.c
 }
 
 package() {
   cd ${srcdir}
   mkdir -p ${pkgdir}/opt/bin/
   install -Dm755 ./*.exe ${pkgdir}/opt/bin/
+  install -Dm755 linker/*.exe ${pkgdir}/opt/bin/
+  install -Dm755 setversion/setversion-jdk.exe ${pkgdir}/opt/bin/
   mkdir -p ${pkgdir}/opt/share/java/${pkgname}/
   cp -a jdk-$pkgver/* ${pkgdir}/opt/share/java/${pkgname}/
 }

@@ -31,12 +31,43 @@ int main(int argc, char *argv[]) {
         *dot = '\0';
     }
 
-    // Replace "/bin/$(fileName)latest" with "/share/java/mur__jdk-openjdk/bin/$(fileName)"
-    char binPath[PATH_MAX], realPath[PATH_MAX];
-    sprintf(binPath, "/bin/%slatest", fileName);
-    sprintf(realPath, "/share/java/mur__jdk-openjdk/bin/%s", fileName);
 
-    char *replacePtr = strstr(path, binPath);
+    char binPath[PATH_MAX], realPath[PATH_MAX];
+    //cp path to configPath and replace /opt/bin/$(fileName) with /home/.mur/setversion/jdk-openjdk.txt
+    char configPath[PATH_MAX];
+    strcpy(configPath, path);
+    sprintf(binPath, "/opt/bin/%s", fileName);
+    sprintf(realPath, "/home/.mur/setversion/jdk-openjdk.txt");
+    char *replacePtr = strstr(configPath, binPath);
+    if (replacePtr != NULL) {
+        strncpy(replacePtr, realPath, strlen(realPath));
+        replacePtr += strlen(realPath);
+        *replacePtr = '\0';
+    }
+    else
+    {
+        perror("strstr");
+        return 1;
+    }
+
+    // read the txtfile of configPath and store the fist line as string into variable version
+    FILE *file = fopen(configPath, "r");
+    if (file == NULL) {
+        perror("fopen");
+        return 1;
+    }
+
+    char version[PATH_MAX];
+    fscanf(file, "%s", version);
+
+    fclose(file);
+
+
+    // Replace "/bin/$(fileName)" with "/bin/$(fileName)$(version)"
+    sprintf(binPath, "/bin/%s", fileName);
+    sprintf(realPath, "/bin/%s%s", fileName, version);
+
+    replacePtr = strstr(path, binPath);
     if (replacePtr != NULL) {
         strncpy(replacePtr, realPath, strlen(realPath));
         replacePtr += strlen(realPath);

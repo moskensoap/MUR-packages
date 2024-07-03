@@ -31,7 +31,7 @@ int main(int argc, char *argv[]) {
         *dot = '\0';
     }
 
-    // Replace "/bin/$(fileName)" with "/share/java/mur__jdk17-openjdk/bin/$(fileName)"
+    // Replace "/bin/$(fileName)17" with "/share/java/mur__jdk17-openjdk/bin/$(fileName)"
     char binPath[PATH_MAX], realPath[PATH_MAX];
     sprintf(binPath, "/bin/%s17", fileName);
     sprintf(realPath, "/share/java/mur__jdk17-openjdk/bin/%s", fileName);

@@ -48,6 +48,27 @@ int main(int argc, char *argv[]) {
         return 1;
     }
 
+
+    // cp path to JAVA_HOME and replace /share/mur__jdtls/bin/$(fileName) with /share/java/mur__jdk-openjdk
+    char javaHome[PATH_MAX];
+    strcpy(javaHome, path);
+    sprintf(binPath, "/share/mur__jdtls/bin/%s", fileName);
+    sprintf(realPath, "%s","/share/java/mur__jdk-openjdk");
+    replacePtr = strstr(javaHome, binPath);
+    if (replacePtr != NULL) {
+        strncpy(replacePtr, realPath, strlen(realPath));
+        replacePtr += strlen(realPath);
+        *replacePtr = '\0';
+    }
+    else
+    {
+        perror("strstr");
+        return 1;
+    }
+
+    setenv("JAVA_HOME", javaHome, 1);
+
+
     size_t total_length = 0;
     size_t path_length = strlen(path) + 1;
 

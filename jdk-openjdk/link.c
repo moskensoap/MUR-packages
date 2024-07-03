@@ -50,17 +50,17 @@ int main(int argc, char *argv[]) {
         return 1;
     }
 
+    char version[PATH_MAX];
     // read the txtfile of configPath and store the fist line as string into variable version
     FILE *file = fopen(configPath, "r");
     if (file == NULL) {
-        perror("fopen");
-        return 1;
+        //set version to "latest"
+        strcpy(version, "latest");
     }
-
-    char version[PATH_MAX];
-    fscanf(file, "%s", version);
-
-    fclose(file);
+    else{
+        fscanf(file, "%s", version);
+        fclose(file);
+    }
 
 
     // Replace "/bin/$(fileName)" with "/bin/$(fileName)$(version)"

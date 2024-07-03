@@ -31,12 +31,14 @@ int main(int argc, char *argv[]) {
         *dot = '\0';
     }
 
-    // Replace "/bin/$(fileName)" with "/share/mur__php/$(fileName)"
+
     char binPath[PATH_MAX], realPath[PATH_MAX];
-    sprintf(binPath, "/bin/%slatest", fileName);
-    sprintf(realPath, "/share/mur__php/%s", fileName);
-
-    char *replacePtr = strstr(path, binPath);
+    //cp path to configPath and replace /opt/bin/$(fileName) with /home/.mur/setversion/php.txt
+    char configPath[PATH_MAX];
+    strcpy(configPath, path);
+    sprintf(binPath, "/opt/bin/%s", fileName);
+    sprintf(realPath, "/home/.mur/setversion/php.txt");
+    char *replacePtr = strstr(configPath, binPath);
     if (replacePtr != NULL) {
         strncpy(replacePtr, realPath, strlen(realPath));
         replacePtr += strlen(realPath);
@@ -48,12 +50,24 @@ int main(int argc, char *argv[]) {
         return 1;
     }
 
-    //cp path to confpath and replace /share/mur__php/$(fileName) with /share/mur__php/conf.d
-    char confPath[PATH_MAX];
-    strcpy(confPath, path);
-    sprintf(binPath, "/share/mur__php/%s", fileName);
-    sprintf(realPath, "/share/mur__php/%s","conf.d");
-    replacePtr = strstr(confPath, binPath);
+    char version[PATH_MAX];
+    // read the txtfile of configPath and store the fist line as string into variable version
+    FILE *file = fopen(configPath, "r");
+    if (file == NULL) {
+        //set version to "latest"
+        strcpy(version, "latest");
+    }
+    else{
+        fscanf(file, "%s", version);
+        fclose(file);
+    }
+
+
+    // Replace "/bin/$(fileName)" with "/bin/$(fileName)$(version)"
+    sprintf(binPath, "/bin/%s", fileName);
+    sprintf(realPath, "/bin/%s%s", fileName, version);
+
+    replacePtr = strstr(path, binPath);
     if (replacePtr != NULL) {
         strncpy(replacePtr, realPath, strlen(realPath));
         replacePtr += strlen(realPath);
@@ -64,31 +78,6 @@ int main(int argc, char *argv[]) {
         perror("strstr");
         return 1;
     }
-    
-    //cp path to userconfpath and replace /opt/share/mur__php/$(fileName) with /home/.mur/php
-    char userConfPath[PATH_MAX];
-    strcpy(userConfPath, path);
-    sprintf(binPath, "/opt/share/mur__php/%s", fileName);
-    sprintf(realPath,"%s", "/home/.mur/php");
-    replacePtr = strstr(userConfPath, binPath);
-    if (replacePtr != NULL) {
-        strncpy(replacePtr, realPath, strlen(realPath));
-        replacePtr += strlen(realPath);
-        *replacePtr = '\0';
-    }
-    else
-    {
-        perror("strstr");
-        return 1;
-    }
-
-    //concatenate confPath;userConfPath to PHP_INI_SCAN_DIR_PATH
-    char PHP_INI_SCAN_DIR_PATH[PATH_MAX*2+1];
-    sprintf(PHP_INI_SCAN_DIR_PATH, "%s:%s", confPath, userConfPath);
-
-    //set PHP_INI_SCAN_DIR
-    setenv("PHP_INI_SCAN_DIR", PHP_INI_SCAN_DIR_PATH, 1);
-
 
     size_t total_length = 0;
     size_t path_length = strlen(path) + 1;

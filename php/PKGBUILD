@@ -16,15 +16,21 @@ source=("https://windows.php.net/downloads/releases/php-${pkgver}-Win32-vs16-x64
         "makefile"
         "php.ini"
         "composer.ini"
-        "extra.ini")
+        "extra.ini"
+        "link.c"
+        "linkmakefile"
+        "setversion-php.c")
 
 noextract=("php-${pkgver}-Win32-vs16-x64.zip")
 sha256sums=('ad2636858768864ed4caecf1687f5a827b9c7ceafb28d06072fe2dd703372962'
-            '12d62c9e832c4f9d148d527d68ed70854f2c15ed8b92bc5dbf7b25ea5957f74b'
-            '490009190e4fdb5f11e5c716966fc26c96fcb69eb23e594c123ba28f03e4b4a6'
+            'e0fd3108e6b0b24a9a95071cc8a2a67d7c47d3275a7515b8fcaf7667a7f5eea7'
+            'e45cdbda7a078597075fb0a9e1dbe3762a3313c73cbc81d34024a61320a81a50'
             'd7266e25a4be7bbcad241af04d763876556bbbdbbf69febe9b7c84bdfb3b2412'
             'd686f99df940ee02f53d321d3224f530eeae05fb5a11300ca1987895ff5784b4'
-            '0e79011c0eec3eca19ef04a50225c4bf602c4775962a23d6c6ea3077a762341f')
+            '0e79011c0eec3eca19ef04a50225c4bf602c4775962a23d6c6ea3077a762341f'
+            'b49bd6bd6f3e4b94b28453a9f6d421bbbcf1f054d0b8e4184c8187ac7a27311a'
+            '490009190e4fdb5f11e5c716966fc26c96fcb69eb23e594c123ba28f03e4b4a6'
+            '245ec8e9a0a41cb8e4a63eadd655736814158eccd4360efb19af7816457b0677')
 
 prepare() {
   cd ${srcdir}
@@ -34,11 +40,32 @@ prepare() {
     cp main.c $file
   done
   rm main.c
+
+  mkdir linker
+  cp link.c linker/link.c
+  cp linkmakefile linker/makefile
+  rm link.c linkmakefile
+
+  cd linker
+  for file in $(ls ../php-$pkgver | grep .exe | sed 's/\.exe$/.c/'); do
+    cp link.c $file
+  done
+  rm link.c
+
+  cd ..
+  mkdir setversion
+  cp setversion-php.c setversion/setversion-php.c
+  rm setversion-php.c
+
 }
 
 build() {
   cd ${srcdir}
   make
+  cd linker
+  make
+  cd ../setversion
+  gcc -o setversion-php setversion-php.c
 }
 
 package_mur__php() {
@@ -46,6 +73,8 @@ package_mur__php() {
   cd ${srcdir}
   mkdir -p ${pkgdir}/opt/bin/
   install -Dm755 ./*.exe ${pkgdir}/opt/bin/
+  install -Dm755 linker/*.exe ${pkgdir}/opt/bin/
+  install -Dm755 setversion/setversion-php.exe ${pkgdir}/opt/bin/
   mkdir -p ${pkgdir}/opt/share/mur__php/
   cp -a php-$pkgver/* ${pkgdir}/opt/share/mur__php/
   mkdir -p ${pkgdir}/opt/share/mur__php/conf.d/

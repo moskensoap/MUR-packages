@@ -1,10 +1,10 @@
 SOURCES := $(wildcard *.c)
-EXES := $(SOURCES:%.c=%latest.exe)
+EXES := $(SOURCES:.c=.exe)
 
 All: $(EXES)
 	@echo "All Done"
 
-%latest.exe: %.c
+%.exe: %.c
 	gcc -o $@ $^ -O3 -s
 
 .PHONY: clean

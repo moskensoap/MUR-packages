@@ -1,5 +1,7 @@
-*.exe
 pkg/
 src/
-*.tar.gz
-*.tar.zst
+*.zip
+*.tar*
+*.exe
+*.dll
+*.phar

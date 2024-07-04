@@ -1,0 +1,46 @@
+# Maintainer: moskensoap <141073988+moskensoap@users.noreply.github.com>
+
+pkgname="mur__optfirst"
+pkgver=1.0
+pkgrel=1
+pkgdesc='locally sets PATH to /opt/bin:$PATH and runs <command> with the provided arguments.'
+arch=('any')
+url='https://github.com/moskensoap/MUR-packages'
+license=(MIT)
+makedepends=("gcc"
+             "make")
+
+source=("makefile"
+        "clang32first.c"
+        "clang64first.c"
+        "clangarm64first.c"
+        "mingw32first.c"
+        "mingw64first.c"
+        "optfirst.c"
+        "ucrt64first.c"
+        "usrfirst.c"
+        "usrlocalfirst.c"
+        "LICENSE")
+sha256sums=('490009190e4fdb5f11e5c716966fc26c96fcb69eb23e594c123ba28f03e4b4a6'
+            'a9358694561e9a85ecd544fd32d31c1c61b004afd2345ca40b5b15c0230760f6'
+            '355ed8d5a8d21cae37a18a79bb6c03dd214527810aeafe79faea3a8f10d4f0fb'
+            '7e4308563f89afc4122c08bb3a2646ecb0d0eff8009d8ce64c342fc0bcc26b0f'
+            '7bd60704ab0be7eb58d8064329e57b14bddf2bc0dcb951d2b881979e3c398cb4'
+            '83e3af01050195157bf59a0a8c780a55a15a23f3c2e358a071a8f7245c6e6568'
+            '12028fc806956a4877104f44d30a857ba233e090e54c4fba41a18f3f75bb84ec'
+            '18d09e47ac12ce0ab1cec7546fd3bf7ac3656272f89210531ae5b7ecf528e015'
+            '2d9f6b2dad55f05aaa2b2905445a6cd57bd3c326f73e1cce4104778b35d8aba8'
+            'ec46dbabcc2076555dedcebea8a7ad6888063cee0b1305f37e4823cc780ae46c'
+            'ae1ac950060baad6e25e65f23e92bad0e0cb9e8de258cafcec5d25cba861af4a')
+
+build() {
+  cd ${srcdir}
+  make
+}
+
+package() {
+  cd ${srcdir}
+  mkdir -p ${pkgdir}/usr/local/bin
+  install -Dm755 ./*.exe ${pkgdir}/usr/local/bin/
+  install -Dm644 LICENSE ${pkgdir}/usr/local/share/licenses/${pkgname}/LICENSE
+}

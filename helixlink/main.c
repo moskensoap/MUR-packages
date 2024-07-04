@@ -46,7 +46,6 @@ int main(int argc, char *argv[]) {
     {
         *ptr++ = '"';
         *ptr = '\0';
-        printf("Executing: %s\n", merged_string);  // Debug output
         return system(merged_string);
     }
     else
@@ -66,6 +65,5 @@ int main(int argc, char *argv[]) {
 
     *ptr++ = '"';
     *ptr = '\0';
-    printf("Executing: %s\n", merged_string);  // Debug output
     return system(merged_string);
 }

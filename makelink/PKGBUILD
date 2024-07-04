@@ -17,7 +17,7 @@ depends=("${MINGW_PACKAGE_PREFIX}-make")
 source=("main.c"
         "makefile"
         "LICENSE")
-sha256sums=('9ae498b0b650332fa431ea06409709085e857ce37ee82a1538fa19af0d1f4809'
+sha256sums=('6f6447139f5040c6021a7a8f243315fdf8dd1700f818ff62a0a18bea7b04e792'
             'fa230e0ad61109d48d06dff9bff7947acbe348705060ae688b10e7da111d4850'
             'ae1ac950060baad6e25e65f23e92bad0e0cb9e8de258cafcec5d25cba861af4a')
 

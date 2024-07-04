@@ -10,7 +10,7 @@ int main(int argc, char *argv[]) {
     }
 
     for (int i = 1; i < argc; i++) {
-        total_length += strlen(argv[i]) + 1;
+        total_length += strlen(argv[i]) + 3;
     }
 
     char merged_string[total_length + mingw_length];
@@ -21,8 +21,10 @@ int main(int argc, char *argv[]) {
     *ptr++ = ' ';
 
     for (int i = 1; i < argc; i++) {
+        *ptr++ = '"';
         strcpy(ptr, argv[i]);
         ptr += strlen(argv[i]);
+        *ptr++ = '"';
         if (i < argc - 1) {
             *ptr++ = ' ';
         }

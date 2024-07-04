@@ -16,7 +16,7 @@ source=("https://www.eclipse.org/downloads/download.php?file=/jdtls/milestones/$
         "jdtls.c")
 noextract=("jdt-language-server-$pkgver-$magicnumber.tar.gz")
 sha256sums=('d04cd9f4df45ce85ae9cf49530c72a1a324b14eee747af26e3374500e36b5bd0'
-            'a5138d57ab61c1f49f908aeb8a19c767a38564ede18925c2fcee9a59d09dfc57')
+            'bcd824383a38f68dc97976e9a122477f96a1c6b3fc50311270ca3cf789658151')
 
 prepare() {
   cd ${srcdir}

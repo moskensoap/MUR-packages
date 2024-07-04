@@ -49,26 +49,33 @@ int main(int argc, char *argv[]) {
     }
 
     size_t total_length = 0;
-    size_t path_length = strlen(path) + 1;
-
-    if(argc==1){
-        return system(path);
-    }
+    size_t path_length = strlen(path) + 3;
 
     for (int i = 1; i < argc; i++) {
-        total_length += strlen(argv[i]) + 1;
+        total_length += strlen(argv[i]) + 3;
     }
 
     char merged_string[total_length + path_length];
     char *ptr = merged_string;
 
+    *ptr++ = '"';
     strcpy(ptr, path);
     ptr += strlen(path);
-    *ptr++ = ' ';
+    *ptr++ = '"';
+    if (argc == 1) {
+        *ptr = '\0';
+        return system(merged_string);
+    }
+    else
+    {
+        *ptr++ = ' ';
+    }
 
     for (int i = 1; i < argc; i++) {
+        *ptr++ = '"';
         strcpy(ptr, argv[i]);
         ptr += strlen(argv[i]);
+        *ptr++ = '"';
         if (i < argc - 1) {
             *ptr++ = ' ';
         }

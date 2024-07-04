@@ -37,22 +37,20 @@ int main(int argc, char *argv[]) {
     }
 
     size_t total_length = 0;
-    size_t hx_length = strlen(path) + 3;
-
+    size_t path_length = strlen(path) + 3;
 
     for (int i = 1; i < argc; i++) {
         total_length += strlen(argv[i]) + 3;
     }
 
-    char merged_string[total_length + hx_length];
+    char merged_string[total_length + path_length];
     char *ptr = merged_string;
 
     *ptr++ = '"';
     strcpy(ptr, path);
     ptr += strlen(path);
     *ptr++ = '"';
-    if (argc == 1)
-    {
+    if (argc == 1) {
         *ptr = '\0';
         return system(merged_string);
     }
@@ -72,5 +70,6 @@ int main(int argc, char *argv[]) {
     }
 
     *ptr = '\0';
+
     return system(merged_string);
 }

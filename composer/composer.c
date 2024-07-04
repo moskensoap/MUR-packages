@@ -67,25 +67,29 @@ int main(int argc, char *argv[]) {
 
 
     size_t total_length = 0;
-    size_t path_length = strlen(path) + 1;
-    size_t composer_path_length = strlen(composerPath) + 1;
+    size_t path_length = strlen(path) + 3;
+    size_t composer_path_length = strlen(composerPath) + 3;
 
 
     for (int i = 1; i < argc; i++) {
-        total_length += strlen(argv[i]) + 1;
+        total_length += strlen(argv[i]) + 3;
     }
 
     char merged_string[total_length + path_length + composer_path_length];
     char *ptr = merged_string;
 
+    *ptr++ = '"';
     strcpy(ptr, path);
     ptr += strlen(path);
+    *ptr++ = '"';
     *ptr++ = ' ';
 
+
+    *ptr++ = '"';
     strcpy(ptr, composerPath);
     ptr += strlen(composerPath);
-    if(argc==1)
-    {
+    *ptr++ = '"';
+    if (argc==1) {
         *ptr = '\0';
         return system(merged_string);
     }
@@ -95,8 +99,10 @@ int main(int argc, char *argv[]) {
     }
 
     for (int i = 1; i < argc; i++) {
+        *ptr++ = '"';
         strcpy(ptr, argv[i]);
         ptr += strlen(argv[i]);
+        *ptr++ = '"';
         if (i < argc - 1) {
             *ptr++ = ' ';
         }

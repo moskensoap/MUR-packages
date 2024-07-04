@@ -18,9 +18,9 @@ source=("https://download.java.net/java/GA/jdk${pkgver}/${magicnumber}/${buildnu
         "linkmakefile"
         "setversion-jdk.c")
 sha256sums=('8f5138fecb53c08c20abd4fa6812f9400051f3852582a2142ffda0dff73a5824'
-            '15aaee4a2b88c81b3041405583b48f2eb57e8dc9c967e5c8e6f07c2fff6cb1d5'
+            '0597ce91e8488303b7184ef06ce5d4c937930a761716bbbf54c33687e8a484d5'
             'e45cdbda7a078597075fb0a9e1dbe3762a3313c73cbc81d34024a61320a81a50'
-            '05cacc627611199b66ea56d945d46009902a5571426b333b7d6647d58a8e0477'
+            '40be0390febb6fa925d5ad5b04be43af9143ae3a591522e04c1fb54b5548dd12'
             '490009190e4fdb5f11e5c716966fc26c96fcb69eb23e594c123ba28f03e4b4a6'
             '0c46c74af65e4f0e79e2e61c4fdab91ab7242576108ba984aef0a17717129293')
 

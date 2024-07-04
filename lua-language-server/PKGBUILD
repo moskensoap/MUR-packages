@@ -14,7 +14,7 @@ source=("$url/releases/download/$pkgver/lua-language-server-$pkgver-win32-x64.zi
         "lua-language-server.c")
 noextract=("lua-language-server-$pkgver-win32-x64.zip")
 sha256sums=('d658bf5ca56066268bf9b1ade33ca1788c8cb4b60ebdca17ba636f1f423342a0'
-            'e336ef6336b119edb786d3ae7ed7efb32d34ac5ecb9213707f17e6c2dfe7c0ec')
+            'a8266432fb165a0a2c85df8b1073b24867ce18f5d542b3ed1511aa5100c7ff5e')
 
 prepare() {
   cd ${srcdir}

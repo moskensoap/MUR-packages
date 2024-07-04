@@ -20,7 +20,7 @@ source=("https://windows.php.net/downloads/releases/php-${pkgver}-Win32-vs16-x64
 
 noextract=("php-${pkgver}-Win32-vs16-x64.zip")
 sha256sums=('8697972b5f704885e3444422ede2b5c25d025f614ea96dc67de74dc582471562'
-            'a156df50244f736dae9e1281234d8505056466f65114cd3f751d7f1fea47c34a'
+            'd7c5e159aaa403bf108acc120c7872b2a5b43c0480823263e308ed8cf57be47d'
             'c01584b8ec43293bcac82eb068dfcdeb8464cdc4b7cb2a270bc667a7bb7ff38c'
             'd7266e25a4be7bbcad241af04d763876556bbbdbbf69febe9b7c84bdfb3b2412'
             'bfff7ffd69f0594c5eaf71b241057008498447dececa39c8318a791c4f2d50e5'

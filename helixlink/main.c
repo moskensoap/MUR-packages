@@ -29,7 +29,6 @@ int main(int argc, char *argv[]) {
     size_t total_length = 0;
     size_t hx_length = strlen(path) + 5;
 
-
     for (int i = 1; i < argc; i++) {
         total_length += strlen(argv[i]) + 3;
     }
@@ -42,8 +41,7 @@ int main(int argc, char *argv[]) {
     strcpy(ptr, path);
     ptr += strlen(path);
     *ptr++ = '"';
-    if (argc == 1)
-    {
+    if (argc == 1) {
         *ptr++ = '"';
         *ptr = '\0';
         return system(merged_string);

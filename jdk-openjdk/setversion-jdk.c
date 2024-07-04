@@ -122,7 +122,7 @@ int main(int argc, char *argv[]) {
     else
     {
         perror("strstr");
-        exit(1);
+        return 1;
     }
 
     //cp path to dirpath and remove filename from path leaving only the directory
@@ -136,7 +136,7 @@ int main(int argc, char *argv[]) {
     else
     {
         perror("strrchr");
-        exit(1);
+        return 1;
     }
 
 

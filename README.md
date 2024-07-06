@@ -1,26 +1,14 @@
-# Functions
+# Introduce
 
-**gradlelink**: Creat /usr/bin/gradle.exe linking to /usr/share/java/gradle/bin/gradle
+## original packages
 
-**helixlink**: Creat MINGW_PREFIX/bin/hx.exe linking to MINGW_PREFIX/lib/helix/hx.exe (mingw-w64)
 
-**jdk-openjdk**: OpenJDK Java development kit
 
-**lua-language-server**: A language server that offers Lua language support - programmed in Lua
+## repackages
 
-**makelink**: Creat make.exe linking to mingw32-make.exe (mingw-w64)
 
-**marksman**: Write Markdown with code assist and intelligence in the comfort of your favourite editor.
+## repackages-portable
 
-**omnisharp-roslyn**: OmniSharp server (HTTP, STDIO) based on Roslyn workspaces
-
-**omnisharp-roslyn-net6.0**: OmniSharp server (HTTP, STDIO) based on Roslyn workspaces (net6.0)
-
-**pandoc**: Universal markup converter.
-
-**zig**: General-purpose programming language and toolchain for maintaining robust, optimal, and reusable software.
-
-**zls**: A Zig language server supporting Zig developers with features like autocomplete and goto definition
     
 
 # Installation

@@ -59,11 +59,11 @@ To solve CRLF error, you may run:
 
 ## Original packages
 
-[**gradlelink**](../gradlelink/README.md): Creat /usr/bin/gradle.exe linking to /usr/share/java/gradle/bin/gradle
+[**gradlelink**](./gradlelink/README.md): Creat /usr/bin/gradle.exe linking to /usr/share/java/gradle/bin/gradle
 
-[**helixlink**](../helixlink/README.md): Creat \${MINGW_PREFIX}/bin/hx.exe linking to \${MINGW_PREFIX}/lib/helix/hx.exe (mingw-w64)
+[**helixlink**](./helixlink/README.md): Creat \${MINGW_PREFIX}/bin/hx.exe linking to \${MINGW_PREFIX}/lib/helix/hx.exe (mingw-w64)
 
-[**makelink**](../makelink/README.md): Creat make.exe linking to mingw32-make.exe (mingw-w64)
+[**makelink**](./makelink/README.md): Creat make.exe linking to mingw32-make.exe (mingw-w64)
 
 **murclean**: List and clean up cache, logs, and other files not owned by any package.
 ```

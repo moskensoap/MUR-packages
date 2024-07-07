@@ -5,7 +5,47 @@ The MUR aims to address the issue of hidden or deeply nested official package en
 
 Additionally, the MUR houses community-developed tools and repackaged versions of software officially distributed from other sources. These contributions complement the official MSYS2 packages, offering users a more extensive selection of utilities and applications tailored to their specific needs and preferences. By creating executable files that encapsulate the necessary commands to invoke hidden or complex scripts, the MUR makes it easier for users to access and utilize these resources without having to navigate through complex file paths or manual setup processes.
 
-# Installation
+# How to use
+
+## Rules of this repository
+1.Repackaged binaries are stored in /opt/bin.
+
+2.The original directory structure of repackaged packages is preserved in /opt/share/${pkgname}.
+
+3.Executable linkers are located in appropriate bin directories within the build system structure.
+
+4.Fully compiled original packages, sourced from various repositories or categories, are installed in /usr/local.
+
+
+## Integrating PATH for Global Access (Optional but Recommended)  
+  
+By default, binaries in `/opt/bin` and other MSYS2 directories are only accessible within the MSYS2 shell. To make these binaries accessible globally within Windows (e.g., from the Command Prompt or PowerShell), follow these steps to add them to your Windows PATH environment variable:  
+
+1. Navigate to System Properties > Advanced System Settings > Environment Variables.  
+2. Under "User Variables" (or "System Variables" if you want the change to apply to all users), select the "Path" variable and click "Edit".  
+3. Append the following paths, separated by semicolons (;), to the end of the list:
+
+```
+C:\msys64\ucrt64\bin
+C:\msys64\mingw64\bin
+C:\msys64\mingw32\bin
+C:\msys64\clang64\bin
+C:\msys64\clang32\bin
+C:\msys64\clangarm64\bin
+C:\msys64\usr\local\bin
+C:\msys64\usr\bin
+C:\msys64\bin
+C:\msys64\opt\bin
+```
+
+**Note**: Adjust the paths as necessary if your MSYS2 installation is located in a different directory.  
+ 
+4. Click "OK" to save your changes and close the dialog boxes.  
+ 
+Additionally, to ensure that MSYS2 can inherit the Windows PATH (e.g., to access Windows programs within MSYS2), you can set the `MSYS2_PATH_TYPE` environment variable to `inherit`.
+
+
+## Installation
 
 1.Clone this project to your computer by running:
 
@@ -34,6 +74,7 @@ To solve CRLF error, you may run:
     pacman -U *.pkg.tar.zst
 
 # Packages
+
 ## Todo list
 - [] murpkg: MUR package manager.
 - [] jdk21-openjdk
@@ -100,7 +141,9 @@ usr
                 └── LICENSE
 ```
 Note: Nested calls are allowed.
-## Repackages
+
+## repackaged package
+
 __composer__: Dependency Manager for PHP
 
 __jdk-openjdk__: OpenJDK Java development kit

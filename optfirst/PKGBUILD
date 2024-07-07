@@ -3,7 +3,7 @@
 pkgname="mur__optfirst"
 pkgver=1.0
 pkgrel=1
-pkgdesc='locally sets PATH to /opt/bin:$PATH and runs <command> with the provided arguments.'
+pkgdesc='Locally sets PATH to /opt/bin:$PATH and runs <command> with the provided arguments.'
 arch=('any')
 url='https://github.com/moskensoap/MUR-packages'
 license=(MIT)

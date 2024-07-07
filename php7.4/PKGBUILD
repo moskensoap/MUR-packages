@@ -45,7 +45,7 @@ build() {
 }
 
 package_mur__php7.4() {
-  pkgdesc="php-${pkgver} for Windows VS16 x64 Thread Safe"
+  pkgdesc="php-${pkgver} for Windows x64 Thread Safe"
   cd ${srcdir}
   mkdir -p ${pkgdir}/opt/bin/
   install -Dm755 ./*.exe ${pkgdir}/opt/bin/

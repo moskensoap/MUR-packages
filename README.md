@@ -8,13 +8,18 @@ Additionally, the MUR houses community-developed tools and repackaged versions o
 # How to use
 
 ## Rules of this repository
-1.Repackaged binaries are stored in /opt/bin.
 
-2.The original directory structure of repackaged packages is preserved in /opt/share/${pkgname}.
+1.Package Name of this repository begins with `mur__`.
 
-3.Executable linkers are located in appropriate bin directories within the build system structure.
+2.Repackaged binaries are stored in /opt/bin.
 
-4.Fully compiled original packages, sourced from various repositories or categories, are installed in /usr/local.
+3.The original directory structure of repackaged packages is preserved in /opt/share/${pkgname}.
+
+4.Packages which depends or makedepends on repackaged packages, are installed in /opt.
+
+5.Executable linkers are located in appropriate bin directories within the build system structure.
+
+6.Fully compiled original packages, sourced from various repositories or categories, are installed in /usr/local.
 
 
 ## Integrating PATH for Global Access (Optional but Recommended)  

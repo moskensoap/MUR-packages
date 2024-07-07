@@ -76,27 +76,27 @@ To solve CRLF error, you may run:
 # Packages
 
 ## Todo list
-- [] murpkg: MUR package manager.
-- [] jdk21-openjdk
-- [] jdk11-openjdk
-- [] jdk8-openjdk
-- [] jre-openjdk
-- [] jre21-openjdk
-- [] jre17-openjdk
-- [] jre11-openjdk
-- [] jre8-openjdk
-- [] php8.1
-- [] php7.3
-- [] php7.2
-- [] php7.1
-- [] php7.0
-- [] php5.6
-- [] xdebug8.1
-- [] xdebug7.3
-- [] xdebug7.2
-- [] xdebug7.1
-- [] xdebug7.0
-- [] xdebug5.6
+- [ ] murpkg: MUR package manager.
+- [ ] jdk21-openjdk
+- [ ] jdk11-openjdk
+- [ ] jdk8-openjdk
+- [ ] jre-openjdk
+- [ ] jre21-openjdk
+- [ ] jre17-openjdk
+- [ ] jre11-openjdk
+- [ ] jre8-openjdk
+- [ ] php8.1
+- [ ] php7.3
+- [ ] php7.2
+- [ ] php7.1
+- [ ] php7.0
+- [ ] php5.6
+- [ ] xdebug8.1
+- [ ] xdebug7.3
+- [ ] xdebug7.2
+- [ ] xdebug7.1
+- [ ] xdebug7.0
+- [ ] xdebug5.6
 
 ## Original packages
 

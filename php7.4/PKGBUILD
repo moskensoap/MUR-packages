@@ -10,7 +10,7 @@ license=(PHP License)
 makedepends=("gcc"
              "make"
              "unzip")
-
+depends=("mur__php")
 
 source=("https://windows.php.net/downloads/releases/archives/php-${pkgver}-Win32-vc15-x64.zip"
         "main.c"

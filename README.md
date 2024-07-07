@@ -167,6 +167,8 @@ example:
         setversion-jdk 21
         setversion-jdk latest
 ```
+The version config file is stored in `/home/.mur/setversion/jdk-openjdk.txt`. You need to manually remove it when uninstalling jdk-openjdk.
+
 __jdtls__: Java language server
 
 __lua-language-server__: A language server that offers Lua language support - programmed in Lua
@@ -195,6 +197,8 @@ example:
         setversion-php 8.0
         setversion-php latest
 ```
+The version config file is stored in `/home/.mur/setversion/php.txt`. You need to manually remove it when uninstalling php.
+
 
 __xdebug__: Xdebug — Step Debugger and Debugging Aid for PHP
 

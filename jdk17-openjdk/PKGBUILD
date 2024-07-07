@@ -9,6 +9,7 @@ url='https://openjdk.org'
 license=(GPL2)
 makedepends=("gcc"
              "make")
+depends=("mur__jdk-openjdk")
 magicnumber=0d483333a00540d886896bac774ff48b
 buildnumber=35
 source=("https://download.java.net/java/GA/jdk${pkgver}/${magicnumber}/${buildnumber}/GPL/openjdk-${pkgver}_windows-x64_bin.zip"

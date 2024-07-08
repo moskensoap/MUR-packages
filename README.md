@@ -1,9 +1,12 @@
 # Introduction
-Just as the [AUR (Arch User Repository)](https://aur.archlinux.org) is a community-maintained repository for [Arch Linux](https://archlinux.org), the MUR (MSYS2 User Repository) serves as an analogous community-driven space for [MSYS2](https://archlinux.org) users.
 
-The MUR aims to address the issue of hidden or deeply nested official package entry points, providing executable wrappers or linkers that simplify the execution of these packages directly from the command line (CMD, PowerShell, or Bash Bash, Zsh, Fish, and more).
+Just as the [AUR (Arch User Repository)](https://aur.archlinux.org) is a community-maintained repository for [Arch Linux](https://archlinux.org), the MUR (MSYS2 User Repository) is a community-driven space for [MSYS2](https://archlinux.org) users.
 
-Additionally, the MUR houses community-developed tools and repackaged versions of software officially distributed from other sources. These contributions complement the official MSYS2 packages, offering users a more extensive selection of utilities and applications tailored to their specific needs and preferences. By creating executable files that encapsulate the necessary commands to invoke hidden or complex scripts, the MUR makes it easier for users to access and utilize these resources without having to navigate through complex file paths or manual setup processes.
+The MUR helps users access official packages by providing simple __executable links__. This makes it easy to run these packages directly from the command line (CMD, PowerShell, Bash, Zsh, Fish, and more).
+
+The MUR also repackages software from their official sources, providing __executable wrappers__ to make these packages easy to use while maintaining their Windows file structure and allowing installation in MSYS2.
+
+Additionally, the MUR offers tools developed by the community.
 
 # How to use
 
@@ -169,11 +172,21 @@ example:
 ```
 The version config file is stored in `/home/.mur/setversion/jdk-openjdk.txt`. You need to manually remove it when uninstalling jdk-openjdk.
 
+Parts of executables are named as `javalatest.exe` and `java.exe`.
+
+__jdk17-openjdk__: OpenJDK Java 17 development kit
+
+Part of executable is named as `java17.exe`.
+
 __jdtls__: Java language server
 
 __lua-language-server__: A language server that offers Lua language support - programmed in Lua
 
 __marksman__: Write Markdown with code assist and intelligence in the comfort of your favourite editor.
+
+__marktext__: A simple and elegant markdown editor, available for Linux, macOS and Windows.
+
+Note: 1.type `WINDOWS` key 2.input `marktext` 3.type `ENTER` key
 
 __omnisharp-roslyn__: OmniSharp server (HTTP, STDIO) based on Roslyn workspaces
 
@@ -199,6 +212,39 @@ example:
 ```
 The version config file is stored in `/home/.mur/setversion/php.txt`. You need to manually remove it when uninstalling php.
 
+bin tree:
+```
+opt/bin
+├── deplister.exe
+├── deplisterlatest.exe
+├── php-cgi.exe
+├── php-cgilatest.exe
+├── php-win.exe
+├── php-winlatest.exe
+├── php.exe
+├── phpdbg.exe
+├── phpdbglatest.exe
+├── phplatest.exe
+└── setversion-php.exe
+```
+Scan this dir for additional .ini files => /opt/share/mur__php/conf.d:/home/.mur/php
+
+/home/.mur/php is convenient for users.
+
+__php8.0__:php-8.0 for Windows x64 Thread Safe
+
+bin tree:
+```
+opt/bin
+├── deplister8.0.exe
+├── php-cgi8.0.exe
+├── php-win8.0.exe
+├── php8.0.exe
+└── phpdbg8.0.exe
+```
+Scan this dir for additional .ini files => /opt/share/mur__php8.0/conf.d:/home/.mur/php8.0
+
+/home/.mur/php8.0 is convenient for users.
 
 __xdebug__: Xdebug — Step Debugger and Debugging Aid for PHP
 

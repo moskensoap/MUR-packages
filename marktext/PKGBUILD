@@ -1,0 +1,36 @@
+# Maintainer: moskensoap <141073988+moskensoap@users.noreply.github.com>
+
+pkgname="mur__marktext"
+pkgver=0.17.1
+pkgrel=1
+pkgdesc='A simple and elegant markdown editor, available for Linux, macOS and Windows.'
+arch=('any')
+url='https://github.com/marktext/marktext'
+license=(MIT)
+makedepends=("gcc"
+             "unzip")
+
+source=("$url/releases/download/v$pkgver/marktext-x64-win.zip"
+        "marktext.c")
+noextract=("marktext-x64-win.zip")
+sha256sums=('2e5ffe0e6e77b8400f60dc0b38bf2615e558b2defaeda5f3ba4b2dc57ee2af15'
+            '518d25f12b60e1f517008f1d558a066e857452864fbf7555b367faed643c3d9c')
+
+prepare() {
+  cd ${srcdir}
+  unzip marktext-x64-win.zip -d marktext-win-x64
+}
+
+build() {
+  cd ${srcdir}
+  gcc -o marktext.exe marktext.c -mwindows
+}
+
+package() {
+  cd ${srcdir}
+  install -Dm755 marktext.exe ${pkgdir}/opt/bin/marktext.exe
+  mkdir -p ${pkgdir}/opt/share/${pkgname}
+  cp -a marktext-win-x64/* ${pkgdir}/opt/share/${pkgname}
+}
+
+options=(!strip)

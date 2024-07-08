@@ -58,7 +58,9 @@ int main(int argc, char *argv[]) {
         strcpy(version, "latest");
     }
     else{
-        fscanf(file, "%s", version);
+        if (fscanf(file, "%255s", version) != 1) {
+            strcpy(version, "latest");
+        }
         fclose(file);
     }
 

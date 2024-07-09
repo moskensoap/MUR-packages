@@ -171,13 +171,30 @@ example:
         setversion-jdk latest
 ```
 The version config file is stored in `/home/.mur/setversion/jdk-openjdk.txt`. You need to manually remove it when uninstalling jdk-openjdk.
-
-Parts of executables are named as `javalatest.exe` and `java.exe`.
-
-__jdk17-openjdk__: OpenJDK Java 17 development kit
-
-Part of executable is named as `java17.exe`.
-
+```
+PS C:\Users\username> javalatest --version
+openjdk 22 2024-03-19
+OpenJDK Runtime Environment (build 22+36-2370)
+OpenJDK 64-Bit Server VM (build 22+36-2370, mixed mode, sharing)
+PS C:\Users\username> java17 --version
+openjdk 17 2021-09-14
+OpenJDK Runtime Environment (build 17+35-2724)
+OpenJDK 64-Bit Server VM (build 17+35-2724, mixed mode, sharing)
+PS C:\Users\username> java --version
+openjdk 22 2024-03-19
+OpenJDK Runtime Environment (build 22+36-2370)
+OpenJDK 64-Bit Server VM (build 22+36-2370, mixed mode, sharing)
+PS C:\Users\username> setversion-jdk 17
+PS C:\Users\username> java --version
+openjdk 17 2021-09-14
+OpenJDK Runtime Environment (build 17+35-2724)
+OpenJDK 64-Bit Server VM (build 17+35-2724, mixed mode, sharing)
+PS C:\Users\username> setversion-jdk latest
+PS C:\Users\username> java --version
+openjdk 22 2024-03-19
+OpenJDK Runtime Environment (build 22+36-2370)
+OpenJDK 64-Bit Server VM (build 22+36-2370, mixed mode, sharing)
+```
 __jdtls__: Java language server
 
 __lua-language-server__: A language server that offers Lua language support - programmed in Lua
@@ -212,39 +229,43 @@ example:
 ```
 The version config file is stored in `/home/.mur/setversion/php.txt`. You need to manually remove it when uninstalling php.
 
-bin tree:
-```
-opt/bin
-├── deplister.exe
-├── deplisterlatest.exe
-├── php-cgi.exe
-├── php-cgilatest.exe
-├── php-win.exe
-├── php-winlatest.exe
-├── php.exe
-├── phpdbg.exe
-├── phpdbglatest.exe
-├── phplatest.exe
-└── setversion-php.exe
-```
 Scan this dir for additional .ini files => /opt/share/mur__php/conf.d:/home/.mur/php
-
 /home/.mur/php is convenient for users.
-
-__php8.0__:php-8.0 for Windows x64 Thread Safe
-
-bin tree:
+Note: .ini scan dir of php8.0 => /opt/share/mur__php8.0/conf.d:/home/.mur/php8.0
 ```
-opt/bin
-├── deplister8.0.exe
-├── php-cgi8.0.exe
-├── php-win8.0.exe
-├── php8.0.exe
-└── phpdbg8.0.exe
+PS C:\Users\username> phplatest --version
+PHP 8.2.20 (cli) (built: Jun  4 2024 17:50:12) (ZTS Visual C++ 2019 x64)
+Copyright (c) The PHP Group
+Zend Engine v4.2.20, Copyright (c) Zend Technologies
+    with Zend OPcache v8.2.20, Copyright (c), by Zend Technologies
+    with Xdebug v3.3.2, Copyright (c) 2002-2024, by Derick Rethans
+PS C:\Users\username> php8.0 --version
+PHP 8.0.30 (cli) (built: Sep  1 2023 14:15:38) ( ZTS Visual C++ 2019 x64 )
+Copyright (c) The PHP Group
+Zend Engine v4.0.30, Copyright (c) Zend Technologies
+    with Zend OPcache v8.0.30, Copyright (c), by Zend Technologies
+    with Xdebug v3.3.2, Copyright (c) 2002-2024, by Derick Rethans
+PS C:\Users\username> php --version
+PHP 8.2.20 (cli) (built: Jun  4 2024 17:50:12) (ZTS Visual C++ 2019 x64)
+Copyright (c) The PHP Group
+Zend Engine v4.2.20, Copyright (c) Zend Technologies
+    with Zend OPcache v8.2.20, Copyright (c), by Zend Technologies
+    with Xdebug v3.3.2, Copyright (c) 2002-2024, by Derick Rethans
+PS C:\Users\username> setversion-php 8.0
+PS C:\Users\username> php --version
+PHP 8.0.30 (cli) (built: Sep  1 2023 14:15:38) ( ZTS Visual C++ 2019 x64 )
+Copyright (c) The PHP Group
+Zend Engine v4.0.30, Copyright (c) Zend Technologies
+    with Zend OPcache v8.0.30, Copyright (c), by Zend Technologies
+    with Xdebug v3.3.2, Copyright (c) 2002-2024, by Derick Rethans
+PS C:\Users\username> setversion-php latest
+PS C:\Users\username> php --version
+PHP 8.2.20 (cli) (built: Jun  4 2024 17:50:12) (ZTS Visual C++ 2019 x64)
+Copyright (c) The PHP Group
+Zend Engine v4.2.20, Copyright (c) Zend Technologies
+    with Zend OPcache v8.2.20, Copyright (c), by Zend Technologies
+    with Xdebug v3.3.2, Copyright (c) 2002-2024, by Derick Rethans
 ```
-Scan this dir for additional .ini files => /opt/share/mur__php8.0/conf.d:/home/.mur/php8.0
-
-/home/.mur/php8.0 is convenient for users.
 
 __xdebug__: Xdebug — Step Debugger and Debugging Aid for PHP
 

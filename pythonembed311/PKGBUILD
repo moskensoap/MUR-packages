@@ -1,7 +1,7 @@
 # Maintainer: moskensoap <141073988+moskensoap@users.noreply.github.com>
 
-pkgname="mur__pythonembed"
-pkgver=3.12.4
+pkgname="mur__pythonembed311"
+pkgver=3.11.9
 
 major=${pkgver%%.*}
 minor=${pkgver#*.}
@@ -9,7 +9,7 @@ minor=${minor%%.*}
 vernum="${major}${minor}"  
 
 pkgrel=1
-pkgdesc='Python is a programming language that lets you work more quickly and integrate your systems more effectively.'
+pkgdesc='Python311 is a programming language that lets you work more quickly and integrate your systems more effectively.'
 arch=('any')
 url='https://www.python.org'
 license=(GPL-compatible)
@@ -21,26 +21,16 @@ depends=("gcc"
 
 source=("$url/ftp/python/$pkgver/python-$pkgver-embed-amd64.zip"
         "https://github.com/python/cpython/archive/refs/tags/v$pkgver.zip"
-        "link.c"
-        "linkmakefile"
         "makefile"
-        "pip_installed_exe_link.c"
-        "pipmakefile"
-        "pythonmain.c"
-        "setversion-python.c")
+        "pythonmain.c")
 
 noextract=("python-$pkgver-embed-amd64.zip"
            "v$pkgver.zip")
 
-sha256sums=('15fea3c9367653a85086fe37216b4d1a1c78688fa5e1587e1db0b0f658856564'
-            '73ef3228caff56d350602977ed841c7e635d5ef0a47c98d35e529922d98815dc'
-            'ca882fc7a6ae2dc402e8da472abb5c048f32f032eee849501955b052441e45e4'
-            '490009190e4fdb5f11e5c716966fc26c96fcb69eb23e594c123ba28f03e4b4a6'
-            'e45cdbda7a078597075fb0a9e1dbe3762a3313c73cbc81d34024a61320a81a50'
-            '9f50bb7a4396c011245cde06cd4f61cb53a15b3ded38d685d1ca3cc9086da75b'
-            '5559bd60035a8941c3e69e295f30eb52474d4f3342b8926dea621bd0a1106171'
-            '81a959b173f5d21df4284994b2037c22df4fbe59e13c47cd718c827b39fba3fa'
-            '7337362f982e1f8a96ab4aca155c06d755066eb25e81ca2249ed99f18762d266')
+sha256sums=('009d6bf7e3b2ddca3d784fa09f90fe54336d5b60f0e0f305c37f400bf83cfd3b'
+            '5b246ed63c6a915e82e3089e32bb7d4ef7547ecc5cfe003dc17501aa91fb5676'
+            'f406a73c0c7d78b6fa73190ccee8bcf98685faa5e19c673c4e4ce313c2a0f5b8'
+            'ddef86d1301d795a061826ebe1d47d9f667ed986ebdefd8392dbfd415cedb97e')
 
 prepare(){
   cd ${srcdir}
@@ -77,24 +67,6 @@ build(){
   cd wrapper
   make
 
-  #prepare rename .c files to build python.exe and pip.exe linker
-  cd ..
-  mkdir linker
-
-  for file in $(ls python-$pkgver-embed-amd64 | grep .exe | sed 's/\.exe$/.c/'); do
-    cp link.c ./linker/$file
-  done
-
-
-  cp linkmakefile ./linker/makefile
-
-  #make python.exe and pip.exe linker
-  cd linker
-  make
-
-  #build setversion-python
-  cd ..
-  gcc -o setversion-python.exe setversion-python.c
 }
 
 
@@ -104,11 +76,6 @@ package(){
   mkdir -p ${pkgdir}/opt/share/python/${pkgname}/
   cp -a python-$pkgver-embed-amd64/* ${pkgdir}/opt/share/python/${pkgname}/
   install -Dm755 wrapper/*.exe ${pkgdir}/opt/bin/
-  install -Dm755 linker/*.exe ${pkgdir}/opt/bin/
-  install -Dm755 setversion-python.exe ${pkgdir}/opt/bin/
-
-  cp pip_installed_exe_link.c ${pkgdir}/opt/share/python/
-  cp pipmakefile ${pkgdir}/opt/share/python/linkmakefile
 
 }
 

@@ -334,7 +334,12 @@ int main(int argc, char *argv[]) {
 
     char Scriptspath[PATH_MAX];
     sprintf(binPath, "/home/.mur/setversion/%s", "pythonembed.txt");
-    sprintf(realPath, "/opt/share/python/mur__pythonembed/Scripts");
+
+    if (strcmp(version, "latest") == 0)
+        sprintf(realPath, "/opt/share/python/mur__pythonembed/Scripts");
+    else
+        sprintf(realPath, "/opt/share/python/mur__pythonembed%s/Scripts", version);
+
     replace(path, Scriptspath, binPath, realPath);
 
 

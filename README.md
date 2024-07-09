@@ -276,7 +276,21 @@ Zend Engine v4.2.20, Copyright (c) Zend Technologies
 
 __pythonembed__: Python is a programming language that lets you work more quickly and integrate your systems more effectively.
 
-Repackaged on official embeded python zip, with ensurepip and venv extracted form github.com/python/cpython.
+Repackaged on official embeded python zip, with `ensurepip` and `venv` extracted form github.com/python/cpython.
+```
+PS C:\Users\username> setversion-python
+Usage:
+        setversion-python <version>
+version:
+        pythonembed<version> you installed form MUR-PACKAGES
+        latest for python-embed
+example:
+        setversion-python 38
+        setversion-python 39
+        setversion-python 310
+        setversion-python 311
+        setversion-python latest
+```
 
 1.How to install pip: 
 

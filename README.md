@@ -105,6 +105,13 @@ To solve CRLF error, you may run:
 - [ ] xdebug7.1
 - [ ] xdebug7.0
 - [ ] xdebug5.6
+- [x] pythonembed
+- [x] pythonembed311
+- [ ] pythonembed310
+- [ ] pythonembed39
+- [ ] pythonembed38
+
+
 
 ## Original packages
 
@@ -265,6 +272,70 @@ Copyright (c) The PHP Group
 Zend Engine v4.2.20, Copyright (c) Zend Technologies
     with Zend OPcache v8.2.20, Copyright (c), by Zend Technologies
     with Xdebug v3.3.2, Copyright (c) 2002-2024, by Derick Rethans
+```
+
+__pythonembed__: Python is a programming language that lets you work more quickly and integrate your systems more effectively.
+
+Repackaged on official embeded python zip, with ensurepip and venv extracted form github.com/python/cpython.
+
+1.How to install pip: 
+
+run `setversion-python <version>`
+
+2.How to add pip installed package executables into `/opt/bin`: 
+
+run `setversion-python <version>`
+
+3.How to switch Python version, pip version, or use a different group of package executables: 
+
+run `setversion-python <version>`
+
+examples:
+```
+PS C:\Users\username> setversion-python 311
+Looking in links: c:\Users\username\AppData\Local\Temp\tmpxl6acd1_
+Requirement already satisfied: setuptools in c:\msys64\opt\share\python\mur__pythonembed311\lib\site-packages (65.5.0)
+Requirement already satisfied: pip in c:\msys64\opt\share\python\mur__pythonembed311\lib\site-packages (24.0)
+success: /usr/bin/rm -rf /home/.mur/tmp/pythonembed/*
+success: /usr/bin/cp /opt/share/python/linkmakefile /home/.mur/tmp/pythonembed/makefile
+success: for file in $(/usr/bin/ls /opt/share/python/mur__pythonembed311/Scripts | /usr/bin/grep .exe | /usr/bin/sed 's/\.exe$/.c/'); do /usr/bin/cp /opt/share/python/pip_installed_exe_link.c /home/.mur/tmp/pythonembed/$file; done
+success: /usr/bin/find /home/.mur/tmp/pythonembed/ -type f -name '*.c' -exec /usr/bin/sed -i '1s/.*/#define pkgver "311"/' {} +
+make: Entering directory '/home/.mur/tmp/pythonembed'
+usrfirst gcc -o pip.exe pip.c -O3 -s
+usrfirst gcc -o pip3.11.exe pip3.11.c -O3 -s
+usrfirst gcc -o pip3.exe pip3.c -O3 -s
+usrfirst gcc -o pyi-archive_viewer.exe pyi-archive_viewer.c -O3 -s
+usrfirst gcc -o pyi-bindepend.exe pyi-bindepend.c -O3 -s
+usrfirst gcc -o pyi-grab_version.exe pyi-grab_version.c -O3 -s
+usrfirst gcc -o pyi-makespec.exe pyi-makespec.c -O3 -s
+usrfirst gcc -o pyi-set_version.exe pyi-set_version.c -O3 -s
+usrfirst gcc -o pyinstaller.exe pyinstaller.c -O3 -s
+All Done
+make: Leaving directory '/home/.mur/tmp/pythonembed'
+success: /usr/bin/make -C /home/.mur/tmp/pythonembed/
+success: /usr/bin/find /opt/bin/ -exec /usr/bin/pacman -Qo {} + 2>&1 | /usr/bin/grep "error: No package owns" | /usr/bin/cut -d' ' -f5- | /usr/bin/tr '\n' '\0' | /usr/bin/xargs -r -0 -- /usr/bin/rm -rf --
+success: for file in "/home/.mur/tmp/pythonembed/"*.exe; do target_file="/opt/bin/${file#/home/.mur/tmp/pythonembed/}"; if [ ! -e "$target_file" ]; then /usr/bin/cp "$file" "$target_file"; fi; done
+success: /usr/bin/rm -rf /home/.mur/tmp/pythonembed/*
+```
+```
+PS C:\Users\username> setversion-python latest
+Looking in links: c:\Users\username\AppData\Local\Temp\tmpuhv814f7
+Requirement already satisfied: pip in c:\msys64\opt\share\python\mur__pythonembed\lib\site-packages (24.0)
+success: /usr/bin/rm -rf /home/.mur/tmp/pythonembed/*
+success: /usr/bin/cp /opt/share/python/linkmakefile /home/.mur/tmp/pythonembed/makefile
+success: for file in $(/usr/bin/ls /opt/share/python/mur__pythonembed/Scripts | /usr/bin/grep .exe | /usr/bin/sed 's/\.exe$/.c/'); do /usr/bin/cp /opt/share/python/pip_installed_exe_link.c /home/.mur/tmp/pythonembed/$file; done
+success: /usr/bin/find /home/.mur/tmp/pythonembed/ -type f -name '*.c' -exec /usr/bin/sed -i '1s/.*/#define pkgver "latest"/' {} +
+make: Entering directory '/home/.mur/tmp/pythonembed'
+usrfirst gcc -o findent.exe findent.c -O3 -s
+usrfirst gcc -o pip.exe pip.c -O3 -s
+usrfirst gcc -o pip3.12.exe pip3.12.c -O3 -s
+usrfirst gcc -o pip3.exe pip3.c -O3 -s
+All Done
+make: Leaving directory '/home/.mur/tmp/pythonembed'
+success: /usr/bin/make -C /home/.mur/tmp/pythonembed/
+success: /usr/bin/find /opt/bin/ -exec /usr/bin/pacman -Qo {} + 2>&1 | /usr/bin/grep "error: No package owns" | /usr/bin/cut -d' ' -f5- | /usr/bin/tr '\n' '\0' | /usr/bin/xargs -r -0 -- /usr/bin/rm -rf --
+success: for file in "/home/.mur/tmp/pythonembed/"*.exe; do target_file="/opt/bin/${file#/home/.mur/tmp/pythonembed/}"; if [ ! -e "$target_file" ]; then /usr/bin/cp "$file" "$target_file"; fi; done
+success: /usr/bin/rm -rf /home/.mur/tmp/pythonembed/*
 ```
 
 __xdebug__: Xdebug — Step Debugger and Debugging Aid for PHP

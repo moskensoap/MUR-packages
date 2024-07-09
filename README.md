@@ -277,8 +277,6 @@ __zls__: A Zig language server supporting Zig developers with features like auto
 
 Contributions are welcome! Please submit pull requests or open issues for any improvements or bug fixes.
 
-Adding new package: fork this program, add 
-
 # License
 
-This project is licensed under the MIT License - see the LICENSE file for details.
+This project is licensed under the MIT License - see the [LICENSE file](./LICENSE) for details.

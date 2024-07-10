@@ -296,7 +296,24 @@ Zend Engine v4.2.20, Copyright (c) Zend Technologies
 
 __pythonembed__: Python is a programming language that lets you work more quickly and integrate your systems more effectively.
 
-Repackaged on official embeded python zip, with `ensurepip` and `venv` extracted form github.com/python/cpython.
+Repackaged on official [embeded python zip](https://www.python.org/downloads/windows/), with `ensurepip` extracted form [github.com/python/cpython](https://github.com/python/cpython), supporting the installation and use of `virtualenv`.
+
+Basic Usage:
+```
+setversion-python latest
+optfirst which python
+optfirst python --version
+optfirst which pip
+optfirst pip --version
+optfirst pip install virtualenv
+optfirst which virtualenv
+setversion-python latest
+optfirst which virtualenv
+optfirst virtualenv path/to/myenv
+```
+
+Note: Do not add /opt/share/python/mur__pythonembed/Scripts/ to your PATH, `setversion-python` will automatically handle it and other mur__pythonembed\<version\>/Scripts/.
+
 ```
 PS C:\Users\username> setversion-python
 Usage:
@@ -324,7 +341,7 @@ run `setversion-python <version>`
 
 run `setversion-python <version>`
 
-examples:
+Examples:
 ```
 PS C:\Users\username> setversion-python 311
 Looking in links: c:\Users\username\AppData\Local\Temp\tmpxl6acd1_

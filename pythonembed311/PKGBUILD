@@ -17,7 +17,8 @@ makedepends=("gcc"
              "make")
 depends=("gcc"
          "make"
-         "mur__optfirst")
+         "mur__optfirst"
+         "mur__pythonembed")
 
 source=("$url/ftp/python/$pkgver/python-$pkgver-embed-amd64.zip"
         "https://github.com/python/cpython/archive/refs/tags/v$pkgver.zip"

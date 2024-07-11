@@ -10,7 +10,7 @@ vernum="${major}${minor}"
 
 pkgrel=1
 pkgdesc='Python is a programming language that lets you work more quickly and integrate your systems more effectively.'
-arch=('any')
+arch=('x86_64')
 url='https://www.python.org'
 license=(GPL-compatible)
 makedepends=("gcc"

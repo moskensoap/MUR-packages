@@ -4,7 +4,7 @@ pkgname="mur__pandoc"
 pkgver=3.2.1
 pkgrel=1
 pkgdesc='Universal markup converter.'
-arch=('any')
+arch=('x86_64')
 url='https://github.com/jgm/pandoc'
 license=(GPL)
 

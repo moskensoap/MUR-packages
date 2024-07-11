@@ -5,7 +5,7 @@ pkgver=2.7.7
 pkgrel=1
 pkgdesc="Dependency Manager for PHP"
 
-arch=('any')
+arch=('x86_64')
 url='https://getcomposer.org'
 license=(MIT)
 makedepends=("gcc")

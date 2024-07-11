@@ -4,7 +4,7 @@ pkgname=("mur__php7.4" "mur__php7.4-development" "mur__php7.4-production" "mur__
 pkgver=7.4.32
 pkgrel=1
 
-arch=('any')
+arch=('x86_64')
 url='https://www.php.net'
 license=(PHP License)
 makedepends=("gcc"

@@ -4,7 +4,7 @@ pkgname=("mur__php" "mur__php-development" "mur__php-production" "mur__php-exten
 pkgver=8.2.20
 pkgrel=1
 
-arch=('any')
+arch=('x86_64')
 url='https://www.php.net'
 license=(PHP License)
 makedepends=("gcc"

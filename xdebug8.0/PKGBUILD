@@ -6,7 +6,7 @@ phpver=8.0
 pkgrel=1
 pkgdesc="Xdebug — Step Debugger and Debugging Aid for PHP"
 
-arch=('any')
+arch=('x86_64')
 url='https://xdebug.org'
 license=(The Xdebug License)
 

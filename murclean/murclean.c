@@ -45,10 +45,10 @@ int main(int argc, char *argv[])
         printf("\tall (for all above if default)\n");
         printf("Principle:\n");
         printf("\t1.To list files under DIRECTORY not owned by any package, use the following command:\n");
-        printf("\t\tfind DIRECTORY -exec pacman -Qo {} + 2>&1 | grep \"error: No package owns\"\n");
+        printf("\t\tfind DIRECTORY -exec pacman -Qo {} \\; 2>&1 | grep \"error: No package owns\"\n");
         printf("\n\tNote: DIRECTORY should be a Unix-like path, such as /tmp\n\n");
         printf("\t2.To clean (remove) these files, use the following command:\n");
-        printf("\t\tfind DIRECTORY -exec pacman -Qo {} + 2>&1 | grep \"error: No package owns\" | cut -d' ' -f5- | tr '\\n' '\\0' | xargs -r -0 -- rm -rf --\n");
+        printf("\t\tfind DIRECTORY -exec pacman -Qo {} \\; 2>&1 | grep \"error: No package owns\" | cut -d' ' -f5- | tr '\\n' '\\0' | xargs -r -0 -- rm -rf --\n");
         printf("Warning:\n");
         printf("\tPlease do not manually run these commands in Git Bash. Run them in the MSYS environment of MSYS2 instead.\n");
         printf("\tThis program automatically detects and executes the necessary commands within the MSYS environment using relative paths, ensuring safe file removal.\n");
@@ -123,61 +123,61 @@ int main(int argc, char *argv[])
     strcpy(rmPath, path);
     replace(rmPath, fileName, "rm");
 
-    // build a clang32list 'findPath *clang32Path -exec pacmanPath -Qo {} + 2>&1 | grepPath "error: No package owns"'
+    // build a clang32list 'findPath *clang32Path -exec pacmanPath -Qo {} \; 2>&1 | grepPath "error: No package owns"'
     char clang32list[PATH_MAX * 4 + 51];
-    sprintf(clang32list, "%s %s -exec %s -Qo {} + 2>&1 | %s \"error: No package owns\"", findPath, clang32Path, pacmanPath, grepPath);
-    // build a clang64list 'findPath *clang64Path -exec pacmanPath -Qo {} + 2>&1 | grepPath "error: No package owns"'
+    sprintf(clang32list, "%s %s -exec %s -Qo {} \\; 2>&1 | %s \"error: No package owns\"", findPath, clang32Path, pacmanPath, grepPath);
+    // build a clang64list 'findPath *clang64Path -exec pacmanPath -Qo {} \; 2>&1 | grepPath "error: No package owns"'
     char clang64list[PATH_MAX * 4 + 51];
-    sprintf(clang64list, "%s %s -exec %s -Qo {} + 2>&1 | %s \"error: No package owns\"", findPath, clang64Path, pacmanPath, grepPath);
-    // build a clangarm64list 'findPath *clangarm64Path -exec pacmanPath -Qo {} + 2>&1 | grepPath "error: No package owns"'
+    sprintf(clang64list, "%s %s -exec %s -Qo {} \\; 2>&1 | %s \"error: No package owns\"", findPath, clang64Path, pacmanPath, grepPath);
+    // build a clangarm64list 'findPath *clangarm64Path -exec pacmanPath -Qo {} \; 2>&1 | grepPath "error: No package owns"'
     char clangarm64list[PATH_MAX * 4 + 51];
-    sprintf(clangarm64list, "%s %s -exec %s -Qo {} + 2>&1 | %s \"error: No package owns\"", findPath, clangarm64Path, pacmanPath, grepPath);
-    // build a mingw32list 'findPath *mingw32Path -exec pacmanPath -Qo {} + 2>&1 | grepPath "error: No package owns"'
+    sprintf(clangarm64list, "%s %s -exec %s -Qo {} \\; 2>&1 | %s \"error: No package owns\"", findPath, clangarm64Path, pacmanPath, grepPath);
+    // build a mingw32list 'findPath *mingw32Path -exec pacmanPath -Qo {} \; 2>&1 | grepPath "error: No package owns"'
     char mingw32list[PATH_MAX * 4 + 51];
-    sprintf(mingw32list, "%s %s -exec %s -Qo {} + 2>&1 | %s \"error: No package owns\"", findPath, mingw32Path, pacmanPath, grepPath);
-    // build a mingw64list 'findPath *mingw64Path -exec pacmanPath -Qo {} + 2>&1 | grepPath "error: No package owns"'
+    sprintf(mingw32list, "%s %s -exec %s -Qo {} \\; 2>&1 | %s \"error: No package owns\"", findPath, mingw32Path, pacmanPath, grepPath);
+    // build a mingw64list 'findPath *mingw64Path -exec pacmanPath -Qo {} \; 2>&1 | grepPath "error: No package owns"'
     char mingw64list[PATH_MAX * 4 + 51];
-    sprintf(mingw64list, "%s %s -exec %s -Qo {} + 2>&1 | %s \"error: No package owns\"", findPath, mingw64Path, pacmanPath, grepPath);
-    // build a ucrt64list 'findPath *ucrt64Path -exec pacmanPath -Qo {} + 2>&1 | grepPath "error: No package owns"'
+    sprintf(mingw64list, "%s %s -exec %s -Qo {} \\; 2>&1 | %s \"error: No package owns\"", findPath, mingw64Path, pacmanPath, grepPath);
+    // build a ucrt64list 'findPath *ucrt64Path -exec pacmanPath -Qo {} \; 2>&1 | grepPath "error: No package owns"'
     char ucrt64list[PATH_MAX * 4 + 51];
-    sprintf(ucrt64list, "%s %s -exec %s -Qo {} + 2>&1 | %s \"error: No package owns\"", findPath, ucrt64Path, pacmanPath, grepPath);
-    // build a usrlist 'findPath *usrPath -exec pacmanPath -Qo {} + 2>&1 | grepPath "error: No package owns"'
+    sprintf(ucrt64list, "%s %s -exec %s -Qo {} \\; 2>&1 | %s \"error: No package owns\"", findPath, ucrt64Path, pacmanPath, grepPath);
+    // build a usrlist 'findPath *usrPath -exec pacmanPath -Qo {} \; 2>&1 | grepPath "error: No package owns"'
     char usrlist[PATH_MAX * 4 + 51];
-    sprintf(usrlist, "%s %s -exec %s -Qo {} + 2>&1 | %s \"error: No package owns\"", findPath, usrPath, pacmanPath, grepPath);
-    // build a optlist 'findPath *optPath -exec pacmanPath -Qo {} + 2>&1 | grepPath "error: No package owns"'
+    sprintf(usrlist, "%s %s -exec %s -Qo {} \\; 2>&1 | %s \"error: No package owns\"", findPath, usrPath, pacmanPath, grepPath);
+    // build a optlist 'findPath *optPath -exec pacmanPath -Qo {} \; 2>&1 | grepPath "error: No package owns"'
     char optlist[PATH_MAX * 4 + 51];
-    sprintf(optlist, "%s %s -exec %s -Qo {} + 2>&1 | %s \"error: No package owns\"", findPath, optPath, pacmanPath, grepPath);
-    // build a tmplist 'findPath *tmpPath -exec pacmanPath -Qo {} + 2>&1 | grepPath "error: No package owns"'
+    sprintf(optlist, "%s %s -exec %s -Qo {} \\; 2>&1 | %s \"error: No package owns\"", findPath, optPath, pacmanPath, grepPath);
+    // build a tmplist 'findPath *tmpPath -exec pacmanPath -Qo {} \; 2>&1 | grepPath "error: No package owns"'
     char tmplist[PATH_MAX * 4 + 51];
-    sprintf(tmplist, "%s %s -exec %s -Qo {} + 2>&1 | %s \"error: No package owns\"", findPath, tmpPath, pacmanPath, grepPath);
+    sprintf(tmplist, "%s %s -exec %s -Qo {} \\; 2>&1 | %s \"error: No package owns\"", findPath, tmpPath, pacmanPath, grepPath);
 
-    // build a clang32clean 'findPath *clang32Path -exec pacmanPath -Qo {} + 2>&1 | grepPath "error: No package owns" | cutPath -d' ' -f5- | trPath '\n' '\0' | xargsPath -r -0 -- rmPath -rf --'
+    // build a clang32clean 'findPath *clang32Path -exec pacmanPath -Qo {} \; 2>&1 | grepPath "error: No package owns" | cutPath -d' ' -f5- | trPath '\n' '\0' | xargsPath -r -0 -- rmPath -rf --'
     char clang32clean[PATH_MAX * 7 + 98];
-    sprintf(clang32clean, "%s %s -exec %s -Qo {} + 2>&1 | %s \"error: No package owns\" | %s -d' ' -f5- | %s '\\n' '\\0' | %s -r -0 -- %s -rf --", findPath, clang32Path, pacmanPath, grepPath, cutPath, trPath, xargsPath, rmPath);
-    // build a clang64clean 'findPath *clang64Path -exec pacmanPath -Qo {} + 2>&1 | grepPath "error: No package owns" | cutPath -d' ' -f5- | trPath '\n' '\0' | xargsPath -r -0 -- rmPath -rf --'
+    sprintf(clang32clean, "%s %s -exec %s -Qo {} \\; 2>&1 | %s \"error: No package owns\" | %s -d' ' -f5- | %s '\\n' '\\0' | %s -r -0 -- %s -rf --", findPath, clang32Path, pacmanPath, grepPath, cutPath, trPath, xargsPath, rmPath);
+    // build a clang64clean 'findPath *clang64Path -exec pacmanPath -Qo {} \; 2>&1 | grepPath "error: No package owns" | cutPath -d' ' -f5- | trPath '\n' '\0' | xargsPath -r -0 -- rmPath -rf --'
     char clang64clean[PATH_MAX * 7 + 98];
-    sprintf(clang64clean, "%s %s -exec %s -Qo {} + 2>&1 | %s \"error: No package owns\" | %s -d' ' -f5- | %s '\\n' '\\0' | %s -r -0 -- %s -rf --", findPath, clang64Path, pacmanPath, grepPath, cutPath, trPath, xargsPath, rmPath);
-    // build a clangarm64clean 'findPath *clangarm64Path -exec pacmanPath -Qo {} + 2>&1 | grepPath "error: No package owns" | cutPath -d' ' -f5- | trPath '\n' '\0' | xargsPath -r -0 -- rmPath -rf --'
+    sprintf(clang64clean, "%s %s -exec %s -Qo {} \\; 2>&1 | %s \"error: No package owns\" | %s -d' ' -f5- | %s '\\n' '\\0' | %s -r -0 -- %s -rf --", findPath, clang64Path, pacmanPath, grepPath, cutPath, trPath, xargsPath, rmPath);
+    // build a clangarm64clean 'findPath *clangarm64Path -exec pacmanPath -Qo {} \; 2>&1 | grepPath "error: No package owns" | cutPath -d' ' -f5- | trPath '\n' '\0' | xargsPath -r -0 -- rmPath -rf --'
     char clangarm64clean[PATH_MAX * 7 + 98];
-    sprintf(clangarm64clean, "%s %s -exec %s -Qo {} + 2>&1 | %s \"error: No package owns\" | %s -d' ' -f5- | %s '\\n' '\\0' | %s -r -0 -- %s -rf --", findPath, clangarm64Path, pacmanPath, grepPath, cutPath, trPath, xargsPath, rmPath);
-    // build a mingw32clean 'findPath *mingw32Path -exec pacmanPath -Qo {} + 2>&1 | grepPath "error: No package owns" | cutPath -d' ' -f5- | trPath '\n' '\0' | xargsPath -r -0 -- rmPath -rf --'
+    sprintf(clangarm64clean, "%s %s -exec %s -Qo {} \\; 2>&1 | %s \"error: No package owns\" | %s -d' ' -f5- | %s '\\n' '\\0' | %s -r -0 -- %s -rf --", findPath, clangarm64Path, pacmanPath, grepPath, cutPath, trPath, xargsPath, rmPath);
+    // build a mingw32clean 'findPath *mingw32Path -exec pacmanPath -Qo {} \; 2>&1 | grepPath "error: No package owns" | cutPath -d' ' -f5- | trPath '\n' '\0' | xargsPath -r -0 -- rmPath -rf --'
     char mingw32clean[PATH_MAX * 7 + 98];
-    sprintf(mingw32clean, "%s %s -exec %s -Qo {} + 2>&1 | %s \"error: No package owns\" | %s -d' ' -f5- | %s '\\n' '\\0' | %s -r -0 -- %s -rf --", findPath, mingw32Path, pacmanPath, grepPath, cutPath, trPath, xargsPath, rmPath);
-    // build a mingw64clean 'findPath *mingw64Path -exec pacmanPath -Qo {} + 2>&1 | grepPath "error: No package owns" | cutPath -d' ' -f5- | trPath '\n' '\0' | xargsPath -r -0 -- rmPath -rf --'
+    sprintf(mingw32clean, "%s %s -exec %s -Qo {} \\; 2>&1 | %s \"error: No package owns\" | %s -d' ' -f5- | %s '\\n' '\\0' | %s -r -0 -- %s -rf --", findPath, mingw32Path, pacmanPath, grepPath, cutPath, trPath, xargsPath, rmPath);
+    // build a mingw64clean 'findPath *mingw64Path -exec pacmanPath -Qo {} \; 2>&1 | grepPath "error: No package owns" | cutPath -d' ' -f5- | trPath '\n' '\0' | xargsPath -r -0 -- rmPath -rf --'
     char mingw64clean[PATH_MAX * 7 + 98];
-    sprintf(mingw64clean, "%s %s -exec %s -Qo {} + 2>&1 | %s \"error: No package owns\" | %s -d' ' -f5- | %s '\\n' '\\0' | %s -r -0 -- %s -rf --", findPath, mingw64Path, pacmanPath, grepPath, cutPath, trPath, xargsPath, rmPath);
-    // build a ucrt64clean 'findPath *ucrt64Path -exec pacmanPath -Qo {} + 2>&1 | grepPath "error: No package owns" | cutPath -d' ' -f5- | trPath '\n' '\0' | xargsPath -r -0 -- rmPath -rf --'
+    sprintf(mingw64clean, "%s %s -exec %s -Qo {} \\; 2>&1 | %s \"error: No package owns\" | %s -d' ' -f5- | %s '\\n' '\\0' | %s -r -0 -- %s -rf --", findPath, mingw64Path, pacmanPath, grepPath, cutPath, trPath, xargsPath, rmPath);
+    // build a ucrt64clean 'findPath *ucrt64Path -exec pacmanPath -Qo {} \; 2>&1 | grepPath "error: No package owns" | cutPath -d' ' -f5- | trPath '\n' '\0' | xargsPath -r -0 -- rmPath -rf --'
     char ucrt64clean[PATH_MAX * 7 + 98];
-    sprintf(ucrt64clean, "%s %s -exec %s -Qo {} + 2>&1 | %s \"error: No package owns\" | %s -d' ' -f5- | %s '\\n' '\\0' | %s -r -0 -- %s -rf --", findPath, ucrt64Path, pacmanPath, grepPath, cutPath, trPath, xargsPath, rmPath);
-    // build a usrclean 'findPath *usrPath -exec pacmanPath -Qo {} + 2>&1 | grepPath "error: No package owns" | cutPath -d' ' -f5- | trPath '\n' '\0' | xargsPath -r -0 -- rmPath -rf --'
+    sprintf(ucrt64clean, "%s %s -exec %s -Qo {} \\; 2>&1 | %s \"error: No package owns\" | %s -d' ' -f5- | %s '\\n' '\\0' | %s -r -0 -- %s -rf --", findPath, ucrt64Path, pacmanPath, grepPath, cutPath, trPath, xargsPath, rmPath);
+    // build a usrclean 'findPath *usrPath -exec pacmanPath -Qo {} \; 2>&1 | grepPath "error: No package owns" | cutPath -d' ' -f5- | trPath '\n' '\0' | xargsPath -r -0 -- rmPath -rf --'
     char usrclean[PATH_MAX * 7 + 98];
-    sprintf(usrclean, "%s %s -exec %s -Qo {} + 2>&1 | %s \"error: No package owns\" | %s -d' ' -f5- | %s '\\n' '\\0' | %s -r -0 -- %s -rf --", findPath, usrPath, pacmanPath, grepPath, cutPath, trPath, xargsPath, rmPath);
-    // build a optclean 'findPath *optPath -exec pacmanPath -Qo {} + 2>&1 | grepPath "error: No package owns" | cutPath -d' ' -f5- | trPath '\n' '\0' | xargsPath -r -0 -- rmPath -rf --'
+    sprintf(usrclean, "%s %s -exec %s -Qo {} \\; 2>&1 | %s \"error: No package owns\" | %s -d' ' -f5- | %s '\\n' '\\0' | %s -r -0 -- %s -rf --", findPath, usrPath, pacmanPath, grepPath, cutPath, trPath, xargsPath, rmPath);
+    // build a optclean 'findPath *optPath -exec pacmanPath -Qo {} \; 2>&1 | grepPath "error: No package owns" | cutPath -d' ' -f5- | trPath '\n' '\0' | xargsPath -r -0 -- rmPath -rf --'
     char optclean[PATH_MAX * 7 + 98];
-    sprintf(optclean, "%s %s -exec %s -Qo {} + 2>&1 | %s \"error: No package owns\" | %s -d' ' -f5- | %s '\\n' '\\0' | %s -r -0 -- %s -rf --", findPath, optPath, pacmanPath, grepPath, cutPath, trPath, xargsPath, rmPath);
-    // build a tmpclean 'findPath *tmpPath -exec pacmanPath -Qo {} + 2>&1 | grepPath "error: No package owns" | cutPath -d' ' -f5- | trPath '\n' '\0' | xargsPath -r -0 -- rmPath -rf --'
+    sprintf(optclean, "%s %s -exec %s -Qo {} \\; 2>&1 | %s \"error: No package owns\" | %s -d' ' -f5- | %s '\\n' '\\0' | %s -r -0 -- %s -rf --", findPath, optPath, pacmanPath, grepPath, cutPath, trPath, xargsPath, rmPath);
+    // build a tmpclean 'findPath *tmpPath -exec pacmanPath -Qo {} \; 2>&1 | grepPath "error: No package owns" | cutPath -d' ' -f5- | trPath '\n' '\0' | xargsPath -r -0 -- rmPath -rf --'
     char tmpclean[PATH_MAX * 7 + 98];
-    sprintf(tmpclean, "%s %s -exec %s -Qo {} + 2>&1 | %s \"error: No package owns\" | %s -d' ' -f5- | %s '\\n' '\\0' | %s -r -0 -- %s -rf --", findPath, tmpPath, pacmanPath, grepPath, cutPath, trPath, xargsPath, rmPath);
+    sprintf(tmpclean, "%s %s -exec %s -Qo {} \\; 2>&1 | %s \"error: No package owns\" | %s -d' ' -f5- | %s '\\n' '\\0' | %s -r -0 -- %s -rf --", findPath, tmpPath, pacmanPath, grepPath, cutPath, trPath, xargsPath, rmPath);
 
     if (argc == 2 && strcmp(argv[1], "list") == 0)
     {

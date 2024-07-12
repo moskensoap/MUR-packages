@@ -13,7 +13,7 @@ makedepends=("gcc")
 source=("murclean.c"
         "LICENSE")
 
-sha256sums=('ae78af38f9b7b35f37fe5a28dbb5ca084131a93846f06f0b48f19fb1ff94984e'
+sha256sums=('d0abbf43e425b10b67603d29ee67ba91f7e73655d6cd8971fab40db650b4cf30'
             'ae1ac950060baad6e25e65f23e92bad0e0cb9e8de258cafcec5d25cba861af4a')
 
 

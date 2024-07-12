@@ -433,9 +433,9 @@ int main(int argc, char *argv[]) {
     sprintf(realPath, "/opt/bin/");
     replace(path, optbinpath, binPath, realPath);
 
-    //system run: findexe optbinpath -exec pacmanexe -Qo {} + 2>&1 | grepexe "error: No package owns" | cutexe -d' ' -f5- | trexe '\n' '\0' | xargsexe -r -0 -- rmexe -rf --
-    char rmunowned[PATH_MAX*8 + 98];
-    sprintf(rmunowned, "%s %s -exec %s -Qo {} + 2>&1 | %s \"error: No package owns\" | %s -d' ' -f5- | %s '\\n' '\\0' | %s -r -0 -- %s -rf --", findexe, optbinpath, pacmanexe, grepexe, cutexe, trexe, xargsexe, rmexe);
+    //system run: findexe optbinpath -exec pacmanexe -Qo {} \; 2>&1 | grepexe "error: No package owns" | cutexe -d' ' -f5- | trexe '\n' '\0' | xargsexe -r -0 -- rmexe -rf --
+    char rmunowned[PATH_MAX*8 + 99];
+    sprintf(rmunowned, "%s %s -exec %s -Qo {} \\; 2>&1 | %s \"error: No package owns\" | %s -d' ' -f5- | %s '\\n' '\\0' | %s -r -0 -- %s -rf --", findexe, optbinpath, pacmanexe, grepexe, cutexe, trexe, xargsexe, rmexe);
     if (system(rmunowned) != 0)
     {
         perror("system");

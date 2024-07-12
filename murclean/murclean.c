@@ -48,7 +48,7 @@ int main(int argc, char *argv[])
         printf("\t\tfind DIRECTORY -maxdepth 3 -exec pacman -Qo {} + 2>&1 | grep \"error: No package owns\"\n");
         printf("\n\tNote: DIRECTORY should be a Unix-like path, such as /tmp\n\n");
         printf("\t2.To clean (remove) these files, use the following command:\n");
-        printf("\t\tfind DIRECTORY -maxdepth 3 -exec pacman -Qo {} + 2>&1 | grep \"error: No package owns\" | cut -d' ' -f5- | tr '\\n' '\\0' | xargs -r -0 -- rm -rf --\n");
+        printf("\t\tfind DIRECTORY -maxdepth 3 -exec pacman -Qo {} + 2>&1 | grep \"error: No package owns\" | sed 's/.*error: No package owns //g' | tr '\\n' '\\0' | xargs -r -0 -- rm -rf --\n");
         printf("Warning:\n");
         printf("\tPlease do not manually run these commands in Git Bash. Run them in the MSYS environment of MSYS2 instead.\n");
         printf("\tThis program automatically detects and executes the necessary commands within the MSYS environment using relative paths, ensuring safe file removal.\n");
@@ -103,10 +103,10 @@ int main(int argc, char *argv[])
     strcpy(grepPath, path);
     replace(grepPath, fileName, "grep");
 
-    // cp path to cut and replace /bin/$(fileName) with /bin/cut
-    char cutPath[PATH_MAX];
-    strcpy(cutPath, path);
-    replace(cutPath, fileName, "cut");
+    // cp path to sed and replace /bin/$(fileName) with /bin/sed
+    char sedPath[PATH_MAX];
+    strcpy(sedPath, path);
+    replace(sedPath, fileName, "sed");
 
     // cp path to tr and replace /bin/$(fileName) with /bin/tr
     char trPath[PATH_MAX];
@@ -151,33 +151,33 @@ int main(int argc, char *argv[])
     char tmplist[PATH_MAX * 4 + 63];
     sprintf(tmplist, "%s %s -maxdepth 3 -exec %s -Qo {} + 2>&1 | %s \"error: No package owns\"", findPath, tmpPath, pacmanPath, grepPath);
 
-    // build a clang32clean 'findPath *clang32Path -maxdepth 3 -exec pacmanPath -Qo {} + 2>&1 | grepPath "error: No package owns" | cutPath -d' ' -f5- | trPath '\n' '\0' | xargsPath -r -0 -- rmPath -rf --'
-    char clang32clean[PATH_MAX * 7 + 110];
-    sprintf(clang32clean, "%s %s -maxdepth 3 -exec %s -Qo {} + 2>&1 | %s \"error: No package owns\" | %s -d' ' -f5- | %s '\\n' '\\0' | %s -r -0 -- %s -rf --", findPath, clang32Path, pacmanPath, grepPath, cutPath, trPath, xargsPath, rmPath);
-    // build a clang64clean 'findPath *clang64Path -maxdepth 3 -exec pacmanPath -Qo {} + 2>&1 | grepPath "error: No package owns" | cutPath -d' ' -f5- | trPath '\n' '\0' | xargsPath -r -0 -- rmPath -rf --'
-    char clang64clean[PATH_MAX * 7 + 110];
-    sprintf(clang64clean, "%s %s -maxdepth 3 -exec %s -Qo {} + 2>&1 | %s \"error: No package owns\" | %s -d' ' -f5- | %s '\\n' '\\0' | %s -r -0 -- %s -rf --", findPath, clang64Path, pacmanPath, grepPath, cutPath, trPath, xargsPath, rmPath);
-    // build a clangarm64clean 'findPath *clangarm64Path -maxdepth 3 -exec pacmanPath -Qo {} + 2>&1 | grepPath "error: No package owns" | cutPath -d' ' -f5- | trPath '\n' '\0' | xargsPath -r -0 -- rmPath -rf --'
-    char clangarm64clean[PATH_MAX * 7 + 110];
-    sprintf(clangarm64clean, "%s %s -maxdepth 3 -exec %s -Qo {} + 2>&1 | %s \"error: No package owns\" | %s -d' ' -f5- | %s '\\n' '\\0' | %s -r -0 -- %s -rf --", findPath, clangarm64Path, pacmanPath, grepPath, cutPath, trPath, xargsPath, rmPath);
-    // build a mingw32clean 'findPath *mingw32Path -maxdepth 3 -exec pacmanPath -Qo {} + 2>&1 | grepPath "error: No package owns" | cutPath -d' ' -f5- | trPath '\n' '\0' | xargsPath -r -0 -- rmPath -rf --'
-    char mingw32clean[PATH_MAX * 7 + 110];
-    sprintf(mingw32clean, "%s %s -maxdepth 3 -exec %s -Qo {} + 2>&1 | %s \"error: No package owns\" | %s -d' ' -f5- | %s '\\n' '\\0' | %s -r -0 -- %s -rf --", findPath, mingw32Path, pacmanPath, grepPath, cutPath, trPath, xargsPath, rmPath);
-    // build a mingw64clean 'findPath *mingw64Path -maxdepth 3 -exec pacmanPath -Qo {} + 2>&1 | grepPath "error: No package owns" | cutPath -d' ' -f5- | trPath '\n' '\0' | xargsPath -r -0 -- rmPath -rf --'
-    char mingw64clean[PATH_MAX * 7 + 110];
-    sprintf(mingw64clean, "%s %s -maxdepth 3 -exec %s -Qo {} + 2>&1 | %s \"error: No package owns\" | %s -d' ' -f5- | %s '\\n' '\\0' | %s -r -0 -- %s -rf --", findPath, mingw64Path, pacmanPath, grepPath, cutPath, trPath, xargsPath, rmPath);
-    // build a ucrt64clean 'findPath *ucrt64Path -maxdepth 3 -exec pacmanPath -Qo {} + 2>&1 | grepPath "error: No package owns" | cutPath -d' ' -f5- | trPath '\n' '\0' | xargsPath -r -0 -- rmPath -rf --'
-    char ucrt64clean[PATH_MAX * 7 + 110];
-    sprintf(ucrt64clean, "%s %s -maxdepth 3 -exec %s -Qo {} + 2>&1 | %s \"error: No package owns\" | %s -d' ' -f5- | %s '\\n' '\\0' | %s -r -0 -- %s -rf --", findPath, ucrt64Path, pacmanPath, grepPath, cutPath, trPath, xargsPath, rmPath);
-    // build a usrclean 'findPath *usrPath -maxdepth 3 -exec pacmanPath -Qo {} + 2>&1 | grepPath "error: No package owns" | cutPath -d' ' -f5- | trPath '\n' '\0' | xargsPath -r -0 -- rmPath -rf --'
-    char usrclean[PATH_MAX * 7 + 110];
-    sprintf(usrclean, "%s %s -maxdepth 3 -exec %s -Qo {} + 2>&1 | %s \"error: No package owns\" | %s -d' ' -f5- | %s '\\n' '\\0' | %s -r -0 -- %s -rf --", findPath, usrPath, pacmanPath, grepPath, cutPath, trPath, xargsPath, rmPath);
-    // build a optclean 'findPath *optPath -maxdepth 3 -exec pacmanPath -Qo {} + 2>&1 | grepPath "error: No package owns" | cutPath -d' ' -f5- | trPath '\n' '\0' | xargsPath -r -0 -- rmPath -rf --'
-    char optclean[PATH_MAX * 7 + 110];
-    sprintf(optclean, "%s %s -maxdepth 3 -exec %s -Qo {} + 2>&1 | %s \"error: No package owns\" | %s -d' ' -f5- | %s '\\n' '\\0' | %s -r -0 -- %s -rf --", findPath, optPath, pacmanPath, grepPath, cutPath, trPath, xargsPath, rmPath);
-    // build a tmpclean 'findPath *tmpPath -maxdepth 3 -exec pacmanPath -Qo {} + 2>&1 | grepPath "error: No package owns" | cutPath -d' ' -f5- | trPath '\n' '\0' | xargsPath -r -0 -- rmPath -rf --'
-    char tmpclean[PATH_MAX * 7 + 110];
-    sprintf(tmpclean, "%s %s -maxdepth 3 -exec %s -Qo {} + 2>&1 | %s \"error: No package owns\" | %s -d' ' -f5- | %s '\\n' '\\0' | %s -r -0 -- %s -rf --", findPath, tmpPath, pacmanPath, grepPath, cutPath, trPath, xargsPath, rmPath);
+    // build a clang32clean 'findPath *clang32Path -maxdepth 3 -exec pacmanPath -Qo {} + 2>&1 | grepPath "error: No package owns" | sedPath 's/.*error: No package owns //g' | trPath '\n' '\0' | xargsPath -r -0 -- rmPath -rf --'
+    char clang32clean[PATH_MAX * 7 + 132];
+    sprintf(clang32clean, "%s %s -maxdepth 3 -exec %s -Qo {} + 2>&1 | %s \"error: No package owns\" | %s 's/.*error: No package owns //g' | %s '\\n' '\\0' | %s -r -0 -- %s -rf --", findPath, clang32Path, pacmanPath, grepPath, sedPath, trPath, xargsPath, rmPath);
+    // build a clang64clean 'findPath *clang64Path -maxdepth 3 -exec pacmanPath -Qo {} + 2>&1 | grepPath "error: No package owns" | sedPath 's/.*error: No package owns //g' | trPath '\n' '\0' | xargsPath -r -0 -- rmPath -rf --'
+    char clang64clean[PATH_MAX * 7 + 132];
+    sprintf(clang64clean, "%s %s -maxdepth 3 -exec %s -Qo {} + 2>&1 | %s \"error: No package owns\" | %s 's/.*error: No package owns //g' | %s '\\n' '\\0' | %s -r -0 -- %s -rf --", findPath, clang64Path, pacmanPath, grepPath, sedPath, trPath, xargsPath, rmPath);
+    // build a clangarm64clean 'findPath *clangarm64Path -maxdepth 3 -exec pacmanPath -Qo {} + 2>&1 | grepPath "error: No package owns" | sedPath 's/.*error: No package owns //g' | trPath '\n' '\0' | xargsPath -r -0 -- rmPath -rf --'
+    char clangarm64clean[PATH_MAX * 7 + 132];
+    sprintf(clangarm64clean, "%s %s -maxdepth 3 -exec %s -Qo {} + 2>&1 | %s \"error: No package owns\" | %s 's/.*error: No package owns //g' | %s '\\n' '\\0' | %s -r -0 -- %s -rf --", findPath, clangarm64Path, pacmanPath, grepPath, sedPath, trPath, xargsPath, rmPath);
+    // build a mingw32clean 'findPath *mingw32Path -maxdepth 3 -exec pacmanPath -Qo {} + 2>&1 | grepPath "error: No package owns" | sedPath 's/.*error: No package owns //g' | trPath '\n' '\0' | xargsPath -r -0 -- rmPath -rf --'
+    char mingw32clean[PATH_MAX * 7 + 132];
+    sprintf(mingw32clean, "%s %s -maxdepth 3 -exec %s -Qo {} + 2>&1 | %s \"error: No package owns\" | %s 's/.*error: No package owns //g' | %s '\\n' '\\0' | %s -r -0 -- %s -rf --", findPath, mingw32Path, pacmanPath, grepPath, sedPath, trPath, xargsPath, rmPath);
+    // build a mingw64clean 'findPath *mingw64Path -maxdepth 3 -exec pacmanPath -Qo {} + 2>&1 | grepPath "error: No package owns" | sedPath 's/.*error: No package owns //g' | trPath '\n' '\0' | xargsPath -r -0 -- rmPath -rf --'
+    char mingw64clean[PATH_MAX * 7 + 132];
+    sprintf(mingw64clean, "%s %s -maxdepth 3 -exec %s -Qo {} + 2>&1 | %s \"error: No package owns\" | %s 's/.*error: No package owns //g' | %s '\\n' '\\0' | %s -r -0 -- %s -rf --", findPath, mingw64Path, pacmanPath, grepPath, sedPath, trPath, xargsPath, rmPath);
+    // build a ucrt64clean 'findPath *ucrt64Path -maxdepth 3 -exec pacmanPath -Qo {} + 2>&1 | grepPath "error: No package owns" | sedPath 's/.*error: No package owns //g' | trPath '\n' '\0' | xargsPath -r -0 -- rmPath -rf --'
+    char ucrt64clean[PATH_MAX * 7 + 132];
+    sprintf(ucrt64clean, "%s %s -maxdepth 3 -exec %s -Qo {} + 2>&1 | %s \"error: No package owns\" | %s 's/.*error: No package owns //g' | %s '\\n' '\\0' | %s -r -0 -- %s -rf --", findPath, ucrt64Path, pacmanPath, grepPath, sedPath, trPath, xargsPath, rmPath);
+    // build a usrclean 'findPath *usrPath -maxdepth 3 -exec pacmanPath -Qo {} + 2>&1 | grepPath "error: No package owns" | sedPath 's/.*error: No package owns //g' | trPath '\n' '\0' | xargsPath -r -0 -- rmPath -rf --'
+    char usrclean[PATH_MAX * 7 + 132];
+    sprintf(usrclean, "%s %s -maxdepth 3 -exec %s -Qo {} + 2>&1 | %s \"error: No package owns\" | %s 's/.*error: No package owns //g' | %s '\\n' '\\0' | %s -r -0 -- %s -rf --", findPath, usrPath, pacmanPath, grepPath, sedPath, trPath, xargsPath, rmPath);
+    // build a optclean 'findPath *optPath -maxdepth 3 -exec pacmanPath -Qo {} + 2>&1 | grepPath "error: No package owns" | sedPath 's/.*error: No package owns //g' | trPath '\n' '\0' | xargsPath -r -0 -- rmPath -rf --'
+    char optclean[PATH_MAX * 7 + 132];
+    sprintf(optclean, "%s %s -maxdepth 3 -exec %s -Qo {} + 2>&1 | %s \"error: No package owns\" | %s 's/.*error: No package owns //g' | %s '\\n' '\\0' | %s -r -0 -- %s -rf --", findPath, optPath, pacmanPath, grepPath, sedPath, trPath, xargsPath, rmPath);
+    // build a tmpclean 'findPath *tmpPath -maxdepth 3 -exec pacmanPath -Qo {} + 2>&1 | grepPath "error: No package owns" | sedPath 's/.*error: No package owns //g' | trPath '\n' '\0' | xargsPath -r -0 -- rmPath -rf --'
+    char tmpclean[PATH_MAX * 7 + 132];
+    sprintf(tmpclean, "%s %s -maxdepth 3 -exec %s -Qo {} + 2>&1 | %s \"error: No package owns\" | %s 's/.*error: No package owns //g' | %s '\\n' '\\0' | %s -r -0 -- %s -rf --", findPath, tmpPath, pacmanPath, grepPath, sedPath, trPath, xargsPath, rmPath);
 
     if (argc == 2 && strcmp(argv[1], "list") == 0)
     {

@@ -4,7 +4,7 @@
 
 Just as the [AUR (Arch User Repository)](https://aur.archlinux.org) is a community-maintained repository for [Arch Linux](https://archlinux.org), the MUR (MSYS2 User Repository) is a community-driven space for [MSYS2](https://archlinux.org) users.
 
-The MUR helps users access official packages by providing simple __executable links__. This makes it easy to run these packages directly from the command line (CMD, PowerShell, Bash, Zsh, Fish, and more).
+The MUR helps users access some exe-hidden official packages by providing simple __executable links__. This makes it easy to run these packages directly from the command line (CMD, PowerShell, Bash, Zsh, Fish, and more).
 
 The MUR also repackages software from their official sources, providing __executable wrappers__ to make these packages easy to use while maintaining their Windows file structure and allowing installation in MSYS2.
 

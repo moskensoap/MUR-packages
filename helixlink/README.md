@@ -24,7 +24,7 @@ If you cat /ucrt64/bin/helix, you'll see:
 
 This script uses ${MINGW_PREFIX} meaning it can only work in ucrt64 shell where you installed it, otherwise, no hx.exe will be found.
 
-You can run two commands below to compare them, and find this script is irrelevant.For by default, C:\\msys64\\ucrt64\\lib\\helix\\runtime is already in Runtime directories.
+You can run two commands below to compare them, and find this script is irrelevant, for by default, `\\?\C:\msys64\ucrt64\lib\helix\runtime` is already in Runtime directories.
 
 ```MSYS/UCRT64
 username@computername UCRT64 ~
@@ -32,8 +32,8 @@ $ hxlix --heallth
 Config file: default
 Language file: default
 Log file: C:\Users\username\AppData\Local\helix\helix.log
-Runtime directories: C:\Users\username\AppData\Roaming\helix\runtime;C:/msys64/ucrt64/var/lib/
-helix/runtime;\\?\C:\msys64\ucrt64\lib\helix\runtime
+Runtime directories: C:\Users\username\AppData\Roaming\helix\runtime;C:/msys64/ucrt64/var/lib/helix/runtime;
+\\?\C:\msys64\ucrt64\lib\helix\runtime
 Runtime directory does not exist: C:\Users\username\AppData\Roaming\helix\runtime
 Clipboard provider: clipboard-win
 System clipboard provider: clipboard-win
@@ -45,8 +45,8 @@ $ /ucrt64/lib/helix/hx.exe --health
 Config file: default
 Language file: default
 Log file: C:\Users\username\AppData\Local\helix\helix.log
-Runtime directories: C:\Users\username\AppData\Roaming\helix\runtime;\\?\C:\msys64\ucrt64\lib\
-helix\runtime
+Runtime directories: C:\Users\username\AppData\Roaming\helix\runtime;
+\\?\C:\msys64\ucrt64\lib\helix\runtime
 Runtime directory does not exist: C:\Users\username\AppData\Roaming\helix\runtime
 Clipboard provider: clipboard-win
 System clipboard provider: clipboard-win

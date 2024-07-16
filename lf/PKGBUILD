@@ -7,7 +7,8 @@ pkgdesc='Terminal file manager'
 arch=('x86_64')
 url='https://github.com/gokcehan/lf'
 license=(MIT)
-makedepends=("gcc")
+makedepends=("gcc"
+             "mingw-w64-ucrt-x86_64-go")
 depends=("vim")
 
 source=("$url/archive/refs/tags/r$pkgver.zip"
@@ -28,7 +29,7 @@ build() {
   # sed "\"\!\", \"%PAGER% %f%" to "\"$\", \"%PAGER% %f%" in os_windows.go
   sed -i 's/\"\!\", \"%PAGER% %f%\"/\"$\", \"%PAGER% %f%\"/g' os_windows.go
 
-  env CGO_ENABLED=0 go build -ldflags="-s -w" -trimpath -o lf.exe
+  env CGO_ENABLED=0 GOROOT=/ucrt64/lib/go /ucrt64/bin/go build -ldflags="-s -w" -trimpath -o lf.exe
 
 }
 

@@ -7,20 +7,6 @@
 #include <ctype.h>
 
 int main(int argc, char *argv[]) {
-
-    //if 'python -m pip * * --user'is called, then print warning and return 1;
-    if (argc > 3 && strcmp(argv[1], "-m") == 0 && strcmp(argv[2], "pip") == 0) {
-        for (int i = 3; i < argc; i++) {
-            if (strcmp(argv[i], "--user") == 0) {
-                fprintf(stderr, "WARNING: The use of '--user' is not supported with 'python -m pip'.\n");
-                fprintf(stderr, "This is because 'setversion-python.exe' only links globally installed package executables to /opt/bin.\n");
-                fprintf(stderr, "To avoid this warning, please consider installing packages globally.\n");
-                return 1;
-            }
-        }
-    }
-
-
     char path[PATH_MAX];
     ssize_t count = readlink("/proc/self/exe", path, sizeof(path) - 1);
 
@@ -45,10 +31,10 @@ int main(int argc, char *argv[]) {
         *dot = '\0';
     }
 
-    // Replace "/bin/$(fileName)311" with "/share/python/mur__pythonembed311/$(fileName)"
+    // Replace "/bin/$(fileName)21" with "/share/java/mur__jdk21-openjdk/bin/$(fileName)"
     char binPath[PATH_MAX], realPath[PATH_MAX];
-    sprintf(binPath, "/bin/%s311", fileName);
-    sprintf(realPath, "/share/python/mur__pythonembed311/%s", fileName);
+    sprintf(binPath, "/bin/%s21", fileName);
+    sprintf(realPath, "/share/java/mur__jdk21-openjdk/bin/%s", fileName);
 
     char *replacePtr = strstr(path, binPath);
     if (replacePtr != NULL) {

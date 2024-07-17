@@ -105,14 +105,8 @@ To solve CRLF error, you may run:
 
 ## Todo list
 - [ ] murpkg: MUR package manager.
-- [ ] jdk21-openjdk
-- [ ] jdk11-openjdk
-- [ ] jdk8-openjdk
-- [ ] jre-openjdk
-- [ ] jre21-openjdk
-- [ ] jre17-openjdk
-- [ ] jre11-openjdk
-- [ ] jre8-openjdk
+- [x] jdk21-openjdk
+- [x] jdk11-openjdk
 - [ ] php8.1
 - [ ] php7.3
 - [ ] php7.2

@@ -31,7 +31,7 @@ noextract=("python-$pkgver-embed-amd64.zip"
 sha256sums=('608619f8619075629c9c69f361352a0da6ed7e62f83a0e19c63e0ea32eb7629d'
             '66a0a39626efed4c5197c115cab430933ef0fe1651caca090b1e262aa7cc039b'
             '434b1ccfac92cace042d86dfbfd35c2c00c360ee9499e71ae2f895080b3f4e67'
-            '15c9014c5ea80e33434afcfb1f8449c74c75c8f39659f65e6ff7fe4dd1a3a904')
+            '46ec89f85b2c8fe4acf10d3eae2174053be3230febf670aa923b0f792f386ceb')
 
 prepare(){
   cd ${srcdir}

@@ -45,7 +45,7 @@ int main(int argc, char *argv[]) {
         *dot = '\0';
     }
 
-    // Replace "/bin/$(fileName)latest" with "/share/python/mur__pythonembed39/$(fileName)"
+    // Replace "/bin/$(fileName)39" with "/share/python/mur__pythonembed39/$(fileName)"
     char binPath[PATH_MAX], realPath[PATH_MAX];
     sprintf(binPath, "/bin/%s39", fileName);
     sprintf(realPath, "/share/python/mur__pythonembed39/%s", fileName);

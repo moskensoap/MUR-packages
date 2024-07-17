@@ -1,0 +1,41 @@
+# Maintainer: moskensoap <141073988+moskensoap@users.noreply.github.com>
+
+pkgname="mur__jdk21-openjdk"
+pkgver=21
+pkgrel=1
+pkgdesc='OpenJDK Java 21 development kit'
+arch=('x86_64')
+url='https://openjdk.org'
+license=(GPL2)
+makedepends=("gcc"
+             "make")
+depends=("mur__jdk-openjdk")
+magicnumber=fd2272bbf8e04c3dbaee13770090416c
+buildnumber=35
+source=("https://download.java.net/java/GA/jdk${pkgver}/${magicnumber}/${buildnumber}/GPL/openjdk-${pkgver}_windows-x64_bin.zip"
+        "main.c"
+        "makefile")
+sha256sums=('5434faaf029e66e7ce6e75770ca384de476750984a7d2881ef7686894c4b4944'
+            '67aa2857d6aa4a2a3f90a227137bde9733c48f0b8226c7bd14839f8f95756899'
+            '3d02cab85163bbd7a01195f7a1c669afc6b9678d889a1e0a1477aac683930ebf')
+
+prepare() {
+  cd ${srcdir}
+  for file in $(ls jdk-$pkgver/bin | grep .exe | sed 's/\.exe$/.c/'); do
+    cp main.c $file
+  done
+  rm main.c
+}
+
+build() {
+  cd ${srcdir}
+  make
+}
+
+package() {
+  cd ${srcdir}
+  mkdir -p ${pkgdir}/opt/bin/
+  install -Dm755 ./*.exe ${pkgdir}/opt/bin/
+  mkdir -p ${pkgdir}/opt/share/java/${pkgname}/
+  cp -a jdk-$pkgver/* ${pkgdir}/opt/share/java/${pkgname}/
+}

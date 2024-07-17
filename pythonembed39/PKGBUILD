@@ -1,0 +1,78 @@
+# Maintainer: moskensoap <141073988+moskensoap@users.noreply.github.com>
+
+pkgname="mur__pythonembed39"
+pkgver=3.9.13
+
+major=${pkgver%%.*}
+minor=${pkgver#*.}
+minor=${minor%%.*}
+vernum="${major}${minor}"  
+
+pkgrel=1
+pkgdesc='Python39 is a programming language that lets you work more quickly and integrate your systems more effectively.'
+arch=('x86_64')
+url='https://www.python.org'
+license=(GPL-compatible)
+makedepends=("gcc"
+             "make")
+depends=("gcc"
+         "make"
+         "mur__optfirst"
+         "mur__pythonembed")
+
+source=("$url/ftp/python/$pkgver/python-$pkgver-embed-amd64.zip"
+        "https://github.com/python/cpython/archive/refs/tags/v$pkgver.zip"
+        "makefile"
+        "pythonmain.c")
+
+noextract=("python-$pkgver-embed-amd64.zip"
+           "v$pkgver.zip")
+
+sha256sums=('938a1f3b80d580320836260612084d74ce094a261e36f9ff3ac7b9463df5f5e4'
+            'bc1698633ecbc556e25198954befb67a50ee4e2fe912c909d9d405bbfbfef3f0'
+            '14b78ad4420190a6685e4eb5333b64e45c95931e152bebba140aea7c3e1af76c'
+            '6d3edd84eed1c4dded2477b0f43e716a16ea9dc2801476f53b99377072cf74c6')
+
+prepare(){
+  cd ${srcdir}
+  unzip v$pkgver.zip
+  unzip python-$pkgver-embed-amd64.zip -d python-$pkgver-embed-amd64
+}
+
+build(){
+  cd ${srcdir}
+  cd python-$pkgver-embed-amd64
+
+  #Uncomment to run site.main() automatically
+  sed -i '5s/^#import/import/' python$vernum._pth
+
+  #Copy ensurepip from 'github.com/python/cpython' to enable pip installation by python.exe or virtualenv.exe
+  cp -a ../cpython-$pkgver/Lib/ensurepip/ .
+
+
+  #prepare rename .c files to build python.exe and pip.exe wrapper
+  cd ..
+  mkdir wrapper
+  for file in $(ls python-$pkgver-embed-amd64 | grep .exe | sed 's/\.exe$/.c/'); do
+    cp pythonmain.c ./wrapper/$file
+  done
+
+  cp makefile ./wrapper/makefile
+
+  #make python.exe and pip.exe wrapper
+  cd wrapper
+  make
+
+}
+
+
+package(){
+  cd ${srcdir}
+  mkdir -p ${pkgdir}/opt/bin/
+  mkdir -p ${pkgdir}/opt/share/python/${pkgname}/
+  cp -a python-$pkgver-embed-amd64/* ${pkgdir}/opt/share/python/${pkgname}/
+  install -Dm755 wrapper/*.exe ${pkgdir}/opt/bin/
+
+}
+
+options=(!strip)

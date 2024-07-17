@@ -22,7 +22,7 @@ jdtls, lua-language-server, marksman, omnisharp-roslyn, zls.
 
 3.Development Tools:
 
-composer, marktext (GUI), pandoc, xdebug.
+composer, lf, marktext (GUI), pandoc, xdebug.
 
 4.Utilities:
 
@@ -127,9 +127,9 @@ To solve CRLF error, you may run:
 - [ ] xdebug5.6
 - [x] pythonembed
 - [x] pythonembed311
-- [ ] pythonembed310
-- [ ] pythonembed39
-- [ ] pythonembed38
+- [x] pythonembed310
+- [x] pythonembed39
+- [x] pythonembed38
 
 
 
@@ -223,6 +223,10 @@ OpenJDK Runtime Environment (build 22+36-2370)
 OpenJDK 64-Bit Server VM (build 22+36-2370, mixed mode, sharing)
 ```
 __jdtls__: Java language server
+
+__lf__: Terminal file manager
+
+Note: Modified the `start file` command to `less file` when opening a file in `lf`.
 
 __lua-language-server__: A language server that offers Lua language support - programmed in Lua
 

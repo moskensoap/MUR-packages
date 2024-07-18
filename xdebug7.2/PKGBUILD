@@ -1,0 +1,28 @@
+# Maintainer: moskensoap <141073988+moskensoap@users.noreply.github.com>
+
+pkgname=("mur__xdebug7.2")
+pkgver=3.1.6
+phpver=7.2
+pkgrel=1
+pkgdesc="Xdebug — Step Debugger and Debugging Aid for PHP"
+
+arch=('x86_64')
+url='https://xdebug.org'
+license=(The Xdebug License)
+
+depends=("mur__php7.2")
+
+source=("$url/files/php_xdebug-${pkgver}-${phpver}-vc15-x86_64.dll"
+        "xdebug.ini")
+
+sha256sums=('4e8f9a2c650f6fbd477b6fd15a416f91cd9a4c0a033ed0f7ecb9d7612e7429ac'
+            '307d6706c5177d90acde61e0d6ca6862c51144420db980430730bf2ed6198402')
+
+
+package() {
+  cd ${srcdir}
+  mkdir -p ${pkgdir}/opt/share/mur__php7.2/ext
+  cp php_xdebug-${pkgver}-${phpver}-vc15-x86_64.dll ${pkgdir}/opt/share/mur__php7.2/ext/php_xdebug.dll
+  mkdir -p ${pkgdir}/opt/share/mur__php7.2/conf.d
+  cp xdebug.ini ${pkgdir}/opt/share/mur__php7.2/conf.d/xdebug.ini
+}

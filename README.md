@@ -124,12 +124,12 @@ To solve CRLF error, you may run:
 - [x] php7.1
 - [x] php7.0
 - [x] php5.6
-- [ ] xdebug8.1
-- [ ] xdebug7.3
-- [ ] xdebug7.2
-- [ ] xdebug7.1
-- [ ] xdebug7.0
-- [ ] xdebug5.6
+- [x] xdebug8.1
+- [x] xdebug7.3
+- [x] xdebug7.2
+- [x] xdebug7.1
+- [x] xdebug7.0
+- [x] xdebug5.6
 - [x] pythonembed
 - [x] pythonembed311
 - [x] pythonembed310

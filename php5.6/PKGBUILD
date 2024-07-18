@@ -1,0 +1,92 @@
+# Maintainer: moskensoap <141073988+moskensoap@users.noreply.github.com>
+
+pkgname=("mur__php5.6" "mur__php5.6-development" "mur__php5.6-production" "mur__php5.6-extension-composer" "mur__php5.6-extension-extra")
+pkgver=5.6.40
+pkgrel=1
+
+arch=('x86_64')
+url='https://www.php.net'
+license=(PHP License)
+makedepends=("gcc"
+             "make"
+             "unzip")
+depends=("mur__php")
+
+source=("https://windows.php.net/downloads/releases/archives/php-${pkgver}-Win32-vc11-x64.zip"
+        "main.c"
+        "makefile"
+        "php.ini"
+        "composer.ini"
+        "extra.ini")
+
+noextract=("php-${pkgver}-Win32-vc11-x64.zip")
+sha256sums=('b312df0b16ec645adfd7ad39ce6f9dd294a4dfeb8130ee8041f8af0f89f62904'
+            'fa40f1c39ac0fa9fc1467cbf728a06f5cb1071b1d14984a177a913eb5c33e065'
+            'e80d9d797e74f7ddf109d6f4b0efbc273f4e32526a09606afbea2ae881460d55'
+            'd7266e25a4be7bbcad241af04d763876556bbbdbbf69febe9b7c84bdfb3b2412'
+            '41ddd8fcae87f92bc0b5f61cfccd388640b44546ab69e01439c65864aa9c825a'
+            '14c10fb054c84eb45b3bf9aa74698a7c8d6788c331ea61ece33f069153ab94dd')
+
+prepare() {
+  cd ${srcdir}
+  unzip php-${pkgver}-Win32-vc11-x64.zip -d php-$pkgver
+
+  for file in $(ls php-$pkgver | grep .exe | sed 's/\.exe$/.c/'); do
+    cp main.c $file
+  done
+  rm main.c
+
+}
+
+build() {
+  cd ${srcdir}
+  make
+
+}
+
+package_mur__php5.6() {
+  pkgdesc="php-${pkgver} for Windows x64 Thread Safe"
+  cd ${srcdir}
+  mkdir -p ${pkgdir}/opt/bin/
+  install -Dm755 ./*.exe ${pkgdir}/opt/bin/
+  mkdir -p ${pkgdir}/opt/share/mur__php5.6/
+  cp -a php-$pkgver/* ${pkgdir}/opt/share/mur__php5.6/
+  mkdir -p ${pkgdir}/opt/share/mur__php5.6/conf.d/
+  cp php.ini ${pkgdir}/opt/share/mur__php5.6/
+}
+
+package_mur__php5.6-development() {
+  pkgdesc="php config for development"
+  depends=("mur__php5.6")
+  conflict=("mur__php5.6-production")
+  cd ${srcdir}
+  mkdir -p ${pkgdir}/opt/share/mur__php5.6/conf.d/
+  cp php-$pkgver/php.ini-development ${pkgdir}/opt/share/mur__php5.6/conf.d/development.ini
+}
+
+package_mur__php5.6-production() {
+  pkgdesc="php config for production"
+  depends=("mur__php5.6")
+  conflict=("mur__php5.6-development")
+  cd ${srcdir}
+  mkdir -p ${pkgdir}/opt/share/mur__php5.6/conf.d/
+  cp php-$pkgver/php.ini-production ${pkgdir}/opt/share/mur__php5.6/conf.d/production.ini
+}
+
+package_mur__php5.6-extension-composer() {
+  pkgdesc="php config for composer"
+  depends=("mur__php5.6")
+  cd ${srcdir}
+  mkdir -p ${pkgdir}/opt/share/mur__php5.6/conf.d/
+  cp composer.ini ${pkgdir}/opt/share/mur__php5.6/conf.d/composer.ini
+}
+
+package_mur__php5.6-extension-extra() {
+  pkgdesc="php config for extra"
+  depends=("mur__php5.6" "mur__php5.6-extension-composer")
+  cd ${srcdir}
+  mkdir -p ${pkgdir}/opt/share/mur__php5.6/conf.d/
+  cp extra.ini ${pkgdir}/opt/share/mur__php5.6/conf.d/extra.ini
+}
+
+options=(!strip)

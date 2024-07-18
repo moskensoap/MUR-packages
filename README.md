@@ -116,14 +116,14 @@ To solve CRLF error, you may run:
 - [x] jre11-openjdk
 - [x] jre8-openjdk
 - [x] php
-- [ ] php8.1
+- [x] php8.1
 - [x] php8.0
 - [x] php7.4
-- [ ] php7.3
-- [ ] php7.2
-- [ ] php7.1
-- [ ] php7.0
-- [ ] php5.6
+- [x] php7.3
+- [x] php7.2
+- [x] php7.1
+- [x] php7.0
+- [x] php5.6
 - [ ] xdebug8.1
 - [ ] xdebug7.3
 - [ ] xdebug7.2

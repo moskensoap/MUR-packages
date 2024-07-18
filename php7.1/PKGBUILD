@@ -1,0 +1,92 @@
+# Maintainer: moskensoap <141073988+moskensoap@users.noreply.github.com>
+
+pkgname=("mur__php7.1" "mur__php7.1-development" "mur__php7.1-production" "mur__php7.1-extension-composer" "mur__php7.1-extension-extra")
+pkgver=7.1.33
+pkgrel=1
+
+arch=('x86_64')
+url='https://www.php.net'
+license=(PHP License)
+makedepends=("gcc"
+             "make"
+             "unzip")
+depends=("mur__php")
+
+source=("https://windows.php.net/downloads/releases/archives/php-${pkgver}-Win32-vc14-x64.zip"
+        "main.c"
+        "makefile"
+        "php.ini"
+        "composer.ini"
+        "extra.ini")
+
+noextract=("php-${pkgver}-Win32-vc14-x64.zip")
+sha256sums=('2f6b0c6b62de88cf5cc16e68ac6d5e3b73fc01bcb03b51fe8c8534965b8e808c'
+            '466017835b12b46d562f5500ae23266b680a95aa5b27277f7be904578dd4302f'
+            'f5d9a4e7aa22652b49a02f1bde98bbba22c33d05c1cca754124c3cbe61b04d3e'
+            'd7266e25a4be7bbcad241af04d763876556bbbdbbf69febe9b7c84bdfb3b2412'
+            '41ddd8fcae87f92bc0b5f61cfccd388640b44546ab69e01439c65864aa9c825a'
+            'f40e6cd5a69e8b95f3d829fe52a3de38b139564970419bfeb22fa3a060dfc78e')
+
+prepare() {
+  cd ${srcdir}
+  unzip php-${pkgver}-Win32-vc14-x64.zip -d php-$pkgver
+
+  for file in $(ls php-$pkgver | grep .exe | sed 's/\.exe$/.c/'); do
+    cp main.c $file
+  done
+  rm main.c
+
+}
+
+build() {
+  cd ${srcdir}
+  make
+
+}
+
+package_mur__php7.1() {
+  pkgdesc="php-${pkgver} for Windows x64 Thread Safe"
+  cd ${srcdir}
+  mkdir -p ${pkgdir}/opt/bin/
+  install -Dm755 ./*.exe ${pkgdir}/opt/bin/
+  mkdir -p ${pkgdir}/opt/share/mur__php7.1/
+  cp -a php-$pkgver/* ${pkgdir}/opt/share/mur__php7.1/
+  mkdir -p ${pkgdir}/opt/share/mur__php7.1/conf.d/
+  cp php.ini ${pkgdir}/opt/share/mur__php7.1/
+}
+
+package_mur__php7.1-development() {
+  pkgdesc="php config for development"
+  depends=("mur__php7.1")
+  conflict=("mur__php7.1-production")
+  cd ${srcdir}
+  mkdir -p ${pkgdir}/opt/share/mur__php7.1/conf.d/
+  cp php-$pkgver/php.ini-development ${pkgdir}/opt/share/mur__php7.1/conf.d/development.ini
+}
+
+package_mur__php7.1-production() {
+  pkgdesc="php config for production"
+  depends=("mur__php7.1")
+  conflict=("mur__php7.1-development")
+  cd ${srcdir}
+  mkdir -p ${pkgdir}/opt/share/mur__php7.1/conf.d/
+  cp php-$pkgver/php.ini-production ${pkgdir}/opt/share/mur__php7.1/conf.d/production.ini
+}
+
+package_mur__php7.1-extension-composer() {
+  pkgdesc="php config for composer"
+  depends=("mur__php7.1")
+  cd ${srcdir}
+  mkdir -p ${pkgdir}/opt/share/mur__php7.1/conf.d/
+  cp composer.ini ${pkgdir}/opt/share/mur__php7.1/conf.d/composer.ini
+}
+
+package_mur__php7.1-extension-extra() {
+  pkgdesc="php config for extra"
+  depends=("mur__php7.1" "mur__php7.1-extension-composer")
+  cd ${srcdir}
+  mkdir -p ${pkgdir}/opt/share/mur__php7.1/conf.d/
+  cp extra.ini ${pkgdir}/opt/share/mur__php7.1/conf.d/extra.ini
+}
+
+options=(!strip)

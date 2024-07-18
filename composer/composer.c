@@ -48,7 +48,7 @@ int main(int argc, char *argv[]) {
         return 1;
     }
 
-    //cp path to composerpath and replace /bin/php with /bin/composer
+    //cp path to composerpath and replace /bin/php with /bin/composer.phar
     char composerPath[PATH_MAX];
     strcpy(composerPath, path);
     sprintf(binPath, "/bin/%s", "php");

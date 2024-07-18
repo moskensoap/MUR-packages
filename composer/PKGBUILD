@@ -16,12 +16,12 @@ source=("$url/download/$pkgver/composer.phar"
         "composer.c")
 
 sha256sums=('aab940cd53d285a54c50465820a2080fcb7182a4ba1e5f795abfb10414a4b4be'
-            'e8d75dbf3c867a31f42a494c00830efe4eef77f93049e5e597fba790c291d09b')
+            '78bacecdb4db7109c59fbd08d9cd4e56fb10b4e980de43ba9bba0ed6ab1b03be')
 
 
 build() {
   cd ${srcdir}
-  gcc -o composer.exe composer.c
+  gcc -o composer.exe composer.c -O3 -s
 }
 
 package() {

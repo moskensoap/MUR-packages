@@ -1,0 +1,31 @@
+# Maintainer: moskensoap <141073988+moskensoap@users.noreply.github.com>
+
+pkgname=("mur__composerlts")
+pkgver=2.2.24
+pkgrel=1
+pkgdesc="Dependency Manager for PHP (LTS)"
+
+arch=('x86_64')
+url='https://getcomposer.org'
+license=(MIT)
+makedepends=("gcc")
+depends=("mur__php"
+         "mur__php-extension-composer")
+
+source=("$url/download/$pkgver/composer.phar"
+        "composerlts.c")
+
+sha256sums=('b0c383b1f430a80a74c006f20199d1e0226848a0a90afa5c0a7d01fb90ee9075'
+            '6505a9f0ab1fb819a643ab5f99b8934b70c825633ad15645d4c8c867fd1c1aea')
+
+
+build() {
+  cd ${srcdir}
+  gcc -o composerlts.exe composerlts.c -O3 -s
+}
+
+package() {
+  cd ${srcdir}
+  install -Dm755 composerlts.exe ${pkgdir}/opt/bin/composerlts.exe
+  cp composer.phar ${pkgdir}/opt/bin/composerlts.phar
+}

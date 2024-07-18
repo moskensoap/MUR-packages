@@ -6,7 +6,7 @@ Based on [MSYS2](https://www.msys2.org) and its pacman, MUR (MSYS2 User Reposito
 
 MUR focuses on development tools that cannot be compiled via MSYS2 from source code yet.
 
-MUR builds `executable wrappers` to run binaries of packages while maintaining their Windows file structure and installing them in MSYS2.
+MUR builds `executable wrappers` to run binaries of repackaged packages from their official sites while maintaining their Windows file structure and installing them in MSYS2.
 
 ## Classes:
 

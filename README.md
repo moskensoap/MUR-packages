@@ -105,9 +105,20 @@ To solve CRLF error, you may run:
 
 ## Todo list
 - [ ] murpkg: MUR package manager.
+- [x] jdk-openjdk
 - [x] jdk21-openjdk
+- [x] jdk17-openjdk
 - [x] jdk11-openjdk
+- [x] jdk8-openjdk
+- [x] jre-openjdk
+- [x] jre21-openjdk
+- [x] jre17-openjdk
+- [x] jre11-openjdk
+- [x] jre8-openjdk
+- [x] php
 - [ ] php8.1
+- [x] php8.0
+- [x] php7.4
 - [ ] php7.3
 - [ ] php7.2
 - [ ] php7.1
@@ -183,13 +194,20 @@ Usage:
         setversion-jdk <version>
 version:
         jdk<version>-openjdk you installed form MUR-PACKAGES
+        <jreversion>-openjdk you installed form MUR-PACKAGES
         latest for jdk-openjdk
+        jrelatest for jre-openjdk
 example:
         setversion-jdk 8
         setversion-jdk 11
         setversion-jdk 17
         setversion-jdk 21
         setversion-jdk latest
+        setversion-jdk jre8
+        setversion-jdk jre11
+        setversion-jdk jre17
+        setversion-jdk jre21
+        setversion-jdk jrelatest
 ```
 The version config file is stored in `/home/.mur/setversion/jdk-openjdk.txt`. You need to manually remove it when uninstalling jdk-openjdk.
 ```

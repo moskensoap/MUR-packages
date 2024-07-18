@@ -66,13 +66,20 @@ int main(int argc, char *argv[]) {
         printf("\tsetversion-jdk <version>\n");
         printf("version:\n");
         printf("\tjdk<version>-openjdk you installed form MUR-PACKAGES\n");
+        printf("\t<jreversion>-openjdk you installed form MUR-PACKAGES\n");        
         printf("\tlatest for jdk-openjdk\n");
+        printf("\tjrelatest for jre-openjdk\n");
         printf("example:\n");
         printf("\tsetversion-jdk 8\n");
         printf("\tsetversion-jdk 11\n");
         printf("\tsetversion-jdk 17\n");
         printf("\tsetversion-jdk 21\n");
         printf("\tsetversion-jdk latest\n");
+        printf("\tsetversion-jdk jre8\n");
+        printf("\tsetversion-jdk jre11\n");
+        printf("\tsetversion-jdk jre17\n");
+        printf("\tsetversion-jdk jre21\n");
+        printf("\tsetversion-jdk jrelatest\n");        
         return 0;
     }
     if (argc != 2) {

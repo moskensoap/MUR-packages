@@ -1,23 +1,23 @@
 # Maintainer: moskensoap <141073988+moskensoap@users.noreply.github.com>
 
-pkgname="mur__jdk17-openjdk"
-pkgver=17.0.12
-zuluver=17.52.17
-jdkdir=zulu${zuluver}-ca-jdk${pkgver}-win_x64
+pkgname="mur__jre-openjdk"
+pkgver=22.0.2
+zuluver=22.32.15
+jdkdir=zulu${zuluver}-ca-jre${pkgver}-win_x64
 pkgrel=1
-pkgdesc='OpenJDK Java 17 development kit'
+pkgdesc='OpenJDK Java runtime environment'
 arch=('x86_64')
 url='https://www.azul.com/downloads/#zulu'
 license=(GPL2)
 makedepends=("gcc"
              "make")
 depends=("mur__jdk-openjdk")
-source=("https://cdn.azul.com/zulu/bin/zulu${zuluver}-ca-jdk${pkgver}-win_x64.zip"
+source=("https://cdn.azul.com/zulu/bin/zulu${zuluver}-ca-jre${pkgver}-win_x64.zip"
         "main.c"
         "makefile")
-sha256sums=('c0d9b0e02a92e4d919e0998970186983c745bdf2b0fe0b35b7d913acec9e502d'
-            '01bf1f855b761480f657bd0e93cc9468fd59302bdb957865d38cb4978ba19b6a'
-            'f425dfe6bf49e871a06a6f156580538348fdeef050c5a3cc8c7c3ee021f58d80')
+sha256sums=('cdb7d259b502bab244d96026ca1a3b16c6a607495ddcb6817aa408db88404584'
+            '088c683b96e2d64cc1d17cec49764097fee60a99485ab02d223b5c1f05b71ca1'
+            '6ca63291ba9e663df9ddd6c758ca1830425de218f1733bba64d8aff22b62e2d7')
 
 prepare() {
   cd ${srcdir}

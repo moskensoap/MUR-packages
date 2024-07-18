@@ -1,32 +1,32 @@
 # Maintainer: moskensoap <141073988+moskensoap@users.noreply.github.com>
 
 pkgname="mur__jdk-openjdk"
-pkgver=22
+pkgver=22.0.2
+zuluver=22.32.15
+jdkdir=zulu${zuluver}-ca-jdk${pkgver}-win_x64
 pkgrel=1
 pkgdesc='OpenJDK Java development kit'
 arch=('x86_64')
-url='https://openjdk.org'
+url='https://www.azul.com/downloads/#zulu'
 license=(GPL2)
 makedepends=("gcc"
              "make")
-magicnumber=830ec9fcccef480bb3e73fb7ecafe059
-buildnumber=36
-source=("https://download.java.net/java/GA/jdk${pkgver}/${magicnumber}/${buildnumber}/GPL/openjdk-${pkgver}_windows-x64_bin.zip"
+source=("https://cdn.azul.com/zulu/bin/zulu${zuluver}-ca-jdk${pkgver}-win_x64.zip"
         "main.c"
         "makefile"
         "link.c"
         "linkmakefile"
         "setversion-jdk.c")
-sha256sums=('8f5138fecb53c08c20abd4fa6812f9400051f3852582a2142ffda0dff73a5824'
+sha256sums=('592215502d0958c75ee93c69d22b5ecf2b4760afc66ab1def2433a3ad54ccabe'
             '0597ce91e8488303b7184ef06ce5d4c937930a761716bbbf54c33687e8a484d5'
             'e45cdbda7a078597075fb0a9e1dbe3762a3313c73cbc81d34024a61320a81a50'
             'df97e672302458f6dbf5d651c323b8e9f7df5af34fd4a40036db783107312248'
             '490009190e4fdb5f11e5c716966fc26c96fcb69eb23e594c123ba28f03e4b4a6'
-            '0c46c74af65e4f0e79e2e61c4fdab91ab7242576108ba984aef0a17717129293')
+            '8e4a06c8159f6e70caf4202a3a4ab19f3431db672ea82d2d2c0f621b807fefb0')
 
 prepare() {
   cd ${srcdir}
-  for file in $(ls jdk-$pkgver/bin | grep .exe | sed 's/\.exe$/.c/'); do
+  for file in $(ls $jdkdir/bin | grep .exe | sed 's/\.exe$/.c/'); do
     cp main.c $file
   done
   rm main.c
@@ -37,7 +37,7 @@ prepare() {
   rm link.c linkmakefile
 
   cd linker
-  for file in $(ls ../jdk-$pkgver/bin | grep .exe | sed 's/\.exe$/.c/'); do
+  for file in $(ls ../$jdkdir/bin | grep .exe | sed 's/\.exe$/.c/'); do
     cp link.c $file
   done
   rm link.c
@@ -64,5 +64,5 @@ package() {
   install -Dm755 linker/*.exe ${pkgdir}/opt/bin/
   install -Dm755 setversion/setversion-jdk.exe ${pkgdir}/opt/bin/
   mkdir -p ${pkgdir}/opt/share/java/${pkgname}/
-  cp -a jdk-$pkgver/* ${pkgdir}/opt/share/java/${pkgname}/
+  cp -a $jdkdir/* ${pkgdir}/opt/share/java/${pkgname}/
 }

@@ -49,9 +49,6 @@ int main(int argc, char *argv[])
         printf("\n\tNote: DIRECTORY should be a Unix-like path, such as /tmp\n\n");
         printf("\t2.To clean (remove) these files, use the following command:\n");
         printf("\t\tfind DIRECTORY -maxdepth 3 -exec pacman -Qo {} + 2>&1 | grep \"error: No package owns\" | sed 's/.*error: No package owns //g' | tr '\\n' '\\0' | xargs -r -0 -- rm -rf --\n");
-        printf("Warning:\n");
-        printf("\tPlease do not manually run these commands in Git Bash. Run them in the MSYS environment of MSYS2 instead.\n");
-        printf("\tThis program automatically detects and executes the necessary commands within the MSYS environment using relative paths, ensuring safe file removal.\n");
         return 0;
     }
 

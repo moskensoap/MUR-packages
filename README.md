@@ -312,6 +312,8 @@ __pythonembed__: Python is a programming language that lets you work more quickl
 
 Repackaged on official [embeded python zip](https://www.python.org/downloads/windows/), with `ensurepip` extracted form [github.com/python/cpython](https://github.com/python/cpython), supporting the installation and use of `virtualenv`.
 
+The version config file is stored in /home/.mur/setversion/pythonembed.txt. You need to manually remove it when uninstalling pythonembed. Additionally, it is better to install `murclean` and run `murclean clean opt` to automatically remove all packages installed by pip.
+
 Basic Usage:
 ```
 setversion-python latest

@@ -1,0 +1,28 @@
+# Maintainer: moskensoap <141073988+moskensoap@users.noreply.github.com>
+
+pkgname="mur__murpkg"
+pkgver=0.4.1
+pkgrel=1
+pkgdesc='MUR-package manager'
+arch=('x86_64')
+url='https://github.com/moskensoap/murpkg'
+license=(MIT)
+makedepends=("gcc"
+             "make")
+
+source=("$url/archive/refs/tags/$pkgver.zip")
+sha256sums=('2dfeb9314589f14ee9d1be0a4ed8877e437f6b4506e2c4f05cacf45a391d9b66')
+
+build() {
+  cd ${srcdir}
+  cd murpkg-${pkgver}
+  make
+}
+
+package() {
+  cd ${srcdir}
+  cd murpkg-${pkgver}
+  make DESTDIR=${pkgdir} install
+  install -Dm644 LICENSE ${pkgdir}/usr/local/share/licenses/${pkgname}/LICENSE
+
+}

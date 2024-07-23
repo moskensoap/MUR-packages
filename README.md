@@ -24,7 +24,7 @@ composer, lf, marktext (GUI), pandoc, xdebug.
 
 4.Utilities:
 
-gradlelink, helixlink, makelink, murclean, optfirst.
+gradlelink, helixlink, makelink, murclean, murpkg, optfirst.
 
 # How to use
 
@@ -71,7 +71,15 @@ C:\msys64\opt\bin
 Additionally, to ensure that MSYS2 can inherit the Windows PATH (e.g., to access Windows programs within MSYS2), you can set the `MSYS2_PATH_TYPE` environment variable to `inherit`.
 
 
-## Installation
+## Installation  
+  
+### murpkg  
+  
+[murpkg](https://github.com/moskensoap/murpkg) is the package manager for this repository. It can add other GitHub repositories if their PKGBUILD files' `pkgname` contains `__`.  
+  
+Using murpkg to automatically install, remove, and upgrade packages is recommended. Additionally, murpkg itself is available in this repository and can be upgraded using murpkg.
+
+### manual
 
 1.Clone this project to your computer by running:
 
@@ -82,6 +90,10 @@ Additionally, to ensure that MSYS2 can inherit the Windows PATH (e.g., to access
     pacman -S --needed base-devel
 
 3.To build the package, start a shell in an environment you want to build for, change the working directory to the directory of the PKGBUILD.
+
+CRLF->LF, run:
+
+    find . -maxdepth 1 -type f -exec dos2unix {} +
 
 For mingw_arch, run:
 
@@ -102,7 +114,7 @@ To solve CRLF error, you may run:
 # Packages
 
 ## Todo list
-- [ ] murpkg: MUR package manager.
+- [x] murpkg: MUR package manager.
 - [x] jdk-openjdk
 - [x] jdk21-openjdk
 - [x] jdk17-openjdk
@@ -154,6 +166,30 @@ argument:
         mingw32 mingw64 ucrt64
         usr     opt     tmp
         all (for all above if default)
+```
+**murpkg**: MUR-package manager
+```
+Usage:
+
+        murpkg command [arguments]
+
+The commands are:
+
+        repo init       Initialize a new repository.
+        repo list       List all available repositories.
+        repo add        Add a new repository.
+        repo remove     Remove an existing repository.
+        update          Update the package database.
+        list            List all installed packages.
+        search          Search for a package in the repositories.
+        show            Show detailed information about a package.
+        install         Install a package.
+        upgrade         Upgrade all installed packages to the latest version.
+        remove          Remove a package.
+        autoremove      Automatically remove unneeded packages.
+        clean           Clean up the package cache.
+        help            Show this help message.
+        version         Show the version of murpkg.
 ```
 **optfirst**: Locally sets PATH to /opt/bin:$PATH and runs \<command\> with the provided arguments.
 ```

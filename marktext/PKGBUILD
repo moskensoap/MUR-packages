@@ -14,7 +14,7 @@ source=("$url/releases/download/v$pkgver/marktext-x64-win.zip"
         "marktext.c")
 noextract=("marktext-x64-win.zip")
 sha256sums=('2e5ffe0e6e77b8400f60dc0b38bf2615e558b2defaeda5f3ba4b2dc57ee2af15'
-            '518d25f12b60e1f517008f1d558a066e857452864fbf7555b367faed643c3d9c')
+            '8361bdfaef83b8eb64d33b741b390259186476d9e9d7336142d300252926d984')
 
 prepare() {
   cd ${srcdir}

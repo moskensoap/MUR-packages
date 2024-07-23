@@ -11,8 +11,8 @@ makedepends=("gcc")
 depends=("gradle")
 source=("main.c"
         "LICENSE")
-sha256sums=('be638c8cccbbe7f2ef4c4a69a010e42ce206733d1afe6361a331d0d9544a05f2'
-            'ae1ac950060baad6e25e65f23e92bad0e0cb9e8de258cafcec5d25cba861af4a')
+sha256sums=('f507cea1ee5cfbbd2aca18dc094f1849f83cb0b7aa56765253a78a0fd27d1499'
+            '15070e8c828240aa544f41444e2392887c38f8c9f9f69bed35bdf54ef32679a0')
 
 build() {
   cd ${srcdir}

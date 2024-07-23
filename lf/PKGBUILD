@@ -14,7 +14,7 @@ depends=("vim")
 source=("$url/archive/refs/tags/r$pkgver.zip"
         "lf.c")
 sha256sums=('571ee17d8181d77a3b8bcd7aaaff0bde062c1851d93e9d324dfe15948136891a'
-            '11857303a171631d55f9133c28fb3be9bd0fa64d461681491a604931bfb0bca1')
+            'ef071e886b5d36d9668aaa6abc64b1d0bf4996734f1feb7dfdef5024680bed22')
 
 
 build() {

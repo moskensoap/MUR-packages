@@ -16,8 +16,8 @@ source=("https://cdn.azul.com/zulu/bin/zulu${zuluver}-ca-jre${pkgver}-win_x64.zi
         "main.c"
         "makefile")
 sha256sums=('cdb7d259b502bab244d96026ca1a3b16c6a607495ddcb6817aa408db88404584'
-            '088c683b96e2d64cc1d17cec49764097fee60a99485ab02d223b5c1f05b71ca1'
-            '6ca63291ba9e663df9ddd6c758ca1830425de218f1733bba64d8aff22b62e2d7')
+            '870d68b9e8f631e0bce98a32e74795fde7877eec1ac56c9237f2a7423b3acf98'
+            'ac7a6f1cb5167481f1412930cbc4bbfcf86069999f753caa462a440fd05239c2')
 
 prepare() {
   cd ${srcdir}

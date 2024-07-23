@@ -14,8 +14,8 @@ makedepends=("${MINGW_PACKAGE_PREFIX}-cc")
 depends=("${MINGW_PACKAGE_PREFIX}-helix")
 source=("main.c"
         "LICENSE")
-sha256sums=('e0857f6e83cc20a94474506855a1d97204a4364c767e036cec073d2f84e97309'
-            'ae1ac950060baad6e25e65f23e92bad0e0cb9e8de258cafcec5d25cba861af4a')
+sha256sums=('c9c1e5e316ecb2a605cd4bdacf8994f66c4e79948a26b92ff44652a814e9921d'
+            '15070e8c828240aa544f41444e2392887c38f8c9f9f69bed35bdf54ef32679a0')
 
 
 build() {

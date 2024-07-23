@@ -18,11 +18,11 @@ source=("https://cdn.azul.com/zulu/bin/zulu${zuluver}-ca-jdk${pkgver}-win_x64.zi
         "linkmakefile"
         "setversion-jdk.c")
 sha256sums=('592215502d0958c75ee93c69d22b5ecf2b4760afc66ab1def2433a3ad54ccabe'
-            '0597ce91e8488303b7184ef06ce5d4c937930a761716bbbf54c33687e8a484d5'
-            'e45cdbda7a078597075fb0a9e1dbe3762a3313c73cbc81d34024a61320a81a50'
-            'df97e672302458f6dbf5d651c323b8e9f7df5af34fd4a40036db783107312248'
-            '490009190e4fdb5f11e5c716966fc26c96fcb69eb23e594c123ba28f03e4b4a6'
-            '8e4a06c8159f6e70caf4202a3a4ab19f3431db672ea82d2d2c0f621b807fefb0')
+            'cfef0617b0ae1678c7ed3355263724ade56f2790de75bb6d1cabce206261950e'
+            '97c83b595a88a6668b3bfd6335162b8850be57b51cb9317819337369dff6733a'
+            '6d38c7e036d688e75d9fd2b70b641ccf19bce59f8d74bb9c9c24fad9f1173a76'
+            '8ee348f88fcc54b406fd826951db824630929ecebcff535d4be8a6942a5f8238'
+            '11a2911ba7b46ba16f39e0abd8e76ef2b8fa2dc5a46cfc9002ea83eb40e3cf40')
 
 prepare() {
   cd ${srcdir}

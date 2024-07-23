@@ -11,7 +11,7 @@ makedepends=("gcc")
 source=("$url/download/${pkgver}/zig-windows-x86_64-${pkgver}.zip"
         "main.c")
 sha256sums=('d859994725ef9402381e557c60bb57497215682e355204d754ee3df75ee3c158'
-            'f6a41185c7a94c5ec01d05c6fe248c254c1e0863b9a0b11c827cdaf23496a38b')
+            '9a49a6a7458d05d928a9dd76c37272b2700d90baf1ccf3d733c72df015766be1')
 
 build() {
   cd ${srcdir}

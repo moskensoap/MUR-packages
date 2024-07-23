@@ -21,11 +21,11 @@ source=("https://windows.php.net/downloads/releases/archives/php-${pkgver}-Win32
 
 noextract=("php-${pkgver}-Win32-vs16-x64.zip")
 sha256sums=('8697972b5f704885e3444422ede2b5c25d025f614ea96dc67de74dc582471562'
-            'd7c5e159aaa403bf108acc120c7872b2a5b43c0480823263e308ed8cf57be47d'
-            'c01584b8ec43293bcac82eb068dfcdeb8464cdc4b7cb2a270bc667a7bb7ff38c'
-            'd7266e25a4be7bbcad241af04d763876556bbbdbbf69febe9b7c84bdfb3b2412'
-            'bfff7ffd69f0594c5eaf71b241057008498447dececa39c8318a791c4f2d50e5'
-            '0e79011c0eec3eca19ef04a50225c4bf602c4775962a23d6c6ea3077a762341f')
+            '853b03a6048efefd1ac9973420bb6edcf18ef3b383d2789422dd042258edf4eb'
+            '14120d0862e6f10d777a6c62766dc743eefe990ec8eef3d3daf25a7e2eaf4814'
+            'a178b60f591b15d0a21e06cf752f5f11b923f4231c2105c402780e607ac628d2'
+            '4f15458558fff444800f34383580416687c61218f1abffd13e59dd7bf16f66d2'
+            'c9f79caa35f3442b15ee26ded622fc9da13197a17a07de635075f47618d0a426')
 
 prepare() {
   cd ${srcdir}

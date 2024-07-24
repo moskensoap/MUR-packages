@@ -1,7 +1,7 @@
 # Maintainer: moskensoap <141073988+moskensoap@users.noreply.github.com>
 
 pkgname="mur__murpkg"
-pkgver=0.6.0
+pkgver=0.6.1
 pkgrel=1
 pkgdesc='MUR-package manager'
 arch=('x86_64')
@@ -11,7 +11,7 @@ makedepends=("gcc"
              "make")
 
 source=("$url/archive/refs/tags/$pkgver.zip")
-sha256sums=('715a894b13e2d5d995234252bc9fe77cf241d1f33b46d3fda927744a0cda8a93')
+sha256sums=('9b29b59969fa7d247a587f285175027baed91788e317f9a2b2f0e9011d15590c')
 
 build() {
   cd ${srcdir}

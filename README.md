@@ -79,7 +79,9 @@ Additionally, to ensure that MSYS2 can inherit the Windows PATH (e.g., to access
   
 Using murpkg to automatically install, remove, and upgrade packages is recommended. Additionally, murpkg itself is available in this repository and can be upgraded using murpkg.
 
-### manual
+First, you should manually install murpkg by following the steps below.
+
+### Manual Installation
 
 1.Clone this project to your computer by running:
 
@@ -89,24 +91,24 @@ Using murpkg to automatically install, remove, and upgrade packages is recommend
 
     pacman -S --needed base-devel
 
-3.To build the package, start a shell in an environment you want to build for, change the working directory to the directory of the PKGBUILD.
+3.To build the package, start a shell in an environment you want to build for, change the working directory to the directory of the PKGBUILD. (Note: murpkg belongs to msys2_arch, and you should open a MSYS shell to build)
 
-CRLF->LF, run:
-
+* Convert CRLF to LF by running:
+```
     find . -maxdepth 1 -type f -exec dos2unix {} +
-
-For mingw_arch, run:
-
+```
+* For mingw_arch, run:
+```
     makepkg-mingw --cleanbuild --syncdeps --force --noconfirm
-
-For msys_arch(no __mingw_arch__ in its PKGBUILD), run:
-
+```
+* For msys_arch(no __mingw_arch__ in its PKGBUILD), run:
+```
     makepkg --cleanbuild --syncdeps --force --noconfirm
-
+```
 To solve CRLF error, you may run:
-
+```
     dos2unix PKGBUILD
-
+```
 4.To install the package, run:
 
     pacman -U *.pkg.tar.zst
@@ -184,6 +186,7 @@ The commands are:
         search          Search for a package in the repositories.
         show            Show detailed information about a package.
         install         Install a package.
+        reinstall       Reinstall a package.
         upgrade         Upgrade all installed packages to the latest version.
         remove          Remove a package.
         autoremove      Automatically remove unneeded packages.

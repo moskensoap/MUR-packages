@@ -8,7 +8,7 @@ MUR focuses on development tools that cannot be compiled via MSYS2 from source c
 
 MUR gives repackaged packages from their offical site and builds `executable wrappers` to run their binaries while maintaining their Windows file structure and installing them in MSYS2.
 
-MUR provide a package manager named [murpkg](https://github.com/moskensoap/murpkg).
+MUR also provides a package manager named [murpkg](https://github.com/moskensoap/murpkg).
 
 ## Classes:
 
@@ -468,7 +468,17 @@ __zls__: A Zig language server supporting Zig developers with features like auto
 
 # Contributing
 
-Contributions are welcome! Please submit pull requests or open issues for any improvements or bug fixes.
+Contributions are welcome! Please submit pull requests or open issues for any of the following:
+
+* Suggestions for new packages.
+
+* Submitting new packages and enhancements or optimizations for existing package features.
+
+* Bug reports and fixes.
+
+* Questions and issues regarding the usage of packages.
+
+Your feedback and contributions help improve this project, and we appreciate your support!
 
 # License
 

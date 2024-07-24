@@ -2,27 +2,29 @@
 
 ## Overview
 
-Based on [MSYS2](https://www.msys2.org) and its pacman, MUR (MSYS2 User Repository) installs and provides rolling upgrades for packages on Windows.
+Based on [MSYS2](https://www.msys2.org) and its pacman, the unofficial MUR (MSYS2 User Repository) contains package scripts and nessesary C codes to build locally under MSYS2.
 
 MUR focuses on development tools that cannot be compiled via MSYS2 from source code yet.
 
-MUR builds `executable wrappers` to run binaries of repackaged packages from their official sites while maintaining their Windows file structure and installing them in MSYS2.
+MUR gives repackaged packages from their offical site and builds `executable wrappers` to run their binaries while maintaining their Windows file structure and installing them in MSYS2.
+
+MUR provide a package manager named [murpkg](https://github.com/moskensoap/murpkg).
 
 ## Classes:
 
-1.Programming Languages:
+1. Programming Languages:
 
 Java (and version control), PHP (and version control), Python (and version control), Zig.
 
-2.LSP (Language Server Protocol):
+2. LSP (Language Server Protocol):
 
 jdtls, lua-language-server, marksman, omnisharp-roslyn, zls.
 
-3.Development Tools:
+3. Development Tools:
 
 composer, lf, marktext (GUI), pandoc, xdebug.
 
-4.Utilities:
+4. Utilities:
 
 gradlelink, helixlink, makelink, murclean, murpkg, optfirst.
 
@@ -43,12 +45,14 @@ gradlelink, helixlink, makelink, murclean, murpkg, optfirst.
 6.Fully compiled original packages, sourced from various repositories or categories, are installed in /usr/local.
 
 
-## Integrating PATH for Global Access (Optional but Recommended)  
+## Integrating PATH for Global Access (Recommended)
   
 By default, binaries in `/opt/bin` and other MSYS2 directories are only accessible within the MSYS2 shell. To make these binaries accessible globally within Windows (e.g., from the Command Prompt or PowerShell), follow these steps to add them to your Windows PATH environment variable:  
 
 1. Navigate to System Properties > Advanced System Settings > Environment Variables.  
+
 2. Under "User Variables" (or "System Variables" if you want the change to apply to all users), select the "Path" variable and click "Edit".  
+
 3. Append the following paths, separated by semicolons (;), to the end of the list:
 
 ```
@@ -70,6 +74,18 @@ C:\msys64\opt\bin
  
 Additionally, to ensure that MSYS2 can inherit the Windows PATH (e.g., to access Windows programs within MSYS2), you can set the `MSYS2_PATH_TYPE` environment variable to `inherit`.
 
+## Change ExecutionPolicy to run .ps1 scripts in windows powershell (Recommended)
+
+1. start PowerShell with the Run as administrator option.
+
+2. run the command:
+
+```
+Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope LocalMachine
+```
+Ref: [Set-ExecutionPolicy](https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.security/set-executionpolicy?view=powershell-7.4) [about_Execution_Policies](https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_execution_policies?view=powershell-7.4)
+
+Note: Running npm scripts in `Windows PowerShell` or other .ps1 scripts in the `VS CODE` terminal default shell, this will help.
 
 ## Installation  
   
@@ -77,7 +93,7 @@ Additionally, to ensure that MSYS2 can inherit the Windows PATH (e.g., to access
   
 [murpkg](https://github.com/moskensoap/murpkg) is the package manager for this repository. It can add other GitHub repositories if their PKGBUILD files' `pkgname` contains `__`.  
   
-Using murpkg to automatically install, remove, and upgrade packages is recommended. Additionally, murpkg itself is available in this repository and can be upgraded using murpkg.
+Using murpkg to automatically install, remove, and upgrade packages is recommended. Additionally, murpkg is available in this repository and can be upgraded by itself.
 
 First, you should manually install murpkg by following the steps below.
 
@@ -105,7 +121,7 @@ First, you should manually install murpkg by following the steps below.
 ```
     makepkg --cleanbuild --syncdeps --force --noconfirm
 ```
-To solve CRLF error, you may run:
+* To solve CRLF error, you may run:
 ```
     dos2unix PKGBUILD
 ```

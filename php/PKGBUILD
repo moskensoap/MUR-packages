@@ -2,7 +2,7 @@
 
 pkgname=("mur__php" "mur__php-development" "mur__php-production" "mur__php-extension-composer" "mur__php-extension-extra")
 pkgver=8.2.20
-pkgrel=1
+pkgrel=2
 
 arch=('x86_64')
 url='https://www.php.net'
@@ -30,7 +30,7 @@ sha256sums=('ad2636858768864ed4caecf1687f5a827b9c7ceafb28d06072fe2dd703372962'
             'c9f79caa35f3442b15ee26ded622fc9da13197a17a07de635075f47618d0a426'
             '97f16372977040753c6253e74d82d1d7ad35a2573ba2aaa424e9b50d3562783c'
             '8ee348f88fcc54b406fd826951db824630929ecebcff535d4be8a6942a5f8238'
-            'facd882135072a99dd6e3fd01f22b06d265709117fdbdcf73fa12ea5e8d87713')
+            'f54bd51a0edba089b1241f6a4cc9f656ec49d730bb2fcf5a2713da435abd8382')
 
 prepare() {
   cd ${srcdir}

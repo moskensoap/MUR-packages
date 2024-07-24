@@ -4,7 +4,7 @@ pkgname="mur__jdk-openjdk"
 pkgver=22.0.2
 zuluver=22.32.15
 jdkdir=zulu${zuluver}-ca-jdk${pkgver}-win_x64
-pkgrel=1
+pkgrel=2
 pkgdesc='OpenJDK Java development kit'
 arch=('x86_64')
 url='https://www.azul.com/downloads/#zulu'
@@ -22,7 +22,7 @@ sha256sums=('592215502d0958c75ee93c69d22b5ecf2b4760afc66ab1def2433a3ad54ccabe'
             '97c83b595a88a6668b3bfd6335162b8850be57b51cb9317819337369dff6733a'
             '6d38c7e036d688e75d9fd2b70b641ccf19bce59f8d74bb9c9c24fad9f1173a76'
             '8ee348f88fcc54b406fd826951db824630929ecebcff535d4be8a6942a5f8238'
-            '11a2911ba7b46ba16f39e0abd8e76ef2b8fa2dc5a46cfc9002ea83eb40e3cf40')
+            '3a314e1dc9d4b49033194ade5c1035eae1934351ca8bc4b9920522e7160de441')
 
 prepare() {
   cd ${srcdir}

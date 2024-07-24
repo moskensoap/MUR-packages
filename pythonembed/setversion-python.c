@@ -83,7 +83,7 @@ int main(int argc, char *argv[]) {
         printf("Usage:\n");
         printf("\tsetversion-python <version>\n");
         printf("version:\n");
-        printf("\tpythonembed<version> you installed form MUR-PACKAGES\n");
+        printf("\tpythonembed<version> you installed from MUR-PACKAGES\n");
         printf("\tlatest for pythonembed\n");
         printf("example:\n");
         printf("\tsetversion-python 38\n");

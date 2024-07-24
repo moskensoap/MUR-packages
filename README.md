@@ -230,8 +230,8 @@ Note:
 Usage:
         setversion-jdk <version>
 version:
-        jdk<version>-openjdk you installed form MUR-PACKAGES
-        <jreversion>-openjdk you installed form MUR-PACKAGES
+        jdk<version>-openjdk you installed from MUR-PACKAGES
+        <jreversion>-openjdk you installed from MUR-PACKAGES
         latest for jdk-openjdk
         jrelatest for jre-openjdk
 example:
@@ -298,7 +298,7 @@ Note:
 Usage:
         setversion-php <version>
 version:
-        php<version> you installed form MUR-PACKAGES
+        php<version> you installed from MUR-PACKAGES
         latest for php
 example:
         setversion-php 5.6
@@ -374,7 +374,7 @@ PS C:\Users\username> setversion-python
 Usage:
         setversion-python <version>
 version:
-        pythonembed<version> you installed form MUR-PACKAGES
+        pythonembed<version> you installed from MUR-PACKAGES
         latest for python-embed
 example:
         setversion-python 38

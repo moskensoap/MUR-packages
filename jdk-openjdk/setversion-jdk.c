@@ -65,8 +65,8 @@ int main(int argc, char *argv[]) {
         printf("Usage:\n");
         printf("\tsetversion-jdk <version>\n");
         printf("version:\n");
-        printf("\tjdk<version>-openjdk you installed form MUR-PACKAGES\n");
-        printf("\t<jreversion>-openjdk you installed form MUR-PACKAGES\n");        
+        printf("\tjdk<version>-openjdk you installed from MUR-PACKAGES\n");
+        printf("\t<jreversion>-openjdk you installed from MUR-PACKAGES\n");        
         printf("\tlatest for jdk-openjdk\n");
         printf("\tjrelatest for jre-openjdk\n");
         printf("example:\n");

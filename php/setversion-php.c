@@ -65,7 +65,7 @@ int main(int argc, char *argv[]) {
         printf("Usage:\n");
         printf("\tsetversion-php <version>\n");
         printf("version:\n");
-        printf("\tphp<version> you installed form MUR-PACKAGES\n");
+        printf("\tphp<version> you installed from MUR-PACKAGES\n");
         printf("\tlatest for php\n");
         printf("example:\n");
         printf("\tsetversion-php 5.6\n");

@@ -8,7 +8,7 @@ pkgdesc="Xdebug — Step Debugger and Debugging Aid for PHP"
 
 arch=('x86_64')
 url='https://xdebug.org'
-license=(The Xdebug License)
+license=('Xdebug License')
 
 depends=("mur__php7.2")
 

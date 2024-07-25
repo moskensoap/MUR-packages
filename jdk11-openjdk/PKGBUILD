@@ -4,11 +4,11 @@ pkgname="mur__jdk11-openjdk"
 pkgver=11.0.24
 zuluver=11.74.15
 jdkdir=zulu${zuluver}-ca-jdk${pkgver}-win_x64
-pkgrel=1
+pkgrel=2
 pkgdesc='OpenJDK Java 11 development kit'
 arch=('x86_64')
 url='https://www.azul.com/downloads/#zulu'
-license=(GPL2)
+license=('GPL-2.0 with Classpath Exception')
 makedepends=("gcc"
              "make")
 depends=("mur__jdk-openjdk")

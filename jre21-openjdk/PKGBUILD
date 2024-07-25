@@ -4,11 +4,11 @@ pkgname="mur__jre21-openjdk"
 pkgver=21.0.4
 zuluver=21.36.17
 jdkdir=zulu${zuluver}-ca-jre${pkgver}-win_x64
-pkgrel=1
+pkgrel=2
 pkgdesc='OpenJDK Java 21 runtime environment'
 arch=('x86_64')
 url='https://www.azul.com/downloads/#zulu'
-license=(GPL2)
+license=('GPL-2.0 with Classpath Exception')
 makedepends=("gcc"
              "make")
 depends=("mur__jdk-openjdk")

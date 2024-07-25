@@ -8,11 +8,11 @@ minor=${pkgver#*.}
 minor=${minor%%.*}
 vernum="${major}${minor}"  
 
-pkgrel=1
+pkgrel=2
 pkgdesc='Python310 is a programming language that lets you work more quickly and integrate your systems more effectively.'
 arch=('x86_64')
 url='https://www.python.org'
-license=(GPL-compatible)
+license=('Python License')
 makedepends=("gcc"
              "make")
 depends=("gcc"

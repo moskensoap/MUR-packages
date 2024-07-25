@@ -2,11 +2,11 @@
 
 pkgname="mur__pandoc"
 pkgver=3.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Universal markup converter.'
 arch=('x86_64')
 url='https://github.com/jgm/pandoc'
-license=(GPL)
+license=('GPL-2.0')
 
 source=("$url/releases/download/${pkgver}/pandoc-${pkgver}-windows-x86_64.zip")
 sha256sums=('c6cfc71b092a42c8d25c0936390aa21d71762aee0ceee720bff1c8e32d35203e')

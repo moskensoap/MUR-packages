@@ -4,11 +4,11 @@ pkgname="mur__jdk-openjdk"
 pkgver=22.0.2
 zuluver=22.32.15
 jdkdir=zulu${zuluver}-ca-jdk${pkgver}-win_x64
-pkgrel=2
+pkgrel=3
 pkgdesc='OpenJDK Java development kit'
 arch=('x86_64')
 url='https://www.azul.com/downloads/#zulu'
-license=(GPL2)
+license=('GPL-2.0 with Classpath Exception')
 makedepends=("gcc"
              "make")
 source=("https://cdn.azul.com/zulu/bin/zulu${zuluver}-ca-jdk${pkgver}-win_x64.zip"

@@ -2,19 +2,20 @@
 
 pkgname="mur__zls"
 pkgver=0.13.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A Zig language server supporting Zig developers with features like autocomplete and goto definition'
 arch=('x86_64')
 url='https://github.com/zigtools/zls'
 license=(MIT)
-makedepends=("mur__zig")
+makedepends=("mur__zig"
+             "mur__optfirst")
 
 source=("$url/archive/refs/tags/${pkgver}.zip")
 sha256sums=('f3230b78ac2e905fe2a4c4da74b1fb15ddb1060d4041b29f3f246696a62c3f65')
 
 build() {
   cd ${srcdir}/zls-${pkgver}
-  zig build -Doptimize=ReleaseSafe
+  optfirst zig build -Doptimize=ReleaseSafe
 }
 
 package() {

@@ -1,0 +1,28 @@
+# Maintainer: moskensoap <141073988+moskensoap@users.noreply.github.com>
+
+pkgname=mur__helix
+pkgver=24.07
+pkgrel=1
+pkgdesc="A post-modern modal text editor."
+arch=('any')
+url="https://github.com/helix-editor/helix"
+license=('MIT')
+
+source=("$url/releases/download/${pkgver}/helix-${pkgver}-x86_64-windows.zip"
+        "main.c")
+sha256sums=('3575f28a3e718005ffd803fa04ae8d26c83ba72131615182beafe7152ce831dd'
+            '7269e506844f38c8ba41e181d6685d1d26a6e6dba8dc76671e5a57c70678c395')
+
+
+build() {
+  cd "${srcdir}"
+  gcc main.c -o hx -O3 -s
+}
+
+package() {
+  cd "${srcdir}"
+
+  install -Dm755 hx "${pkgdir}/opt/bin/hx"
+  mkdir -p "${pkgdir}/opt/share/${pkgname}"
+  cp -r "${srcdir}/helix-$pkgver-x86_64-windows/"* "${pkgdir}/opt/share/${pkgname}/"
+}

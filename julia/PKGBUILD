@@ -1,0 +1,32 @@
+# Maintainer: moskensoap <141073988+moskensoap@users.noreply.github.com>
+
+pkgname=mur__julia
+pkgver=1.10.4
+
+main_ver=$(echo "$pkgver" | cut -d '.' -f 1)
+middle_ver=$(echo "$pkgver" | cut -d '.' -f 2)
+
+pkgrel=1
+pkgdesc="The Julia Programming Language"
+arch=('any')
+url="https://github.com/JuliaLang/julia"
+license=('MIT')
+
+source=("https://julialang-s3.julialang.org/bin/winnt/x64/$main_ver.$middle_ver/julia-$pkgver-win64.zip"
+        "main.c")
+sha256sums=('aa31c7d074060c2aab84a83ccd2fcabef6900c6e5f41cff8fd514fc28c42dc44'
+            '2c43976313b78075c14862574b19c1fe40be1edea4ac81f8401625bdd563423a')
+
+
+build() {
+  cd "${srcdir}"
+  gcc main.c -o julia -O3 -s
+}
+
+package() {
+  cd "${srcdir}"
+
+  install -Dm755 julia "${pkgdir}/opt/bin/julia"
+  mkdir -p "${pkgdir}/opt/share/${pkgname}"
+  cp -r "${srcdir}/julia-$pkgver/"* "${pkgdir}/opt/share/${pkgname}/"
+}

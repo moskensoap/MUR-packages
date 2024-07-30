@@ -2,11 +2,10 @@
 #include <stdlib.h>
 #include <string.h>
 #include <windows.h>
-#define MAX_PATH 260
 
 int main(int argc, char *argv[]) {
-    char path[MAX_PATH];
-    if(GetModuleFileName(NULL, path, MAX_PATH) == 0)
+    char path[PATH_MAX];
+    if(GetModuleFileName(NULL, path, PATH_MAX) == 0)
     {
         perror("GetModuleFileName");
         return 1;

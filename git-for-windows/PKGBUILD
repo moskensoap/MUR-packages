@@ -1,0 +1,61 @@
+# Maintainer: moskensoap <141073988+moskensoap@users.noreply.github.com>
+
+_realname=mur__git-for-windows
+pkgbase=mingw-w64-${_realname}
+pkgname="${MINGW_PACKAGE_PREFIX}-${_realname}"
+pkgver=2.46.0
+pkgrel=1
+pkgdesc="A fork of Git containing Windows-specific patches. (mingw-w64)"
+arch=('any')
+mingw_arch=('mingw64')
+url="https://github.com/git-for-windows/git"
+license=('GPL2')
+makedepends=("${MINGW_PACKAGE_PREFIX}-cc"
+             "${MINGW_PACKAGE_PREFIX}-make"
+             "${MINGW_PACKAGE_PREFIX}-7zip")
+
+
+source=("$url/releases/download/v$pkgver.windows.1/PortableGit-$pkgver-64-bit.7z.exe"
+        "main.c"
+        "shell.c"
+        "makefile")
+sha256sums=('dedae83f4d0851bcbf473c516701e2da6a5d7c574d694d5eceec46d1307132ea'
+            '246f0c6042949e83f6852c7975bebbf8bea1122e91da0a6beb2e503724ee1673'
+            '8f4dbf966391c46d84c4b5d9000cbbaa1a7b59f2fe0ef7162c93c55b69d6a639'
+            'f8b1c510ce85d6d1671ca5109bcf813d94d48a0bcc00b33ebb391a7b33123719')
+noextract=("PortableGit-$pkgver-64-bit.7z.exe")
+
+prepare() {
+  cd "${srcdir}"
+  7z x "PortableGit-$pkgver-64-bit.7z.exe" -o"${srcdir}/PortableGit-$pkgver-64-bit"
+  for file in $(ls PortableGit-$pkgver-64-bit | grep .exe | sed 's/\.exe$/.c/'); do
+    cp shell.c $file
+  done
+  for file in $(ls PortableGit-$pkgver-64-bit/cmd | grep .exe | sed 's/\.exe$/.c/'); do
+    cp main.c $file
+  done
+  for file in $(ls PortableGit-$pkgver-64-bit/cmd | grep .cmd | sed 's/\.cmd$/.c/'); do
+    cp main.c $file
+  done
+  rm main.c
+  rm PortableGit-$pkgver-64-bit.7z.exe
+}
+
+build() {
+  cd "${srcdir}"
+  mingw32-make
+
+  cd "${srcdir}/PortableGit-$pkgver-64-bit"
+  ./git-bash.exe --no-needs-console --hide --no-cd --command=post-install.bat || true
+}
+
+package() {
+  cd "${srcdir}"
+  mkdir -p "${pkgdir}/mingw64/bin"
+  install -Dm755 *.exe "${pkgdir}/mingw64/bin/"
+  cd "${srcdir}/PortableGit-$pkgver-64-bit"
+  mkdir -p "${pkgdir}/mingw64/share/${_realname}"
+  cp -r * "${pkgdir}/mingw64/share/${_realname}"
+}
+
+options=(!strip)

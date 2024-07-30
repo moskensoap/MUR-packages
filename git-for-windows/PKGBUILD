@@ -4,7 +4,7 @@ _realname=mur__git-for-windows
 pkgbase=mingw-w64-${_realname}
 pkgname="${MINGW_PACKAGE_PREFIX}-${_realname}"
 pkgver=2.46.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A fork of Git containing Windows-specific patches. (mingw-w64)"
 arch=('any')
 mingw_arch=('mingw64')
@@ -46,7 +46,7 @@ build() {
   mingw32-make
 
   cd "${srcdir}/PortableGit-$pkgver-64-bit"
-  ./git-bash.exe --no-needs-console --hide --no-cd --command=post-install.bat || true
+  ./git-bash.exe --hide --no-cd --command=post-install.bat || true
 }
 
 package() {

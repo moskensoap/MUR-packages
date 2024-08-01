@@ -3,7 +3,7 @@
 pkgname=("mur__xdebug")
 pkgver=3.3.2
 phpver=8.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Xdebug — Step Debugger and Debugging Aid for PHP"
 
 arch=('x86_64')

@@ -1,0 +1,92 @@
+# Maintainer: moskensoap <141073988+moskensoap@users.noreply.github.com>
+
+pkgname=("mur__php8.2" "mur__php8.2-development" "mur__php8.2-production" "mur__php8.2-extension-composer" "mur__php8.2-extension-extra")
+pkgver=8.2.20
+pkgrel=1
+
+arch=('x86_64')
+url='https://www.php.net'
+license=('PHP License')
+makedepends=("gcc"
+             "make"
+             "unzip")
+depends=("mur__php")
+
+source=("https://windows.php.net/downloads/releases/archives/php-${pkgver}-Win32-vs16-x64.zip"
+        "main.c"
+        "makefile"
+        "php.ini"
+        "composer.ini"
+        "extra.ini")
+
+noextract=("php-${pkgver}-Win32-vs16-x64.zip")
+sha256sums=('ad2636858768864ed4caecf1687f5a827b9c7ceafb28d06072fe2dd703372962'
+            '8e106163922a10c2c2928eb0a57c8f18d1580ab205d40c6842eb422e813210bd'
+            'd80c6555d6ce246b8dc663b360dd140b06c02c7115f689635c7750ff1fe483b9'
+            'a178b60f591b15d0a21e06cf752f5f11b923f4231c2105c402780e607ac628d2'
+            '51fdc3dcdbdd2c4caa25988536dd4d8cde6fa214758956a805c36dcd9f21f152'
+            'c9f79caa35f3442b15ee26ded622fc9da13197a17a07de635075f47618d0a426')
+
+prepare() {
+  cd ${srcdir}
+  unzip php-${pkgver}-Win32-vs16-x64.zip -d php-$pkgver
+
+  for file in $(ls php-$pkgver | grep .exe | sed 's/\.exe$/.c/'); do
+    cp main.c $file
+  done
+  rm main.c
+
+}
+
+build() {
+  cd ${srcdir}
+  make
+
+}
+
+package_mur__php8.2() {
+  pkgdesc="php-${pkgver} for Windows x64 Thread Safe"
+  cd ${srcdir}
+  mkdir -p ${pkgdir}/opt/bin/
+  install -Dm755 ./*.exe ${pkgdir}/opt/bin/
+  mkdir -p ${pkgdir}/opt/share/mur__php8.2/
+  cp -a php-$pkgver/* ${pkgdir}/opt/share/mur__php8.2/
+  mkdir -p ${pkgdir}/opt/share/mur__php8.2/conf.d/
+  cp php.ini ${pkgdir}/opt/share/mur__php8.2/
+}
+
+package_mur__php8.2-development() {
+  pkgdesc="php config for development"
+  depends=("mur__php8.2")
+  conflict=("mur__php8.2-production")
+  cd ${srcdir}
+  mkdir -p ${pkgdir}/opt/share/mur__php8.2/conf.d/
+  cp php-$pkgver/php.ini-development ${pkgdir}/opt/share/mur__php8.2/conf.d/development.ini
+}
+
+package_mur__php8.2-production() {
+  pkgdesc="php config for production"
+  depends=("mur__php8.2")
+  conflict=("mur__php8.2-development")
+  cd ${srcdir}
+  mkdir -p ${pkgdir}/opt/share/mur__php8.2/conf.d/
+  cp php-$pkgver/php.ini-production ${pkgdir}/opt/share/mur__php8.2/conf.d/production.ini
+}
+
+package_mur__php8.2-extension-composer() {
+  pkgdesc="php config for composer"
+  depends=("mur__php8.2")
+  cd ${srcdir}
+  mkdir -p ${pkgdir}/opt/share/mur__php8.2/conf.d/
+  cp composer.ini ${pkgdir}/opt/share/mur__php8.2/conf.d/composer.ini
+}
+
+package_mur__php8.2-extension-extra() {
+  pkgdesc="php config for extra"
+  depends=("mur__php8.2" "mur__php8.2-extension-composer")
+  cd ${srcdir}
+  mkdir -p ${pkgdir}/opt/share/mur__php8.2/conf.d/
+  cp extra.ini ${pkgdir}/opt/share/mur__php8.2/conf.d/extra.ini
+}
+
+options=(!strip)

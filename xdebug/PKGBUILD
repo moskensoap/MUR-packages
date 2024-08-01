@@ -2,7 +2,7 @@
 
 pkgname=("mur__xdebug")
 pkgver=3.3.2
-phpver=8.2
+phpver=8.3
 pkgrel=1
 pkgdesc="Xdebug — Step Debugger and Debugging Aid for PHP"
 
@@ -15,7 +15,7 @@ depends=("mur__php")
 source=("$url/files/php_xdebug-${pkgver}-${phpver}-vs16-x86_64.dll"
         "xdebug.ini")
 
-sha256sums=('006a27837960b5e4a1351e56091efbb17bc531197e9c01684cab085364731ae5'
+sha256sums=('f3b91a98ab768f934e5bc8bb011372988417291a46d9ad4036c253619b5f0695'
             '307d6706c5177d90acde61e0d6ca6862c51144420db980430730bf2ed6198402')
 
 

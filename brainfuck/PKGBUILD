@@ -1,28 +1,30 @@
 # Maintainer: moskensoap <141073988+moskensoap@users.noreply.github.com>
 
-pkgname="mur__brainfuck-interpreter"
+pkgname="mur__brainfuck"
 pkgver=0.1
 pkgrel=1
-pkgdesc='A Brainfuck interpreter with automatic memory expansion, multi-file input, and interactive mode for reading code from standard input.'
+pkgdesc='Brainfuck interpreter and compiler written in C with automatic memory expansion.'
 arch=('x86_64')
-url='https://github.com/moskensoap/brainfuck-interpreter'
+url='https://github.com/moskensoap/brainfuck'
 license=('MIT')
 makedepends=("make"
              "gcc")
+depends=('gcc')
 
 source=("$url/archive/refs/tags/$pkgver.zip")
-sha256sums=('3fe34b9b065fbb18b92b62ef463c9af69d8ded798eed14edad0f9bfb778d03d2')
+sha256sums=('549a8cdfbe719bccf25d16dfb41b9083c9186d61b5a4c4cf12ce66ec6508c2d2')
 
 
 build() {
   cd ${srcdir}
-  cd brainfuck-interpreter-$pkgver
+  cd brainfuck-$pkgver
   make
 }
 
 package() {
   cd ${srcdir}
-  cd brainfuck-interpreter-$pkgver
+  cd brainfuck-$pkgver
   install -Dm755 bf.exe ${pkgdir}/usr/local/bin/bf.exe
+  install -Dm755 bfc.exe ${pkgdir}/usr/local/bin/bfc.exe
   install -Dm644 LICENSE ${pkgdir}/usr/local/share/licenses/${pkgname}/LICENSE
 }

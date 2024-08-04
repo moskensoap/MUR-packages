@@ -1,7 +1,7 @@
 # Maintainer: moskensoap <141073988+moskensoap@users.noreply.github.com>
 
 pkgname="mur__brainfuck"
-pkgver=0.6
+pkgver=1.0
 pkgrel=1
 pkgdesc='Brainfuck interpreter and compiler written in C with automatic memory expansion.'
 arch=('x86_64')
@@ -13,7 +13,7 @@ depends=('gcc'
          'mur__optfirst')
 
 source=("$url/archive/refs/tags/$pkgver.zip")
-sha256sums=('b61f6106ac9983bad62d9a3130955e60a7630d85ab27aee7a39d8f1d96c7f401')
+sha256sums=('96878601473207f26ce8653f981832c44e13fa25b5f9b8cd48851fd036c7a5be')
 
 prepare() {
   cd ${srcdir}
@@ -26,12 +26,16 @@ build() {
   cd ${srcdir}
   cd brainfuck-$pkgver
   make
+  make others
+  find examples-from-others -name '*.exe' -exec rm {} +
 }
 
 package() {
   cd ${srcdir}
   cd brainfuck-$pkgver
-  install -Dm755 bf.exe ${pkgdir}/usr/local/bin/bf.exe
-  install -Dm755 bfc.exe ${pkgdir}/usr/local/bin/bfc.exe
+  mkdir -p ${pkgdir}/usr/local/bin/
+  install -Dm755 *.exe ${pkgdir}/usr/local/bin/
   install -Dm644 LICENSE ${pkgdir}/usr/local/share/licenses/${pkgname}/LICENSE
+  mkdir -p ${pkgdir}/usr/local/share/$pkgname/
+  cp -r examples-from-others/* ${pkgdir}/usr/local/share/$pkgname/
 }

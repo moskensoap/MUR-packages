@@ -2,7 +2,7 @@
 
 pkgname="mur__brainfuck"
 pkgver=0.4
-pkgrel=1
+pkgrel=2
 pkgdesc='Brainfuck interpreter and compiler written in C with automatic memory expansion.'
 arch=('x86_64')
 url='https://github.com/moskensoap/brainfuck'
@@ -10,7 +10,7 @@ license=('MIT')
 makedepends=("make"
              "gcc")
 depends=('gcc'
-         'optfirst')
+         'mur__optfirst')
 
 source=("$url/archive/refs/tags/$pkgver.zip")
 sha256sums=('5c91bc8bf395a1d3c6b2e8f095f48fd589a340a728c1b1b7db8ecf92edbd5809')

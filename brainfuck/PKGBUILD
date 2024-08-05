@@ -1,7 +1,7 @@
 # Maintainer: moskensoap <141073988+moskensoap@users.noreply.github.com>
 
 pkgname="mur__brainfuck"
-pkgver=1.0
+pkgver=1.1
 pkgrel=1
 pkgdesc='Brainfuck interpreter and compiler written in C with automatic memory expansion.'
 arch=('x86_64')
@@ -13,12 +13,12 @@ depends=('gcc'
          'mur__optfirst')
 
 source=("$url/archive/refs/tags/$pkgver.zip")
-sha256sums=('96878601473207f26ce8653f981832c44e13fa25b5f9b8cd48851fd036c7a5be')
+sha256sums=('c448c4a1c6f21608d230298241ead69dbabe3ed82f2554c6243733ba3286bfdc')
 
 prepare() {
   cd ${srcdir}
   cd brainfuck-$pkgver
-  sed -i 's/char cc_command\[18 + strlen(argv\[i\])\];/char cc_command\[27 + strlen(argv\[i\])\];/g' brainfuck-compiler.c
+  sed -i 's/char cc_command\[25 + strlen(argv\[i\])\];/char cc_command\[34 + strlen(argv\[i\])\];/g' brainfuck-compiler.c
   sed -i 's/cc -x c/usrfirst cc -x c/g' brainfuck-compiler.c
 }
 

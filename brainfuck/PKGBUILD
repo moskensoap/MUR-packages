@@ -1,9 +1,9 @@
 # Maintainer: moskensoap <141073988+moskensoap@users.noreply.github.com>
 
 pkgname="mur__brainfuck"
-pkgver=1.1
-pkgrel=2
-pkgdesc='Brainfuck interpreter and compiler written in C with automatic memory expansion.'
+pkgver=2.1
+pkgrel=1
+pkgdesc='Brainfuck interpreter (written in C), compiler (written in C), and generator (written in Brainfuck) with automatic memory expansion.'
 arch=('x86_64')
 url='https://github.com/moskensoap/brainfuck'
 license=('MIT' 'apache' 'CCBYSA')
@@ -13,7 +13,7 @@ depends=('gcc'
          'mur__optfirst')
 
 source=("$url/archive/refs/tags/$pkgver.zip")
-sha256sums=('c448c4a1c6f21608d230298241ead69dbabe3ed82f2554c6243733ba3286bfdc')
+sha256sums=('30f13f2e03ffdd6d0997fa40ea3252d5c10c91c57e8859b3c9002873ce145d11')
 
 prepare() {
   cd ${srcdir}
@@ -38,4 +38,5 @@ package() {
   install -Dm644 LICENSE ${pkgdir}/usr/local/share/licenses/${pkgname}/LICENSE
   mkdir -p ${pkgdir}/usr/local/share/$pkgname/
   cp -r examples-from-others/* ${pkgdir}/usr/local/share/$pkgname/
+  cp tbf.bf ${pkgdir}/usr/local/share/$pkgname/tbf.bf
 }

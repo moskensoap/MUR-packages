@@ -6,11 +6,12 @@ pkgver=1.10.4
 main_ver=$(echo "$pkgver" | cut -d '.' -f 1)
 middle_ver=$(echo "$pkgver" | cut -d '.' -f 2)
 
-pkgrel=1
+pkgrel=2
 pkgdesc="The Julia Programming Language"
-arch=('any')
+arch=('x86_64')
 url="https://github.com/JuliaLang/julia"
 license=('MIT')
+makedepends=("gcc")
 
 source=("https://julialang-s3.julialang.org/bin/winnt/x64/$main_ver.$middle_ver/julia-$pkgver-win64.zip"
         "main.c")

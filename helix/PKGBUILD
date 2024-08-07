@@ -2,11 +2,12 @@
 
 pkgname=mur__helix
 pkgver=24.07
-pkgrel=1
+pkgrel=2
 pkgdesc="A post-modern modal text editor."
-arch=('any')
+arch=('x86_64')
 url="https://github.com/helix-editor/helix"
 license=('MIT')
+makedepends=('gcc')
 
 source=("$url/releases/download/${pkgver}/helix-${pkgver}-x86_64-windows.zip"
         "main.c")

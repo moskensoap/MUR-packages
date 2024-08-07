@@ -2,8 +2,8 @@
 
 pkgname="mur__brainfuck"
 pkgver=3.1
-pkgrel=1
-pkgdesc='Brainfuck interpreter and compiler written in C. Brainfuck generator and Ook! translator written in Brainfuck.'
+pkgrel=2
+pkgdesc='Brainfuck interpreter and compiler written in C with automatic memory expansion. Brainfuck generator and Ook! translator written in Brainfuck.'
 arch=('x86_64')
 url='https://github.com/moskensoap/brainfuck'
 license=('MIT' 'apache' 'CCBYSA')

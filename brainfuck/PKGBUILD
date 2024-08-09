@@ -1,7 +1,7 @@
 # Maintainer: moskensoap <141073988+moskensoap@users.noreply.github.com>
 
 pkgname="mur__brainfuck"
-pkgver=3.3
+pkgver=3.4
 pkgrel=1
 pkgdesc='Brainfuck interpreter and compiler written in C with automatic memory expansion. Brainfuck generator, Ook!, Blub, and Phantom translators written in Brainfuck.'
 arch=('x86_64')
@@ -13,13 +13,20 @@ depends=('gcc'
          'mur__optfirst')
 
 source=("$url/archive/refs/tags/$pkgver.zip")
-sha256sums=('6c09e98d0a60594901098047895b528c5c78175c9b78f932d0bbce753799683a')
+sha256sums=('2fdb2233a70057f35eccebc700f9dcc7a6d31c911f88b4f26b7478b8b87efd4c')
 
 prepare() {
   cd ${srcdir}
   cd brainfuck-$pkgver
-  sed -i 's/char cc_command\[25 + strlen(argv\[i\])\];/char cc_command\[34 + strlen(argv\[i\])\];/g' brainfuck-compiler.c
+
+  sed -i 's/char cc_command\[27 + strlen(argv\[i\])\];/char cc_command\[36 + strlen(argv\[i\])\];/g' brainfuck-compiler.c
   sed -i 's/cc -x c/usrfirst cc -x c/g' brainfuck-compiler.c
+
+  sed -i 's/char cc_command\[27 + strlen(argv\[i\])\];/char cc_command\[36 + strlen(argv\[i\])\];/g' brainfuck-compiler-minus1.c
+  sed -i 's/cc -x c/usrfirst cc -x c/g' brainfuck-compiler-minus1.c
+
+  sed -i 's/char cc_command\[27 + strlen(argv\[i\])\];/char cc_command\[36 + strlen(argv\[i\])\];/g' brainfuck-compiler-unchanged.c
+  sed -i 's/cc -x c/usrfirst cc -x c/g' brainfuck-compiler-unchanged.c
 }
 
 build() {

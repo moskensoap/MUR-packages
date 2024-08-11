@@ -1,14 +1,14 @@
 # Maintainer: moskensoap <141073988+moskensoap@users.noreply.github.com>
 
 pkgname="mur__pythonembed"
-pkgver=3.12.4
+pkgver=3.12.5
 
 major=${pkgver%%.*}
 minor=${pkgver#*.}
 minor=${minor%%.*}
 vernum="${major}${minor}"  
 
-pkgrel=3
+pkgrel=1
 pkgdesc='Python is a programming language that lets you work more quickly and integrate your systems more effectively.'
 arch=('x86_64')
 url='https://www.python.org'
@@ -32,8 +32,8 @@ source=("$url/ftp/python/$pkgver/python-$pkgver-embed-amd64.zip"
 noextract=("python-$pkgver-embed-amd64.zip"
            "v$pkgver.zip")
 
-sha256sums=('15fea3c9367653a85086fe37216b4d1a1c78688fa5e1587e1db0b0f658856564'
-            '73ef3228caff56d350602977ed841c7e635d5ef0a47c98d35e529922d98815dc'
+sha256sums=('54d4a758fbc87bd425a32b2f390077e6e8c2c0155d9907739240322ee84e44ab'
+            'c6875be15e5ef8ebfc00282c09c624c5bba87fbd9ef0becaa39da6d0363b1ab9'
             '287e673322ed3faffae98c7e4247f9106d11e2f8c205a5a4712629212318f40f'
             '8ee348f88fcc54b406fd826951db824630929ecebcff535d4be8a6942a5f8238'
             '97c83b595a88a6668b3bfd6335162b8850be57b51cb9317819337369dff6733a'

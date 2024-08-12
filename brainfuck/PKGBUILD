@@ -1,7 +1,7 @@
 # Maintainer: moskensoap <141073988+moskensoap@users.noreply.github.com>
 
 pkgname="mur__brainfuck"
-pkgver=3.8
+pkgver=3.9
 pkgrel=1
 pkgdesc='Brainfuck interpreter and compiler written in C with automatic memory expansion. Brainfuck generator, Ook!, Blub, and Phantom translators written in Brainfuck.'
 arch=('x86_64')
@@ -13,7 +13,7 @@ depends=('gcc'
          'mur__optfirst')
 
 source=("$url/archive/refs/tags/$pkgver.zip")
-sha256sums=('874c6523b1f4f3ef7b61d275388d99ad5fd691ab299f0fe767b89c82308a5ed3')
+sha256sums=('5738fae8be416b961049e90ffa5417089b7e62971f043fa97dfb34466d02bfa1')
 
 prepare() {
   cd ${srcdir}

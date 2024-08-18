@@ -1,0 +1,26 @@
+# Maintainer: moskensoap <141073988+moskensoap@users.noreply.github.com>
+
+pkgname="mur__git-vscode"
+pkgver=1.0
+pkgrel=1
+pkgdesc='Invoke cygpath -w to convert a Unix-style path to a Windows-style path when using Git in vscode.'
+arch=('x86_64')
+url='https://github.com/moskensoap/MUR-packages'
+license=(MIT)
+makedepends=("gcc")
+depends=("git")
+source=("main.c"
+        "LICENSE")
+sha256sums=('f1bf43c84e2a0e4bba3c19f330f399e6b7b0149ceb46784b3078b06c46798c58'
+            '15070e8c828240aa544f41444e2392887c38f8c9f9f69bed35bdf54ef32679a0')
+
+build() {
+  cd ${srcdir}
+  gcc main.c -o git.exe -O3 -s
+}
+
+package() {
+  cd ${srcdir}
+  install -Dm755 git.exe ${pkgdir}/usr/local/bin/git.exe
+  install -Dm644 LICENSE ${pkgdir}/usr/local/share/licenses/${pkgname}/LICENSE
+}

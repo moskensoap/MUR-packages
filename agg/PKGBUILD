@@ -1,0 +1,29 @@
+# Maintainer: moskensoap <141073988+moskensoap@users.noreply.github.com>
+
+_realname=mur__agg
+pkgbase=mingw-w64-${_realname}
+pkgname="${MINGW_PACKAGE_PREFIX}-${_realname}"
+pkgver=1.4.3
+pkgrel=1
+pkgdesc="asciinema gif generator (mingw-w64)"
+arch=('any')
+mingw_arch=('ucrt64' 'clang64')
+url="https://github.com/asciinema/agg"
+
+license=('apache-2.0')
+makedepends=("${MINGW_PACKAGE_PREFIX}-rust")
+depends=("${MINGW_PACKAGE_PREFIX}-powersession-rs")
+source=("$url/archive/refs/tags/v${pkgver}.zip")
+sha256sums=('d9c863e1cd10f026796b6c76b48cb0c5f42f493d52360383ea84ebf9068ad29a')
+
+
+build() {
+  cd "${srcdir}/agg-${pkgver}"
+  cargo build --release
+}
+
+package() {
+  cd "${srcdir}/agg-${pkgver}"
+  install -Dm755 "target/release/agg" "${pkgdir}${MINGW_PREFIX}/bin/agg"
+  install -Dm644 "LICENSE" "${pkgdir}${MINGW_PREFIX}/share/licenses/${pkgname}/LICENSE"
+}

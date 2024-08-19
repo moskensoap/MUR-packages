@@ -44,9 +44,7 @@ int main(int argc, char *argv[])
     *ptr++ = '"';
     if (argc == 1)
     {
-        *ptr++ = '"';
         *ptr = '\0';
-        return system(merged_string);
     }
     else
     {

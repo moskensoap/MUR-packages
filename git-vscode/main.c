@@ -117,7 +117,7 @@ int main(int argc, char *argv[])
             {
                 line[read - 1] = '\0';
             }
-            char cygpath_merged_string[PATH_MAX * 2 + 5];
+            char cygpath_merged_string[PATH_MAX + sizeof(line) + 5];
             sprintf(cygpath_merged_string, "%s -w %s", cygpath, line);
             system(cygpath_merged_string);
         }

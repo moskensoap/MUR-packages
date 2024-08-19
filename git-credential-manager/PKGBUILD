@@ -2,7 +2,7 @@
 
 pkgname="mur__git-credential-manager"
 pkgver=2.5.1
-pkgrel=2
+pkgrel=3
 pkgdesc='Secure, cross-platform Git credential storage with authentication to GitHub, Azure Repos, and other popular Git hosting services.'
 arch=('x86_64')
 url='https://github.com/git-ecosystem/git-credential-manager'
@@ -15,7 +15,7 @@ source=("$url/releases/download/v$pkgver/gcm-win-x86-$pkgver.zip"
         "main.c")
 noextract=("gcm-win-x86-$pkgver.zip")
 sha256sums=('0d58064afbe234007ef5516b000422e935a26d54312c72e19628402c8e5e8ce2'
-            '22dc114ffa0fe7e599b85e444f1c362fb696d30fa37eb1f2f2538cad741acbe4')
+            '6ad2eed7ab0fc98e6958e2f31ba86ffc6d2c6dc2d43a96cc72cfbcb0f9d9bdfd')
 
 prepare() {
   cd ${srcdir}

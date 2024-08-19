@@ -79,10 +79,10 @@ int main(int argc, char *argv[])
 
     *ptr = '\0';
 
-    // Execute the git command and capture its return value
+    // Execute the command and capture its return value
     int ret = system(merged_string);
 
-    // Return the git command's exit status
+    // Return the command's exit status
     if (WIFEXITED(ret))
     {
         return WEXITSTATUS(ret);

@@ -4,20 +4,24 @@
 #include <unistd.h>
 #include <limits.h>
 #include <ctype.h>
+#include <sys/wait.h>
 
-int main(int argc, char *argv[]) {
+int main(int argc, char *argv[])
+{
     char path[PATH_MAX];
     ssize_t count = readlink("/proc/self/exe", path, sizeof(path) - 1);
 
-    if (count == -1) {
+    if (count == -1)
+    {
         perror("readlink");
         return 1;
     }
 
     path[count] = '\0'; // Null-terminate the path
 
-    //change all characters to lowercase in path
-    for (int i = 0; path[i]; i++) {
+    // change all characters to lowercase in path
+    for (int i = 0; path[i]; i++)
+    {
         path[i] = tolower(path[i]);
     }
 
@@ -25,7 +29,8 @@ int main(int argc, char *argv[]) {
     char *binPath = "/bin/hx";
     char *realPath = "/share/mur__helix/hx";
     char *replacePtr = strstr(path, binPath);
-    if (replacePtr != NULL) {
+    if (replacePtr != NULL)
+    {
         strncpy(replacePtr, realPath, strlen(realPath));
         replacePtr += strlen(realPath);
         *replacePtr = '\0';
@@ -39,7 +44,8 @@ int main(int argc, char *argv[]) {
     size_t total_length = 0;
     size_t path_length = strlen(path) + 3;
 
-    for (int i = 1; i < argc; i++) {
+    for (int i = 1; i < argc; i++)
+    {
         total_length += strlen(argv[i]) + 3;
     }
 
@@ -50,26 +56,39 @@ int main(int argc, char *argv[]) {
     strcpy(ptr, path);
     ptr += strlen(path);
     *ptr++ = '"';
-    if (argc == 1) {
+    if (argc == 1)
+    {
         *ptr = '\0';
-        return system(merged_string);
     }
     else
     {
         *ptr++ = ' ';
     }
 
-    for (int i = 1; i < argc; i++) {
+    for (int i = 1; i < argc; i++)
+    {
         *ptr++ = '"';
         strcpy(ptr, argv[i]);
         ptr += strlen(argv[i]);
         *ptr++ = '"';
-        if (i < argc - 1) {
+        if (i < argc - 1)
+        {
             *ptr++ = ' ';
         }
     }
 
     *ptr = '\0';
 
-    return system(merged_string);
+    // Execute the command and capture its return value
+    int ret = system(merged_string);
+
+    // Return the command's exit status
+    if (WIFEXITED(ret))
+    {
+        return WEXITSTATUS(ret);
+    }
+    else
+    {
+        return 1; // Return an error if the command did not terminate normally
+    }
 }

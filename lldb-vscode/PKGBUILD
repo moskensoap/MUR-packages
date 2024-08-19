@@ -3,7 +3,7 @@
 _realname=mur__lldb-vscode
 pkgbase=mingw-w64-${_realname}
 pkgname="${MINGW_PACKAGE_PREFIX}-${_realname}"
-pkgver=1.0
+pkgver=1.1
 pkgrel=1
 pkgdesc="Creat lldb-vscode.exe linking to lldb-dap.exe (mingw-w64)"
 arch=('any')
@@ -17,7 +17,7 @@ depends=("${MINGW_PACKAGE_PREFIX}-lldb")
 source=("main.c"
         "makefile"
         "LICENSE")
-sha256sums=('1c0cb7986bcf7a57509072dcf61ec267133440a927b58a1a10bf9e9d4f443174'
+sha256sums=('083bde71a552c5554dd3188e1a2ca1a0cfb4d192aacdd0c1b39da37405e6541a'
             '5f20a5b0a8eca70dd922829eb27a8436001c4a0127a67735ca5e5778271f25d1'
             '15070e8c828240aa544f41444e2392887c38f8c9f9f69bed35bdf54ef32679a0')
 

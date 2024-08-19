@@ -4,7 +4,7 @@ pkgname="mur__jdk-openjdk"
 pkgver=22.0.2
 zuluver=22.32.15
 jdkdir=zulu${zuluver}-ca-jdk${pkgver}-win_x64
-pkgrel=3
+pkgrel=4
 pkgdesc='OpenJDK Java development kit'
 arch=('x86_64')
 url='https://www.azul.com/downloads/#zulu'
@@ -18,9 +18,9 @@ source=("https://cdn.azul.com/zulu/bin/zulu${zuluver}-ca-jdk${pkgver}-win_x64.zi
         "linkmakefile"
         "setversion-jdk.c")
 sha256sums=('592215502d0958c75ee93c69d22b5ecf2b4760afc66ab1def2433a3ad54ccabe'
-            'cfef0617b0ae1678c7ed3355263724ade56f2790de75bb6d1cabce206261950e'
+            'c603ade880d9d83778aa0b62c4b92ce4ad69f4a640045fadb5710b76a2d2db3f'
             '97c83b595a88a6668b3bfd6335162b8850be57b51cb9317819337369dff6733a'
-            '6d38c7e036d688e75d9fd2b70b641ccf19bce59f8d74bb9c9c24fad9f1173a76'
+            'dc9e19a822c17139acff68f886134c0bfbedb63f03e26852f65928adc1c89683'
             '8ee348f88fcc54b406fd826951db824630929ecebcff535d4be8a6942a5f8238'
             '3a314e1dc9d4b49033194ade5c1035eae1934351ca8bc4b9920522e7160de441')
 

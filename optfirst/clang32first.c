@@ -5,6 +5,7 @@
 #include <limits.h>
 #include <libgen.h>
 #include <ctype.h>
+#include <sys/wait.h>
 
 int main(int argc, char *argv[]) {
     char path[PATH_MAX];
@@ -116,5 +117,16 @@ int main(int argc, char *argv[]) {
 
     *ptr = '\0';
 
-    return system(merged_string);
+    // Execute the command and capture its return value
+    int ret = system(merged_string);
+
+    // Return the command's exit status
+    if (WIFEXITED(ret))
+    {
+        return WEXITSTATUS(ret);
+    }
+    else
+    {
+        return 1; // Return an error if the command did not terminate normally
+    }
 }

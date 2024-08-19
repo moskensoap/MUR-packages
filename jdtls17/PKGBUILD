@@ -2,7 +2,7 @@
 
 pkgname="mur__jdtls17"
 pkgver=1.37.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Java language server for Java 17'
 arch=('x86_64')
 url='https://github.com/eclipse-jdtls/eclipse.jdt.ls'
@@ -16,7 +16,7 @@ source=("https://www.eclipse.org/downloads/download.php?file=/jdtls/milestones/$
         "jdtls.c")
 noextract=("jdt-language-server-$pkgver-$magicnumber.tar.gz")
 sha256sums=('d04cd9f4df45ce85ae9cf49530c72a1a324b14eee747af26e3374500e36b5bd0'
-            'f43cd178add140ad1b6c7cf55e50313c30d2895c5799da92014c535729fd25a7')
+            'b832f7ed633a31e602cc9015fb1314bc08b7ec6da3279e1a214d9c97bbdb33f0')
 
 prepare() {
   cd ${srcdir}

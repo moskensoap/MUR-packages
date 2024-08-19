@@ -2,7 +2,7 @@
 
 pkgname="mur__zig"
 pkgver=0.13.0
-pkgrel=1
+pkgrel=2
 pkgdesc='General-purpose programming language and toolchain for maintaining robust, optimal, and reusable software.'
 arch=('x86_64')
 url='https://ziglang.org'
@@ -11,7 +11,7 @@ makedepends=("gcc")
 source=("$url/download/${pkgver}/zig-windows-x86_64-${pkgver}.zip"
         "main.c")
 sha256sums=('d859994725ef9402381e557c60bb57497215682e355204d754ee3df75ee3c158'
-            '9a49a6a7458d05d928a9dd76c37272b2700d90baf1ccf3d733c72df015766be1')
+            '216ac211bc2fbfed90d27893e6ad190a3da7c300cef10f484e371fdd8fd47652')
 
 build() {
   cd ${srcdir}

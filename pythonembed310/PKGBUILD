@@ -8,7 +8,7 @@ minor=${pkgver#*.}
 minor=${minor%%.*}
 vernum="${major}${minor}"  
 
-pkgrel=2
+pkgrel=3
 pkgdesc='Python310 is a programming language that lets you work more quickly and integrate your systems more effectively.'
 arch=('x86_64')
 url='https://www.python.org'
@@ -31,7 +31,7 @@ noextract=("python-$pkgver-embed-amd64.zip"
 sha256sums=('608619f8619075629c9c69f361352a0da6ed7e62f83a0e19c63e0ea32eb7629d'
             '66a0a39626efed4c5197c115cab430933ef0fe1651caca090b1e262aa7cc039b'
             'cc473df8203eb5e966c5e1e4f0cfcf2da12ef58a2f8724374cfb6130edbf9263'
-            '48a61575079e302c9b2d3021c99af1b0e294e58391717d8a78a800dc15f28c76')
+            '53cb9872ab8c569dc92b67744b4b5afde36a625106534d2c92012c9779aa680f')
 
 prepare(){
   cd ${srcdir}

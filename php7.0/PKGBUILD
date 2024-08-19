@@ -2,7 +2,7 @@
 
 pkgname=("mur__php7.0" "mur__php7.0-development" "mur__php7.0-production" "mur__php7.0-extension-composer" "mur__php7.0-extension-extra")
 pkgver=7.0.33
-pkgrel=1
+pkgrel=2
 
 arch=('x86_64')
 url='https://www.php.net'
@@ -21,7 +21,7 @@ source=("https://windows.php.net/downloads/releases/archives/php-${pkgver}-Win32
 
 noextract=("php-${pkgver}-Win32-vc14-x64.zip")
 sha256sums=('8a22c93732b576507888e011b147df80beee7b7e24f527cb6e1282b5228350c2'
-            '48e4b88b28872d30dfe65f525f1eccc1654c07cb9034867b64cf438dc9911696'
+            '67902770cf917ce403a5103abadb2070112d37cb41de7eb00fc6d016f8d48687'
             'f5d21b7e7f26254f8a61de6943b3ddc6936b84acdc7fa38ca5e6b911f7c5399f'
             'a178b60f591b15d0a21e06cf752f5f11b923f4231c2105c402780e607ac628d2'
             'd4b3fd5c7ec1b81fff4a100e4339506480328bd1845eaa4f7af3b5d5b4a93fa9'

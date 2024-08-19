@@ -6,7 +6,7 @@ pkgver=1.10.4
 main_ver=$(echo "$pkgver" | cut -d '.' -f 1)
 middle_ver=$(echo "$pkgver" | cut -d '.' -f 2)
 
-pkgrel=2
+pkgrel=3
 pkgdesc="The Julia Programming Language"
 arch=('x86_64')
 url="https://github.com/JuliaLang/julia"
@@ -16,7 +16,7 @@ makedepends=("gcc")
 source=("https://julialang-s3.julialang.org/bin/winnt/x64/$main_ver.$middle_ver/julia-$pkgver-win64.zip"
         "main.c")
 sha256sums=('aa31c7d074060c2aab84a83ccd2fcabef6900c6e5f41cff8fd514fc28c42dc44'
-            '2c43976313b78075c14862574b19c1fe40be1edea4ac81f8401625bdd563423a')
+            'c6ab10c9c4f69f1c65ad9fd7a70989ea1cd34672a6e1ce71888e99b74ef96c6e')
 
 
 build() {

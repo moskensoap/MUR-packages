@@ -2,7 +2,7 @@
 
 pkgname="mur__marktext"
 pkgver=0.17.1
-pkgrel=1
+pkgrel=2
 pkgdesc='A simple and elegant markdown editor, available for Linux, macOS and Windows.'
 arch=('x86_64')
 url='https://github.com/marktext/marktext'
@@ -14,7 +14,7 @@ source=("$url/releases/download/v$pkgver/marktext-x64-win.zip"
         "marktext.c")
 noextract=("marktext-x64-win.zip")
 sha256sums=('2e5ffe0e6e77b8400f60dc0b38bf2615e558b2defaeda5f3ba4b2dc57ee2af15'
-            '8361bdfaef83b8eb64d33b741b390259186476d9e9d7336142d300252926d984')
+            '5055512c512620c26defea64fd57a6fa6a7730bc75e84331a9c6afbfc106d5ea')
 
 prepare() {
   cd ${srcdir}

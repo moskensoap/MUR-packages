@@ -1,7 +1,7 @@
 # Maintainer: moskensoap <141073988+moskensoap@users.noreply.github.com>
 
 pkgname="mur__optfirst"
-pkgver=1.0
+pkgver=1.1
 pkgrel=1
 pkgdesc='Locally sets PATH to /opt/bin:$PATH and runs <command> with the provided arguments.'
 arch=('x86_64')
@@ -22,15 +22,15 @@ source=("makefile"
         "usrlocalfirst.c"
         "LICENSE")
 sha256sums=('8ee348f88fcc54b406fd826951db824630929ecebcff535d4be8a6942a5f8238'
-            '40868eb174b419fbb58c5d8b6ea4a27a36b851623841fd33ff2fa28473e146e1'
-            '91dcceeec24a868f06fc360218c5e9f2cc585913a86ee8e119e14eff9fae5046'
-            'deaeb3ceed9b878de2dd281ca15c89008e623ef1eae2fe6d61f3bef2b91921da'
-            '13687056142f932a8c390b8b3f83f58a2353b0ff812c323b82c41097efe1fd0c'
-            '0eab90be7e7ec758bc1b5b4c6185f67ce99ffea1ecbbe310814775598a56fd84'
-            '81aa1f75fafc30b8bb8ea94b2af8e6a25c26ebeae30c35dd556e27ab83933f41'
-            '1334b507fdd598875f503dcd62d97c8b40c0dda712dd95c867ac83e5e6432a11'
-            '31329181b04ca285fe0b8936a152f0e73a6befe4c5fde2188270778008383e96'
-            'e189f771c6e8bd2c9d37361c252c9f5a26dbb842815980a8965f0367044e6dae'
+            'bb12ca0dee81abdbc480a014d9e8daf65979b876b923154c1b40e16ed99494b8'
+            '4cdaa179e54cb13eb146df7327e59afa3bd6e5bbd6d83a6109665eabe1c816aa'
+            'bfdb4f499245ade2485feaa9c2c5f4c9791f32067d3591c9bb72e8bdb949639b'
+            'a899b1c39deaeedf5a0535709590d1ffcb78a46e48b6729006466692f068bc29'
+            '9b0401076971bb2a8bdb8088306128507a6b5b5408f2f773ddca1e29b4e8b650'
+            'ac83c67b296153f2ae7e58e53a1d2ab7ba40f6b5e792140dbfd9c1424a2a7f82'
+            'f169a0126c8ae8842e715a0ef9a449f861b4ee0fe13f89451140e7febad85e98'
+            '2ad78e172ae6a24b014e736a8df5412dd2f907c45287e414d18b33030050891d'
+            'ea074ac34f367964a6945f0ea1002d089328de42afbc0f28f19bfb59e146e00f'
             '15070e8c828240aa544f41444e2392887c38f8c9f9f69bed35bdf54ef32679a0')
 
 build() {

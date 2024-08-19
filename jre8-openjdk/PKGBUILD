@@ -4,7 +4,7 @@ pkgname="mur__jre8-openjdk"
 pkgver=8.0.422
 zuluver=8.80.0.17
 jdkdir=zulu${zuluver}-ca-jre${pkgver}-win_x64
-pkgrel=2
+pkgrel=3
 pkgdesc='OpenJDK Java 8 runtime environment'
 arch=('x86_64')
 url='https://www.azul.com/downloads/#zulu'
@@ -16,7 +16,7 @@ source=("https://cdn.azul.com/zulu/bin/zulu${zuluver}-ca-jre${pkgver}-win_x64.zi
         "main.c"
         "makefile")
 sha256sums=('8131edf523457203168976bb7b2aa1bd10d3d38ed0746019bea4cf6cc0610912'
-            '87f3e8e649f6af78b05537f0e2357274f4314a384f67e480bee272250db293fb'
+            'b929da24e3344d5838f02156199f1f0982d0a5ccdf756255a4f197c44180719d'
             'e91e9dce53bcd35280a269dbe788ea84096abea17f6b8b0deac847e6bae12f44')
 
 prepare() {

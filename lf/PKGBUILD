@@ -2,7 +2,7 @@
 
 pkgname="mur__lf"
 pkgver=32
-pkgrel=1
+pkgrel=2
 pkgdesc='Terminal file manager'
 arch=('x86_64')
 url='https://github.com/gokcehan/lf'
@@ -14,7 +14,7 @@ depends=("vim")
 source=("$url/archive/refs/tags/r$pkgver.zip"
         "lf.c")
 sha256sums=('571ee17d8181d77a3b8bcd7aaaff0bde062c1851d93e9d324dfe15948136891a'
-            'ef071e886b5d36d9668aaa6abc64b1d0bf4996734f1feb7dfdef5024680bed22')
+            'e78cca2f3f85b7cb286f49267e95b543a0175c9868223357162cabfe39ca4943')
 
 
 build() {

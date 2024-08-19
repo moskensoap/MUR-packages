@@ -4,6 +4,7 @@
 #include <unistd.h>
 #include <limits.h>
 #include <ctype.h>
+#include <sys/wait.h>
 
 int main(int argc, char *argv[])
 {
@@ -76,7 +77,6 @@ int main(int argc, char *argv[])
     if (argc == 1)
     {
         *ptr = '\0';
-        return system(merged_string);
     }
     else
     {
@@ -109,6 +109,7 @@ int main(int argc, char *argv[])
         char *line = NULL;
         size_t len = 0;
         ssize_t read;
+        int exit_status = 0;
 
         while ((read = getline(&line, &len, fp)) != -1)
         {
@@ -122,9 +123,29 @@ int main(int argc, char *argv[])
         }
 
         free(line);
-        pclose(fp);
-        return 0;
+        exit_status = pclose(fp);
+
+        // Handle the exit status of the command
+        if (WIFEXITED(exit_status))
+        {
+            return WEXITSTATUS(exit_status);
+        }
+        else
+        {
+            return 1; // Return an error if the command did not terminate normally
+        }
     }
 
-    return system(merged_string);
+    // Execute the git command and capture its return value
+    int ret = system(merged_string);
+
+    // Return the git command's exit status
+    if (WIFEXITED(ret))
+    {
+        return WEXITSTATUS(ret);
+    }
+    else
+    {
+        return 1; // Return an error if the command did not terminate normally
+    }
 }

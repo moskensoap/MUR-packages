@@ -8,11 +8,6 @@ int main(int argc, char *argv[])
     size_t total_length = 0;
     size_t mingw_length = strlen("lldb-dap.exe") + 1;
 
-    if (argc == 1)
-    {
-        return system("lldb-dap.exe");
-    }
-
     for (int i = 1; i < argc; i++)
     {
         total_length += strlen(argv[i]) + 3;

@@ -7,19 +7,22 @@
 #include <ctype.h>
 #include <sys/wait.h>
 
-int main(int argc, char *argv[]) {
+int main(int argc, char *argv[])
+{
     char path[PATH_MAX];
     ssize_t count = readlink("/proc/self/exe", path, sizeof(path) - 1);
 
-    if (count == -1) {
+    if (count == -1)
+    {
         perror("readlink");
         return 1;
     }
 
     path[count] = '\0'; // Null-terminate the path
 
-    //change all characters to lowercase in path
-    for (int i = 0; path[i]; i++) {
+    // change all characters to lowercase in path
+    for (int i = 0; path[i]; i++)
+    {
         path[i] = tolower(path[i]);
     }
 
@@ -28,7 +31,8 @@ int main(int argc, char *argv[]) {
     strcpy(fileName, basename((char *)filePath));
 
     char *dot = strrchr(fileName, '.');
-    if (dot) {
+    if (dot)
+    {
         *dot = '\0';
     }
 
@@ -38,7 +42,8 @@ int main(int argc, char *argv[]) {
     sprintf(realPath, "/bin/%s", "php");
 
     char *replacePtr = strstr(path, binPath);
-    if (replacePtr != NULL) {
+    if (replacePtr != NULL)
+    {
         strncpy(replacePtr, realPath, strlen(realPath));
         replacePtr += strlen(realPath);
         *replacePtr = '\0';
@@ -49,13 +54,14 @@ int main(int argc, char *argv[]) {
         return 1;
     }
 
-    //cp path to composerpath and replace /bin/php with /bin/composerlts.phar
+    // cp path to composerpath and replace /bin/php with /bin/composerlts.phar
     char composerPath[PATH_MAX];
     strcpy(composerPath, path);
     sprintf(binPath, "/bin/%s", "php");
     sprintf(realPath, "/bin/%s", "composerlts.phar");
     replacePtr = strstr(composerPath, binPath);
-    if (replacePtr != NULL) {
+    if (replacePtr != NULL)
+    {
         strncpy(replacePtr, realPath, strlen(realPath));
         replacePtr += strlen(realPath);
         *replacePtr = '\0';
@@ -66,13 +72,12 @@ int main(int argc, char *argv[]) {
         return 1;
     }
 
-
     size_t total_length = 0;
     size_t path_length = strlen(path) + 3;
     size_t composer_path_length = strlen(composerPath) + 3;
 
-
-    for (int i = 1; i < argc; i++) {
+    for (int i = 1; i < argc; i++)
+    {
         total_length += strlen(argv[i]) + 3;
     }
 
@@ -85,12 +90,12 @@ int main(int argc, char *argv[]) {
     *ptr++ = '"';
     *ptr++ = ' ';
 
-
     *ptr++ = '"';
     strcpy(ptr, composerPath);
     ptr += strlen(composerPath);
     *ptr++ = '"';
-    if (argc==1) {
+    if (argc == 1)
+    {
         *ptr = '\0';
     }
     else
@@ -98,12 +103,14 @@ int main(int argc, char *argv[]) {
         *ptr++ = ' ';
     }
 
-    for (int i = 1; i < argc; i++) {
+    for (int i = 1; i < argc; i++)
+    {
         *ptr++ = '"';
         strcpy(ptr, argv[i]);
         ptr += strlen(argv[i]);
         *ptr++ = '"';
-        if (i < argc - 1) {
+        if (i < argc - 1)
+        {
             *ptr++ = ' ';
         }
     }

@@ -2,7 +2,7 @@
 
 pkgname=("mur__composerlts")
 pkgver=2.2.24
-pkgrel=2
+pkgrel=3
 pkgdesc="Dependency Manager for PHP (LTS)"
 
 arch=('x86_64')
@@ -16,7 +16,7 @@ source=("$url/download/$pkgver/composer.phar"
         "composerlts.c")
 
 sha256sums=('b0c383b1f430a80a74c006f20199d1e0226848a0a90afa5c0a7d01fb90ee9075'
-            'c6ddcf93938af360d2fcbab84781848bfe7a2ed22888f0415556f1219f8e44b6')
+            'e25c158a3ce030a6e1c80cd68546e5fb64cd29880c38d77a70fbbc4281e2026b')
 
 
 build() {

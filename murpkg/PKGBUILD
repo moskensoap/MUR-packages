@@ -1,7 +1,7 @@
 # Maintainer: moskensoap <141073988+moskensoap@users.noreply.github.com>
 
 pkgname="mur__murpkg"
-pkgver=0.6.6
+pkgver=0.6.7
 pkgrel=1
 pkgdesc='A package manager to build with makepkg and install with pacman for the MSYS2 User Repository (MUR) and other repositories.'
 arch=('x86_64')
@@ -12,7 +12,7 @@ makedepends=("gcc"
 depends=("base-devel")
 
 source=("$url/archive/refs/tags/$pkgver.zip")
-sha256sums=('d9809e772f727c3eceeeacdff6600f382df531a058c3a00fe7a6c85f8ed1efac')
+sha256sums=('f118d4a126434b3e2694ab933569bd8cf46d7ba0a26ef0468baa27f3336b3db3')
 
 build() {
   cd ${srcdir}

@@ -4,7 +4,7 @@ pkgname="mur__jdk21-openjdk"
 pkgver=21.0.4
 zuluver=21.36.17
 jdkdir=zulu${zuluver}-ca-jdk${pkgver}-win_x64
-pkgrel=3
+pkgrel=4
 pkgdesc='OpenJDK Java 21 development kit'
 arch=('x86_64')
 url='https://www.azul.com/downloads/#zulu'
@@ -16,7 +16,7 @@ source=("https://cdn.azul.com/zulu/bin/zulu${zuluver}-ca-jdk${pkgver}-win_x64.zi
         "main.c"
         "makefile")
 sha256sums=('d771dad10d3f0b440c3686d1f3d2b68b320802ac97b212d87671af3f2eef8848'
-            '12808017a293a944dee96374e92818c2752d08abd8f3b3e47db19b638934046d'
+            'de68952fe32b7cb09a5f159ceba14cf24bc25abddb624e95fae0471c2f0aefb3'
             'b0c8712903b5ba1bfe2248fac98790e68b4208fa1da87d518585c2352b457941')
 
 prepare() {

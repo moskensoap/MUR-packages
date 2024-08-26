@@ -8,7 +8,7 @@ minor=${pkgver#*.}
 minor=${minor%%.*}
 vernum="${major}${minor}"  
 
-pkgrel=3
+pkgrel=4
 pkgdesc='Python38 is a programming language that lets you work more quickly and integrate your systems more effectively.'
 arch=('x86_64')
 url='https://www.python.org'
@@ -31,7 +31,7 @@ noextract=("python-$pkgver-embed-amd64.zip"
 sha256sums=('abbe314e9b41603dde0a823b76f5bbbe17b3de3e5ac4ef06b759da5466711271'
             '0da52d97bc8a3d3451d57226b903394bd4c6bc836b9db052f16597d051783a18'
             'a8bb95917d8ed70924b8801117bd472ae370a24c13abfe4effcc8b00ded4678b'
-            '194d0c5fc33392dab1da248d022e64dc5de48ffeb3c2f7979aa3d5f1095d0a3f')
+            '1e9e0e82cf7aa3fb2c8689c466631b6a99f5359d76d0679758238cd252ccd05a')
 
 prepare(){
   cd ${srcdir}

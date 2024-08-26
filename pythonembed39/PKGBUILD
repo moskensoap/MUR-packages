@@ -8,7 +8,7 @@ minor=${pkgver#*.}
 minor=${minor%%.*}
 vernum="${major}${minor}"  
 
-pkgrel=3
+pkgrel=4
 pkgdesc='Python39 is a programming language that lets you work more quickly and integrate your systems more effectively.'
 arch=('x86_64')
 url='https://www.python.org'
@@ -31,7 +31,7 @@ noextract=("python-$pkgver-embed-amd64.zip"
 sha256sums=('938a1f3b80d580320836260612084d74ce094a261e36f9ff3ac7b9463df5f5e4'
             'bc1698633ecbc556e25198954befb67a50ee4e2fe912c909d9d405bbfbfef3f0'
             '9f589b954b11c379ffc280fb4c0038797147cd26d86cc1dcb67a02307bc4c099'
-            '9c571fdcad8e646d5f6c4e736598e9274930d8b953c53661a5655a9c7e8a1115')
+            '69fc8426cb9387928e6779e118b6b3e13245737b2a1527b31a3cc2891a790b9b')
 
 prepare(){
   cd ${srcdir}

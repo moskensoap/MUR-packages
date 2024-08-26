@@ -8,7 +8,7 @@ minor=${pkgver#*.}
 minor=${minor%%.*}
 vernum="${major}${minor}"  
 
-pkgrel=3
+pkgrel=4
 pkgdesc='Python311 is a programming language that lets you work more quickly and integrate your systems more effectively.'
 arch=('x86_64')
 url='https://www.python.org'
@@ -31,7 +31,7 @@ noextract=("python-$pkgver-embed-amd64.zip"
 sha256sums=('009d6bf7e3b2ddca3d784fa09f90fe54336d5b60f0e0f305c37f400bf83cfd3b'
             '5b246ed63c6a915e82e3089e32bb7d4ef7547ecc5cfe003dc17501aa91fb5676'
             'c7a0217ab48072e7e1f4101aeae7deab4f4eb4251eec89ea4dd83553a320dc64'
-            '2737d6f71c612d1cc4695ceb37df261c2285540d9f6f3508efaf7d3ae54a1cb2')
+            '1e4ae4de03691105ac72a30244cb9f22ca20303b8396903f5c49acdabd5dfb83')
 
 prepare(){
   cd ${srcdir}

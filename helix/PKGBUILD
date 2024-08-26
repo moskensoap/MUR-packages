@@ -2,7 +2,7 @@
 
 pkgname=mur__helix
 pkgver=24.07
-pkgrel=3
+pkgrel=4
 pkgdesc="A post-modern modal text editor."
 arch=('x86_64')
 url="https://github.com/helix-editor/helix"
@@ -12,7 +12,7 @@ makedepends=('gcc')
 source=("$url/releases/download/${pkgver}/helix-${pkgver}-x86_64-windows.zip"
         "main.c")
 sha256sums=('3575f28a3e718005ffd803fa04ae8d26c83ba72131615182beafe7152ce831dd'
-            'baf5bcba0474df4ddff36b360990007ed481fa1b6aae5deac7f7c32833bab096')
+            'ca2ffc87c8400b1788131c8b807953b8aa35b1a1469cdf1536c9b2dac4959e1d')
 
 
 build() {

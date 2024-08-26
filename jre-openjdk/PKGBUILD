@@ -4,7 +4,7 @@ pkgname="mur__jre-openjdk"
 pkgver=22.0.2
 zuluver=22.32.15
 jdkdir=zulu${zuluver}-ca-jre${pkgver}-win_x64
-pkgrel=3
+pkgrel=4
 pkgdesc='OpenJDK Java runtime environment'
 arch=('x86_64')
 url='https://www.azul.com/downloads/#zulu'
@@ -16,7 +16,7 @@ source=("https://cdn.azul.com/zulu/bin/zulu${zuluver}-ca-jre${pkgver}-win_x64.zi
         "main.c"
         "makefile")
 sha256sums=('cdb7d259b502bab244d96026ca1a3b16c6a607495ddcb6817aa408db88404584'
-            'a5aefad2e1a84a2fdb43cbb33fea3d3679f06c61fa53939e64cd55a930e791c8'
+            'a3ea319712c5c4bd633ffdaac1237bc2cd527117a1d2bbb81e663806a110eaae'
             'ac7a6f1cb5167481f1412930cbc4bbfcf86069999f753caa462a440fd05239c2')
 
 prepare() {

@@ -4,7 +4,7 @@ pkgname="mur__jre11-openjdk"
 pkgver=11.0.24
 zuluver=11.74.15
 jdkdir=zulu${zuluver}-ca-jre${pkgver}-win_x64
-pkgrel=3
+pkgrel=4
 pkgdesc='OpenJDK Java 11 runtime environment'
 arch=('x86_64')
 url='https://www.azul.com/downloads/#zulu'
@@ -16,7 +16,7 @@ source=("https://cdn.azul.com/zulu/bin/zulu${zuluver}-ca-jre${pkgver}-win_x64.zi
         "main.c"
         "makefile")
 sha256sums=('927f12921d0b7537760d8b3f5de26b128352f7592e8dc3bb5b993a608620f49a'
-            '422f367a8b21c6a56f52f736b0db4c64bb16fc66c00edf48ed6a31c1f70e83c0'
+            '800d0fe77d062f719fd111cfd0be28b6432c3baac099462fddbc6a1fee586432'
             '2e6d8ea31c34b47d09e2338b2f814e1e0137b99ef87bd6b17dc4390ac880d0e8')
 
 prepare() {

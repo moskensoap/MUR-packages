@@ -11,7 +11,7 @@ int main(int argc, char *argv[])
     char path[MAX_PATH];
     if (GetModuleFileName(NULL, path, MAX_PATH) == 0)
     {
-        perror("GetModuleFileName");
+        fprintf(stderr, "GetModuleFileName failed (%lu).\n", GetLastError());
         return 1;
     }
 
@@ -44,7 +44,7 @@ int main(int argc, char *argv[])
     }
     else
     {
-        perror("strstr");
+        fprintf(stderr, "Error: '%s' not found in path '%s'.\n", binPath, path);
         return 1;
     }
 

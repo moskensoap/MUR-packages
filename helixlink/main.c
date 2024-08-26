@@ -8,7 +8,7 @@ int main(int argc, char *argv[])
     char path[PATH_MAX];
     if (GetModuleFileName(NULL, path, PATH_MAX) == 0)
     {
-        perror("GetModuleFileName");
+        fprintf(stderr, "GetModuleFileName failed (%lu).\n", GetLastError());
         return 1;
     }
     // Replace "\bin\hx.exe" with "\lib\helix\hx.exe"
@@ -23,7 +23,7 @@ int main(int argc, char *argv[])
     }
     else
     {
-        perror("strstr");
+        fprintf(stderr, "Error: '%s' not found in path '%s'.\n", binPath, path);
         return 1;
     }
 

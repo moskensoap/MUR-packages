@@ -128,7 +128,7 @@ int main(int argc, char *argv[]) {
     }
     else
     {
-        perror("strstr");
+        fprintf(stderr, "Error: '%s' not found in path '%s'.\n", binPath, path);
         return 1;
     }
 
@@ -142,7 +142,7 @@ int main(int argc, char *argv[]) {
     }
     else
     {
-        perror("strrchr");
+        fprintf(stderr, "Error: '/' not found in path '%s'.\n", path);
         return 1;
     }
 

@@ -2,7 +2,7 @@
 
 pkgname=("mur__composer")
 pkgver=2.7.7
-pkgrel=3
+pkgrel=4
 pkgdesc="Dependency Manager for PHP"
 
 arch=('x86_64')
@@ -16,7 +16,7 @@ source=("$url/download/$pkgver/composer.phar"
         "composer.c")
 
 sha256sums=('aab940cd53d285a54c50465820a2080fcb7182a4ba1e5f795abfb10414a4b4be'
-            'efe048222f95273af5c3def8c6045db592b9cbd1822f90ac5d6f6e6b95827547')
+            '5b0de757dcf423db9d3011008e65ca424b21e1dd67363a4817c3f5cc6c7c480e')
 
 
 build() {

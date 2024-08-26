@@ -71,7 +71,7 @@ void replace(char *path, char *newpath, char *old, char *new)
     }
     else
     {
-        perror("strstr");
+        fprintf(stderr, "Error: '%s' not found in path '%s'.\n", old, newpath);
         exit(1);
     }
 }
@@ -139,7 +139,7 @@ int main(int argc, char *argv[]) {
     }
     else
     {
-        perror("strstr");
+        fprintf(stderr, "Error: '%s' not found in path '%s'.\n", binPath, path);
         return 1;
     }
 
@@ -153,7 +153,7 @@ int main(int argc, char *argv[]) {
     }
     else
     {
-        perror("strrchr");
+        fprintf(stderr, "Error: '/' not found in path '%s'.\n", dirpath);
         return 1;
     }
 
@@ -198,7 +198,7 @@ int main(int argc, char *argv[]) {
     sprintf(pythoninstallpip, "%s -m ensurepip --upgrade", pythonpath);
     if (system(pythoninstallpip) != 0)
     {
-        perror("system");
+        fprintf(stderr, "Error: '%s' failed.\n", pythoninstallpip);
         return 1;
     }
 
@@ -242,7 +242,7 @@ int main(int argc, char *argv[]) {
     char versionchars[PATH_MAX];
     if (fgets(versionchars, PATH_MAX, versionfile) == NULL)
     {
-        perror("fgets");
+        fprintf(stderr, "Error: Failed to read version from '%s'.\n", echoversion);
         return 1;
     }
     pclose(versionfile);
@@ -268,7 +268,7 @@ int main(int argc, char *argv[]) {
     sprintf(cpcmd, "%s %s %s", cpexe, pipversionchars, pippath);
     if (system(cpcmd) != 0)
     {
-        perror("system");
+        fprintf(stderr, "Error: '%s' failed.\n", cpcmd);
         return 1;
     }
     
@@ -312,7 +312,7 @@ int main(int argc, char *argv[]) {
     sprintf(rmtmp, "%s -rf %s*", rmexe, tmppath);
     if (system(rmtmp) != 0)
     {
-        perror("system");
+        fprintf(stderr, "Error: '%s' failed.\n", rmtmp);
         return 1;
     }
     printf("success: %s\n", rmtmp);
@@ -348,7 +348,7 @@ int main(int argc, char *argv[]) {
     sprintf(cplinkmakefile, "%s %s %smakefile", cpexe, linkmakefilepath, tmppath);
     if (system(cplinkmakefile) != 0)
     {
-        perror("system");
+        fprintf(stderr, "Error: '%s' failed.\n", cplinkmakefile);
         return 1;
     }
     printf("success: %s\n", cplinkmakefile);
@@ -375,7 +375,7 @@ int main(int argc, char *argv[]) {
     sprintf(cplink, "for file in $(%s %s | %s .exe | %s 's/\\.exe$/.c/'); do %s %s %s$file; done", lsexe, Scriptspath, grepexe, sedexe, cpexe, pip_installed_exe_linkpath, tmppath);
     if (system(cplink) != 0)
     {
-        perror("system");
+        fprintf(stderr, "Error: '%s' failed.\n", cplink);
         return 1;
     }
     printf("success: %s\n", cplink);
@@ -389,7 +389,7 @@ int main(int argc, char *argv[]) {
     sprintf(sedlink, "%s %s -maxdepth 3 -type f -name '*.c' -exec %s -i '1s/.*/#define pkgver \"%s\"/' {} +", findexe, tmppath, sedexe, version);
     if (system(sedlink) != 0)
     {
-        perror("system");
+        fprintf(stderr, "Error: '%s' failed.\n", sedlink);
         return 1;
     }
     printf("success: %s\n", sedlink);
@@ -403,7 +403,7 @@ int main(int argc, char *argv[]) {
     sprintf(makecmd, "%s -C %s", makeexe, tmppath);
     if (system(makecmd) != 0)
     {
-        perror("system");
+        fprintf(stderr, "Error: '%s' failed.\n", makecmd);
         return 1;
     }
     printf("success: %s\n", makecmd);
@@ -438,7 +438,7 @@ int main(int argc, char *argv[]) {
     sprintf(rmunowned, "%s %s -maxdepth 3 -exec %s -Qo {} + 2>&1 | %s \"error: No package owns\" | %s 's/.*error: No package owns //g' | %s '\\n' '\\0' | %s -r -0 -- %s -rf --", findexe, optbinpath, pacmanexe, grepexe, sedexe, trexe, xargsexe, rmexe);
     if (system(rmunowned) != 0)
     {
-        perror("system");
+        fprintf(stderr, "Error: '%s' failed.\n", rmunowned);
         return 1;
     }
     printf("success: %s\n", rmunowned);
@@ -448,7 +448,7 @@ int main(int argc, char *argv[]) {
     sprintf(cptarget, "for file in \"%s\"*.exe; do target_file=\"%s${file#%s}\"; if [ ! -e \"$target_file\" ]; then %s \"$file\" \"$target_file\"; fi; done", tmppath, optbinpath, tmppath, cpexe);
     if (system(cptarget) != 0)
     {
-        perror("system");
+        fprintf(stderr, "Error: '%s' failed.\n", cptarget);
         return 1;
     }
     printf("success: %s\n", cptarget);
@@ -456,7 +456,7 @@ int main(int argc, char *argv[]) {
     //system run: rmexe -rf tmppath/*
     if (system(rmtmp) != 0)
     {
-        perror("system");
+        fprintf(stderr, "Error: '%s' failed.\n", rmtmp);
         return 1;
     }
     printf("success: %s\n", rmtmp);

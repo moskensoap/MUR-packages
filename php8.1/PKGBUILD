@@ -2,7 +2,7 @@
 
 pkgname=("mur__php8.1" "mur__php8.1-development" "mur__php8.1-production" "mur__php8.1-extension-composer" "mur__php8.1-extension-extra")
 pkgver=8.1.28
-pkgrel=2
+pkgrel=3
 
 arch=('x86_64')
 url='https://www.php.net'
@@ -21,7 +21,7 @@ source=("https://windows.php.net/downloads/releases/archives/php-${pkgver}-Win32
 
 noextract=("php-${pkgver}-Win32-vs16-x64.zip")
 sha256sums=('08a4aca69cf27c1bd7324b24cd7965109ea82ef67df5a60894923493a27199c1'
-            '717a9451a1c23f14d44d2677bfb1046d270f61d87795237f85a687960aa61847'
+            'e978cecc08e9d4ca48af182df3a7aa7988d7c1fbf1be9526f8c035c128fce351'
             '671047bef1a1937ee8e28b6d53cc21fa86f8a3090b30bb9f1197bdbade5f7076'
             'a178b60f591b15d0a21e06cf752f5f11b923f4231c2105c402780e607ac628d2'
             '4f15458558fff444800f34383580416687c61218f1abffd13e59dd7bf16f66d2'

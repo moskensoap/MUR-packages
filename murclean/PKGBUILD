@@ -1,7 +1,7 @@
 # Maintainer: moskensoap <141073988+moskensoap@users.noreply.github.com>
 
 pkgname=("mur__murclean")
-pkgver=1.0
+pkgver=1.1
 pkgrel=1
 pkgdesc="List and clean up cache, logs, and other files not owned by any package."
 
@@ -13,7 +13,7 @@ makedepends=("gcc")
 source=("murclean.c"
         "LICENSE")
 
-sha256sums=('6ac398e6a9100b20c02c9fb9f416524fa3199d18f8d25b511f782853bb5c15ee'
+sha256sums=('993803d8bef7a76f83a0d0a64e68a82e579b607e6b9e16baf5437902523b5b37'
             '15070e8c828240aa544f41444e2392887c38f8c9f9f69bed35bdf54ef32679a0')
 
 

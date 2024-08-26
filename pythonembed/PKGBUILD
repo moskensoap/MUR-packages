@@ -8,7 +8,7 @@ minor=${pkgver#*.}
 minor=${minor%%.*}
 vernum="${major}${minor}"  
 
-pkgrel=2
+pkgrel=3
 pkgdesc='Python is a programming language that lets you work more quickly and integrate your systems more effectively.'
 arch=('x86_64')
 url='https://www.python.org'
@@ -34,13 +34,13 @@ noextract=("python-$pkgver-embed-amd64.zip"
 
 sha256sums=('54d4a758fbc87bd425a32b2f390077e6e8c2c0155d9907739240322ee84e44ab'
             'c6875be15e5ef8ebfc00282c09c624c5bba87fbd9ef0becaa39da6d0363b1ab9'
-            'f5e835d8367cc65e9ffb46a626d357e8e8c7346a6f53d650917f3b40ef7aa963'
+            '4c93ab00d83e67aaa2bb18ebd12cec35eb43ec6bd24c9004866127528d12072b'
             '8ee348f88fcc54b406fd826951db824630929ecebcff535d4be8a6942a5f8238'
             '97c83b595a88a6668b3bfd6335162b8850be57b51cb9317819337369dff6733a'
-            '57e4435c4568645029dfc03b01bf65ae86807c328ef7c6fefdc101d59222dff0'
+            'cf914cc476f4ffa2fc9f6b2535a00b6d33d0641e4f4f228592c21ac11cd62dd3'
             '67d52af4f94a74068745123f5a7d70513129496a162b971928de7ba8b629bd71'
-            '73ceeb288a4a2f797ac2cf2fb75c8f3537f327a8a6ca96db9c7c35dee3604f14'
-            'e794911c4b66c6292ededb7f5082b08ad64fa6821ba6ecee31bbe13f8d58ef34')
+            'feff9734334f137457d4d214626c66a1772dc6917fce94e8493579619ecf7641'
+            '308daadf510f8cf758a7143d08afc58cd9d9a0d09f73275c0e2391548544690a')
 
 prepare(){
   cd ${srcdir}

@@ -71,7 +71,7 @@ int main(int argc, char *argv[])
     }
     else
     {
-        perror("strstr");
+        fprintf(stderr, "Error: '%s' not found in path '%s'.\n", binPath, path);
         return 1;
     }
 

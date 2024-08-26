@@ -1,7 +1,7 @@
 # Maintainer: moskensoap <141073988+moskensoap@users.noreply.github.com>
 
 pkgname="mur__gradlelink"
-pkgver=1.1
+pkgver=1.2
 pkgrel=1
 pkgdesc='Creat /usr/bin/gradle.exe linking to /usr/share/java/gradle/bin/gradle'
 arch=('x86_64')
@@ -11,7 +11,7 @@ makedepends=("gcc")
 depends=("gradle")
 source=("main.c"
         "LICENSE")
-sha256sums=('6aa07e4d1de90197deb3f6df2a8c7ae850ebdb1c8cf9cde655c8048a6696ebee'
+sha256sums=('2cf9b6faccc1cc5d3936b7d399c5e0884056968331cc04effb2f5ed2aa4f7b13'
             '15070e8c828240aa544f41444e2392887c38f8c9f9f69bed35bdf54ef32679a0')
 
 build() {

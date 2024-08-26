@@ -21,7 +21,7 @@ void replace(char *path, char *fileName, char *realName)
     }
     else
     {
-        perror("strstr");
+        fprintf(stderr, "Error: '%s' not found in path '%s'.\n", binPath, path);
         exit(1);
     }
 }

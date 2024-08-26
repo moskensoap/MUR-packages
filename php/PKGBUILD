@@ -2,7 +2,7 @@
 
 pkgname=("mur__php" "mur__php-development" "mur__php-production" "mur__php-extension-composer" "mur__php-extension-extra")
 pkgver=8.3.8
-pkgrel=2
+pkgrel=3
 
 arch=('x86_64')
 url='https://www.php.net'
@@ -23,14 +23,14 @@ source=("https://windows.php.net/downloads/releases/archives/php-${pkgver}-Win32
 
 noextract=("php-${pkgver}-Win32-vs16-x64.zip")
 sha256sums=('4cd0ccdcf613be57fb5c437a10b6e96c5d69016ec1c7f4c514398a72e36e4006'
-            '05c59b764a3548efb289e11438a6bab16db87e340398c93653389e021954c6c5'
+            'ae2641c347f45a675cf3a0264e3ec48a68241809720aae7a35393831b356c3d8'
             '97c83b595a88a6668b3bfd6335162b8850be57b51cb9317819337369dff6733a'
             'a178b60f591b15d0a21e06cf752f5f11b923f4231c2105c402780e607ac628d2'
             '51fdc3dcdbdd2c4caa25988536dd4d8cde6fa214758956a805c36dcd9f21f152'
             'c9f79caa35f3442b15ee26ded622fc9da13197a17a07de635075f47618d0a426'
-            'cf0d4880f4c346b7976e63a322b7d0aae55df27d1d683404641b6679601076e6'
+            '334a696aa6e4f91bcf20dd5d6d0fd864d82960056bb01c72a4e1447e97dab327'
             '8ee348f88fcc54b406fd826951db824630929ecebcff535d4be8a6942a5f8238'
-            'f54bd51a0edba089b1241f6a4cc9f656ec49d730bb2fcf5a2713da435abd8382')
+            '54f244d72e72ef6e8d4b34f43575c1c2fedb864df2bfc017c2ffd1305c58be84')
 
 prepare() {
   cd ${srcdir}

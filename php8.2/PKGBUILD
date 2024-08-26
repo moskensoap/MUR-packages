@@ -1,8 +1,8 @@
 # Maintainer: moskensoap <141073988+moskensoap@users.noreply.github.com>
 
 pkgname=("mur__php8.2" "mur__php8.2-development" "mur__php8.2-production" "mur__php8.2-extension-composer" "mur__php8.2-extension-extra")
-pkgver=8.2.20
-pkgrel=3
+pkgver=8.2.21
+pkgrel=1
 
 arch=('x86_64')
 url='https://www.php.net'
@@ -20,7 +20,7 @@ source=("https://windows.php.net/downloads/releases/archives/php-${pkgver}-Win32
         "extra.ini")
 
 noextract=("php-${pkgver}-Win32-vs16-x64.zip")
-sha256sums=('ad2636858768864ed4caecf1687f5a827b9c7ceafb28d06072fe2dd703372962'
+sha256sums=('ce9f5e966e0450bc134a54e07558305aadc86a73ea76c3c032b68c53aad4087b'
             '5da5ff7714766b676148bfbd48b86c9c67f043eedc4468e937c0fefb2fed6080'
             'd80c6555d6ce246b8dc663b360dd140b06c02c7115f689635c7750ff1fe483b9'
             'a178b60f591b15d0a21e06cf752f5f11b923f4231c2105c402780e607ac628d2'

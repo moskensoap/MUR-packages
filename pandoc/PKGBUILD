@@ -1,15 +1,15 @@
 # Maintainer: moskensoap <141073988+moskensoap@users.noreply.github.com>
 
 pkgname="mur__pandoc"
-pkgver=3.2.1
-pkgrel=2
+pkgver=3.3
+pkgrel=1
 pkgdesc='Universal markup converter.'
 arch=('x86_64')
 url='https://github.com/jgm/pandoc'
 license=('GPL-2.0')
 
 source=("$url/releases/download/${pkgver}/pandoc-${pkgver}-windows-x86_64.zip")
-sha256sums=('c6cfc71b092a42c8d25c0936390aa21d71762aee0ceee720bff1c8e32d35203e')
+sha256sums=('05b47539f09c65fd94ce2a1741412805074ae764477267a2ff9c2cde8ea7fe8d')
 
 
 package() {

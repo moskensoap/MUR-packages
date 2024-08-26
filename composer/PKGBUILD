@@ -1,8 +1,8 @@
 # Maintainer: moskensoap <141073988+moskensoap@users.noreply.github.com>
 
 pkgname=("mur__composer")
-pkgver=2.7.7
-pkgrel=4
+pkgver=2.7.8
+pkgrel=1
 pkgdesc="Dependency Manager for PHP"
 
 arch=('x86_64')
@@ -12,10 +12,10 @@ makedepends=("gcc")
 depends=("mur__php"
          "mur__php-extension-composer")
 
-source=("$url/download/$pkgver/composer.phar"
+source=("$pkgname-$pkgver.phar::$url/download/$pkgver/composer.phar"
         "composer.c")
 
-sha256sums=('aab940cd53d285a54c50465820a2080fcb7182a4ba1e5f795abfb10414a4b4be'
+sha256sums=('3da35dc2abb99d8ef3fdb1dec3166c39189f7cb29974a225e7bbca04c1b2c6e0'
             '5b0de757dcf423db9d3011008e65ca424b21e1dd67363a4817c3f5cc6c7c480e')
 
 
@@ -27,5 +27,5 @@ build() {
 package() {
   cd ${srcdir}
   install -Dm755 composer.exe ${pkgdir}/opt/bin/composer.exe
-  cp composer.phar ${pkgdir}/opt/bin/composer.phar
+  cp $pkgname-$pkgver.phar ${pkgdir}/opt/bin/composer.phar
 }

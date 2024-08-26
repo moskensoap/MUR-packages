@@ -12,7 +12,7 @@ makedepends=("gcc")
 depends=("mur__php"
          "mur__php-extension-composer")
 
-source=("$url/download/$pkgver/composer.phar"
+source=("$pkgname-$pkgver.phar::$url/download/$pkgver/composer.phar"
         "composerlts.c")
 
 sha256sums=('b0c383b1f430a80a74c006f20199d1e0226848a0a90afa5c0a7d01fb90ee9075'
@@ -27,5 +27,5 @@ build() {
 package() {
   cd ${srcdir}
   install -Dm755 composerlts.exe ${pkgdir}/opt/bin/composerlts.exe
-  cp composer.phar ${pkgdir}/opt/bin/composerlts.phar
+  cp $pkgname-$pkgver.phar ${pkgdir}/opt/bin/composerlts.phar
 }

@@ -1,8 +1,8 @@
 # Maintainer: moskensoap <141073988+moskensoap@users.noreply.github.com>
 
 pkgname="mur__lua-language-server"
-pkgver=3.9.3
-pkgrel=3
+pkgver=3.10.5
+pkgrel=1
 pkgdesc='A language server that offers Lua language support - programmed in Lua'
 arch=('x86_64')
 url='https://github.com/LuaLS/lua-language-server'
@@ -13,7 +13,7 @@ makedepends=("gcc"
 source=("$url/releases/download/$pkgver/lua-language-server-$pkgver-win32-x64.zip"
         "lua-language-server.c")
 noextract=("lua-language-server-$pkgver-win32-x64.zip")
-sha256sums=('d658bf5ca56066268bf9b1ade33ca1788c8cb4b60ebdca17ba636f1f423342a0'
+sha256sums=('3dcce5b0e1faa6202b6f438a1295ec45af39bb7ec521c07b0d579976d82deac8'
             '4a63ca6b7a91d09d43baa179f517dded9ddb44f569731db7d1a28e79fd523197')
 
 prepare() {

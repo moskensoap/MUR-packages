@@ -1,8 +1,8 @@
 # Maintainer: moskensoap <141073988+moskensoap@users.noreply.github.com>
 
 pkgname="mur__omnisharp-roslyn-net6.0"
-pkgver=1.39.11
-pkgrel=3
+pkgver=1.39.12
+pkgrel=1
 pkgdesc='OmniSharp server (HTTP, STDIO) based on Roslyn workspaces (net6.0)'
 arch=('x86_64')
 url='https://github.com/omnisharp/omnisharp-roslyn'
@@ -11,15 +11,15 @@ makedepends=("gcc"
              "unzip")
 conflicts=("mur__omnisharp-roslyn")
 
-source=("$url/releases/download/v$pkgver/omnisharp-win-x64-net6.0.zip"
+source=("$pkgname-$pkgver.zip::$url/releases/download/v$pkgver/omnisharp-win-x64-net6.0.zip"
         "omnisharp.c")
-noextract=("omnisharp-win-x64-net6.0.zip")
-sha256sums=('a71fd29e6cacdf41fd44acb9f8532be33dbd4cb313513e47a031443f648bdbab'
+noextract=("$pkgname-$pkgver.zip")
+sha256sums=('21bb3f7d990b6d464a748e9c11731582caeeaab87d7f749edeacfe136a09c13e'
             '4827c33c8575f3c61e4ed22c5ccb3e1adcdd603e2a11e7385f53d8e0eab36fbd')
 
 prepare() {
   cd ${srcdir}
-  unzip omnisharp-win-x64-net6.0.zip -d omnisharp-win-x64-net6.0
+  unzip $pkgname-$pkgver.zip -d omnisharp-win-x64-net6.0
 }
 
 build() {

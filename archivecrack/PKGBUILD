@@ -1,0 +1,30 @@
+# Maintainer: moskensoap <141073988+moskensoap@users.noreply.github.com>
+
+pkgname="mur__archivecrack"
+pkgver=1.0
+pkgrel=1
+pkgdesc='Brute Force Password Cracker for Local Archive Files.'
+arch=('x86_64')
+url='https://github.com/moskensoap/archivecrack'
+license=(MIT)
+makedepends=("gcc")
+depends=("mingw-w64-ucrt-x86_64-7zip")
+
+source=("$url/archive/refs/tags/$pkgver.zip")
+sha256sums=('9a8f016fc47171904147a71987e9b1d472f4813d0a96fd275f536c68d9981688')
+
+prepare() {
+  cd ${srcdir}/archivecrack-$pkgver
+  sed -i 's|char command_7z\[\] = "7z t \\"";|char command_7z\[\] = "/ucrt64/bin/7z t \\"";|' archivecrack.c
+}
+
+build() {
+  cd ${srcdir}/archivecrack-$pkgver
+  make
+}
+
+package() {
+  cd ${srcdir}/archivecrack-$pkgver
+  install -Dm755 archivecrack.exe ${pkgdir}/usr/local/bin/archivecrack
+  install -Dm644 README.md ${pkgdir}/usr/local/share/licenses/archivecrack/README.md
+}

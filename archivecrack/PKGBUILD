@@ -1,30 +1,34 @@
 # Maintainer: moskensoap <141073988+moskensoap@users.noreply.github.com>
 
 pkgname="mur__archivecrack"
-pkgver=1.0
+pkgver=1.1
 pkgrel=1
 pkgdesc='Brute Force Password Cracker for Local Archive Files.'
 arch=('x86_64')
 url='https://github.com/moskensoap/archivecrack'
 license=(MIT)
-makedepends=("gcc")
+makedepends=("gcc"
+             "mingw-w64-ucrt-x86_64-gcc")
 depends=("mingw-w64-ucrt-x86_64-7zip")
 
 source=("$url/archive/refs/tags/$pkgver.zip")
-sha256sums=('9a8f016fc47171904147a71987e9b1d472f4813d0a96fd275f536c68d9981688')
+sha256sums=('52b0301de43e14780f88f2abb55b691952f77ad43aa8c14f28885268f040255f')
 
 prepare() {
   cd ${srcdir}/archivecrack-$pkgver
   sed -i 's|char command_7z\[\] = "7z t \\"";|char command_7z\[\] = "/ucrt64/bin/7z t \\"";|' archivecrack.c
+  sed -i 's|char command_7z\[\] = "7z t \\"";|char command_7z\[\] = "/ucrt64/bin/7z t \\"";|' archivecrack-windows.c
 }
 
 build() {
   cd ${srcdir}/archivecrack-$pkgver
   make
+  make windows
 }
 
 package() {
   cd ${srcdir}/archivecrack-$pkgver
-  install -Dm755 archivecrack.exe ${pkgdir}/usr/local/bin/archivecrack
+  install -Dm755 archivecrack.exe ${pkgdir}/usr/local/bin/archivecrack.exe
+  install -Dm755 archivecrack-windows.exe ${pkgdir}/usr/local/bin/archivecrack-windows.exe
   install -Dm644 README.md ${pkgdir}/usr/local/share/licenses/archivecrack/README.md
 }

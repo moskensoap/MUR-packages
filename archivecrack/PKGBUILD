@@ -2,7 +2,7 @@
 
 pkgname="mur__archivecrack"
 pkgver=1.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Brute Force Password Cracker for Local Archive Files.'
 arch=('x86_64')
 url='https://github.com/moskensoap/archivecrack'
@@ -17,7 +17,6 @@ sha256sums=('52b0301de43e14780f88f2abb55b691952f77ad43aa8c14f28885268f040255f')
 prepare() {
   cd ${srcdir}/archivecrack-$pkgver
   sed -i 's|char command_7z\[\] = "7z t \\"";|char command_7z\[\] = "/ucrt64/bin/7z t \\"";|' archivecrack.c
-  sed -i 's|char command_7z\[\] = "7z t \\"";|char command_7z\[\] = "/ucrt64/bin/7z t \\"";|' archivecrack-windows.c
 }
 
 build() {

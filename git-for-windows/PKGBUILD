@@ -4,7 +4,7 @@ _realname=mur__git-for-windows
 pkgbase=mingw-w64-${_realname}
 pkgname="${MINGW_PACKAGE_PREFIX}-${_realname}"
 pkgver=2.46.0
-pkgrel=4
+pkgrel=5
 pkgdesc="A fork of Git containing Windows-specific patches. (mingw-w64)"
 arch=('any')
 mingw_arch=('mingw64')
@@ -20,8 +20,8 @@ source=("$url/releases/download/v$pkgver.windows.1/PortableGit-$pkgver-64-bit.7z
         "shell.c"
         "makefile")
 sha256sums=('dedae83f4d0851bcbf473c516701e2da6a5d7c574d694d5eceec46d1307132ea'
-            '650f16416204e87550f1c76b9d75577ef3a1137d8de8786486a2d44fb2b28918'
-            '187c3aa75b4337c3a416c6aa593ec198978788cc0f853d61342f8a5520ae0743'
+            'e7d85236698f56c1aa28b18703f4d93ed4c3e484ed8cdc21ae80fc7557e53b0e'
+            'a44ece55858844a5dcd26581004561222b2d2c9dcb319b7681d88d1a9b4515d4'
             'f8b1c510ce85d6d1671ca5109bcf813d94d48a0bcc00b33ebb391a7b33123719')
 noextract=("PortableGit-$pkgver-64-bit.7z.exe")
 

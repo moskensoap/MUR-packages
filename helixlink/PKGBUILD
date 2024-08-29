@@ -3,7 +3,7 @@
 _realname=mur__helixlink
 pkgbase=mingw-w64-${_realname}
 pkgname="${MINGW_PACKAGE_PREFIX}-${_realname}"
-pkgver=1.4
+pkgver=1.5
 pkgrel=1
 pkgdesc="Creat ${MINGW_PREFIX}/bin/hx.exe linking to ${MINGW_PREFIX}/lib/helix/hx.exe (mingw-w64)"
 arch=('any')
@@ -14,7 +14,7 @@ makedepends=("${MINGW_PACKAGE_PREFIX}-cc")
 depends=("${MINGW_PACKAGE_PREFIX}-helix")
 source=("main.c"
         "LICENSE")
-sha256sums=('212a7d5662f9ee013452faac5df98246107e089516c830a1fd7b35afc11a14d6'
+sha256sums=('6f0169b27030d345d49586a43ac4d00d7677a5b214eee0af442109416ed92551'
             '15070e8c828240aa544f41444e2392887c38f8c9f9f69bed35bdf54ef32679a0')
 
 

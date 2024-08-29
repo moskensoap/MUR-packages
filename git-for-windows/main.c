@@ -96,7 +96,7 @@ int main(int argc, char *argv[])
 
     if (!CreateProcess(NULL, merged_string, NULL, NULL, FALSE, 0, NULL, NULL, &si, &pi))
     {
-        fprintf(stderr, "CreateProcess failed (%d).\n", GetLastError());
+        fprintf(stderr, "CreateProcess failed (%lu).\n", GetLastError());
         return 1;
     }
 
@@ -105,7 +105,7 @@ int main(int argc, char *argv[])
     WaitForSingleObject(pi.hProcess, INFINITE);
     if (!GetExitCodeProcess(pi.hProcess, &exitCode))
     {
-        fprintf(stderr, "GetExitCodeProcess failed (%d).\n", GetLastError());
+        fprintf(stderr, "GetExitCodeProcess failed (%lu).\n", GetLastError());
         exitCode = 1;
     }
 

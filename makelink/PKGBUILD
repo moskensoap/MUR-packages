@@ -3,7 +3,7 @@
 _realname=mur__makelink
 pkgbase=mingw-w64-${_realname}
 pkgname="${MINGW_PACKAGE_PREFIX}-${_realname}"
-pkgver=1.1
+pkgver=1.2
 pkgrel=1
 pkgdesc="Creat make.exe linking to mingw32-make.exe (mingw-w64)"
 arch=('any')
@@ -17,7 +17,7 @@ depends=("${MINGW_PACKAGE_PREFIX}-make")
 source=("main.c"
         "makefile"
         "LICENSE")
-sha256sums=('738ef6e5dfb3fcd791552b6ffbb3c50feb0cde6127d69e3ce0f1e8e7599b25be'
+sha256sums=('c3bffd97fa3cdb5a9725d5d26ca71a8935c12614dc3d3f2aae7fa286131ec3b6'
             '723f3f55b139f4cd685fb32164f591310c8904c03973c917ee5c5032fdbe66b8'
             '15070e8c828240aa544f41444e2392887c38f8c9f9f69bed35bdf54ef32679a0')
 

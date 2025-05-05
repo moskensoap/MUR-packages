@@ -1,0 +1,23 @@
+# Maintainer: moskensoap <141073988+moskensoap@users.noreply.github.com>
+
+pkgname="mur__texlab"
+pkgver=v5.22.1
+pkgrel=1
+pkgdesc='An implementation of the Language Server Protocol for LaTeX.'
+arch=('x86_64')
+url='https://github.com/latex-lsp/texlab'
+license=('GPL-3.0')
+
+source=("$url/releases/download/${pkgver}/texlab-x86_64-windows.zip")
+sha256sums=('82bcd5ba4e5bf6d9c9e55b3a38b6aadef6d7e3c1bf0d61bd9452cb91bb902604')
+
+makedepends=("mur__optfirst"
+             "curl")
+
+package() {
+  cd ${srcdir}
+  mkdir -p ${pkgdir}/opt/bin/
+  install -Dm755 texlab.exe ${pkgdir}/opt/bin/texlab.exe
+  mkdir -p ${pkgdir}/opt/share/$pkgname/
+  usrfirst curl -L https://raw.githubusercontent.com/latex-lsp/texlab/master/LICENSE > ${pkgdir}/opt/share/$pkgname/LICENSE
+}

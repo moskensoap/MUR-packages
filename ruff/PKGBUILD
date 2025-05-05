@@ -1,0 +1,23 @@
+# Maintainer: moskensoap <141073988+moskensoap@users.noreply.github.com>
+
+pkgname="mur__ruff"
+pkgver=0.11.8
+pkgrel=1
+pkgdesc='An extremely fast Python linter and code formatter, written in Rust.'
+arch=('x86_64')
+url='https://github.com/astral-sh/ruff'
+license=('MIT')
+
+source=("$url/releases/download/${pkgver}/ruff-x86_64-pc-windows-msvc.zip")
+sha256sums=('2279f17ad7474b9a1493ec2aab404e6f1109272d3221a5d38ee06ceb0e4c6100')
+
+makedepends=("mur__optfirst"
+             "curl")
+
+package() {
+  cd ${srcdir}
+  mkdir -p ${pkgdir}/opt/bin/
+  install -Dm755 ruff.exe ${pkgdir}/opt/bin/ruff.exe
+  mkdir -p ${pkgdir}/opt/share/$pkgname/
+  usrfirst curl -L https://github.com/astral-sh/ruff/blob/main/LICENSE > ${pkgdir}/opt/share/$pkgname/LICENSE
+}
